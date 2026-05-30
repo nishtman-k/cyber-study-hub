@@ -390,7 +390,7 @@ a { color: inherit; text-decoration: none; }
       <p>A friendly, hands-on collection of cheatsheets for cybersecurity students. Real commands, real examples, no fluff.</p>
       <div class="hero-stats">
         <div class="stat"><span class="stat-num" id="statCheats">18</span><span class="stat-label">cheatsheets</span></div>
-        <div class="stat"><span class="stat-num" id="statTopics">293</span><span class="stat-label">topics covered</span></div>
+        <div class="stat"><span class="stat-num" id="statTopics">298</span><span class="stat-label">topics covered</span></div>
         <div class="stat"><span class="stat-num">200+</span><span class="stat-label">commands</span></div>
       </div>
     </div>
@@ -10283,39 +10283,294 @@ nmap --version
 
 ---
 
-## 2. Basic Syntax
+## 2. How Nmap Scanning Works
 
-```bash
-nmap [scan type] [options] <target>
+Nmap follows a defined sequence every time it runs:
+
+```
+1. TARGET ENUMERATION  → expand the target spec into a list of IPs
+2. HOST DISCOVERY      → "ping" to find which hosts are alive (the "ping scan")
+3. REVERSE DNS         → resolve names for live hosts
+4. PORT SCANNING       → probe ports on live hosts
+5. SERVICE DETECTION   → identify what's running (-sV)
+6. OS DETECTION        → fingerprint the OS (-O)
+7. NSE SCRIPTS         → run scripts for deeper checks
+8. OUTPUT              → present/save results
 ```
 
-Targets can be:
-- Single IP: `192.168.1.1`
-- Hostname: `example.com`
-- Range: `192.168.1.1-50`
-- CIDR: `192.168.1.0/24`
-- List: `target1.com,target2.com`
-- From file: `-iL targets.txt`
+### The core idea: send a probe, read the response
+
+Nmap learns about a target by **sending crafted packets and analyzing the replies** (or lack of them):
+
+- **A reply** → the host/port is reachable and tells nmap its state
+- **A specific error (RST, ICMP unreachable)** → port is closed or filtered
+- **No reply at all** → filtered (firewall dropping packets) or host down
+
+Different scan types send **different kinds of packets** (TCP SYN, TCP ACK, UDP, ICMP, ARP) — each reveals different information and behaves differently against firewalls.
+
+### Why host discovery happens first
+
+Scanning all 65,535 ports on a dead host wastes time. So nmap first does a lightweight **"is this host alive?"** check (host discovery, a.k.a. ping scan), then only port-scans hosts that responded. You can skip this with `-Pn` (treat all as up) or do only this with `-sn` (discovery, no port scan).
 
 ---
 
-## 3. Host Discovery
+## 3. Target Specification & Enumeration
 
-**Find which hosts are alive before scanning ports.**
+Before scanning, nmap **enumerates targets** — expanding whatever you typed into a concrete list of IP addresses.
+
+### Ways to specify targets
 
 ```bash
-nmap -sn 192.168.1.0/24       # ping sweep (no port scan)
-nmap -Pn target.com           # skip ping, force scan (ICMP blocked)
-nmap -PR 192.168.1.0/24       # ARP scan (LAN only — most accurate)
-nmap -PS22,80,443 target.com  # TCP SYN ping on specific ports
-nmap -PA80,443 target.com     # TCP ACK ping
+nmap 192.168.1.1                  # single IP
+nmap example.com                  # hostname (resolved via DNS)
+nmap 192.168.1.1 192.168.1.5      # multiple IPs (space-separated)
+nmap 192.168.1.1-50               # range (last octet 1 to 50)
+nmap 192.168.1-3.1-50             # range across octets
+nmap 192.168.1.0/24               # CIDR (whole subnet — 256 addresses)
+nmap 10.0.0.0/8                   # huge range (16 million addresses)
+nmap 192.168.1.*                  # wildcard (same as 1.0/24)
+nmap scanme.nmap.org              # nmap's official practice target
+```
+
+### From / to files
+
+```bash
+nmap -iL targets.txt              # read targets from a file (one per line)
+nmap ... -oN results.txt          # write results to a file
+```
+
+### Excluding hosts
+
+```bash
+nmap 192.168.1.0/24 --exclude 192.168.1.1,192.168.1.254
+nmap 192.168.1.0/24 --excludefile dontscan.txt
+```
+
+### Random targets (research/internet-wide)
+
+```bash
+nmap -iR 100                      # scan 100 random public IPs (use with care + authorization)
+```
+
+---
+
+## 4. Subnetworks (Subnets) & CIDR
+
+A **subnetwork** (subnet) is a logical division of a larger network. Nmap targets are often entire subnets, so understanding CIDR is essential.
+
+### CIDR notation
+
+```
+192.168.1.0/24
+              ↑
+              prefix = number of "network" bits
+```
+
+The `/N` tells you how many addresses are in the subnet:
+
+| CIDR | Subnet mask | Total addresses | Usable hosts | Nmap scans |
+|------|-------------|-----------------|--------------|------------|
+| `/24` | 255.255.255.0 | 256 | 254 | `192.168.1.0`–`192.168.1.255` |
+| `/25` | 255.255.255.128 | 128 | 126 | half of a /24 |
+| `/26` | 255.255.255.192 | 64 | 62 | quarter of a /24 |
+| `/27` | 255.255.255.224 | 32 | 30 | a department |
+| `/28` | 255.255.255.240 | 16 | 14 | small group |
+| `/30` | 255.255.255.252 | 4 | 2 | point-to-point link |
+| `/16` | 255.255.0.0 | 65,536 | 65,534 | `x.x.0.0`–`x.x.255.255` |
+| `/8` | 255.0.0.0 | 16,777,216 | huge | entire `10.x.x.x` |
+
+**Formula:** usable hosts = 2^(32 − prefix) − 2 (subtract network + broadcast addresses).
+
+### Practical subnet scanning
+
+```bash
+# Scan a typical home/office subnet
+nmap -sn 192.168.1.0/24
+
+# Scan a smaller chunk
+nmap -sn 192.168.1.0/28        # just 16 addresses
+
+# Scan two subnets
+nmap -sn 192.168.1.0/24 192.168.2.0/24
+```
+
+### Quick subnet helper
+
+```bash
+sudo apt install ipcalc
+ipcalc 192.168.1.0/24       # shows network, broadcast, host range
+```
+
+### Why subnets matter for scanning
+
+- A `/24` is fast (256 IPs)
+- A `/16` takes much longer (65k IPs) — use `-sn` first to find live hosts, then scan only those
+- ARP scan (`-PR`) only works **within your own subnet** (Layer 2) — across subnets you need IP-based discovery
+
+---
+
+## 5. Host Discovery — The Ping Scan
+
+**Host discovery** (the "ping scan") finds which hosts are alive before port scanning. This is the heart of the Nmap enumeration project.
+
+```bash
+nmap -sn 192.168.1.0/24       # discovery only (no port scan)
+nmap -Pn target.com           # skip discovery, assume host is up
+```
+
+By default (without `-sn` or `-Pn`), nmap sends a **mix of probes**:
+- ICMP echo request
+- TCP SYN to port 443
+- TCP ACK to port 80
+- ICMP timestamp request
+
+If **any** get a reply, the host is "up." You can control exactly which probe type to use with the flags below.
+
+### Host discovery probe types (overview)
+
+| Flag | Probe type | Layer | Best for |
+|------|-----------|-------|----------|
+| `-PR` | ARP | 2 | Local subnet (most reliable on LAN) |
+| `-PE` | ICMP Echo | 3 | Classic "ping" |
+| `-PP` | ICMP Timestamp | 3 | When echo is blocked |
+| `-PM` | ICMP Address Mask | 3 | When echo + timestamp blocked |
+| `-PS` | TCP SYN ping | 4 | When ICMP is blocked |
+| `-PA` | TCP ACK ping | 4 | Bypass simple firewalls |
+| `-PU` | UDP ping | 4 | When TCP is filtered |
+| `-Pn` | (none) | — | Skip discovery entirely |
+
+Each is explained in detail in the next section.
+
+---
+
+## 6. Host Discovery Probe Types — In Detail
+
+### ARP Scan — `-PR`
+
+```bash
+sudo nmap -PR -sn 192.168.1.0/24
+```
+
+- Sends **ARP requests** ("who has IP x.x.x.x?") at Layer 2
+- **Only works within your own subnet** (ARP doesn't cross routers)
+- **Most reliable LAN discovery** — hosts can't hide from ARP if they're on the network; even firewalled hosts must answer ARP to communicate
+- Nmap uses ARP **automatically** when scanning a local subnet (even if you ask for ICMP), because it's faster and more accurate
+- Disable with `--disable-arp-ping` to force IP-layer probes
+
+### ICMP Echo Scan — `-PE`
+
+```bash
+sudo nmap -PE -sn 192.168.1.0/24
+```
+
+- Sends a classic **ICMP echo request** (the same packet as the `ping` command)
+- If the host replies with an **ICMP echo reply**, it's up
+- **Simple and fast**, but many firewalls/hosts **block ICMP echo** — so absence of reply ≠ host down
+- This is "ping" in the traditional sense
+
+### ICMP Timestamp Scan — `-PP`
+
+```bash
+sudo nmap -PP -sn 192.168.1.0/24
+```
+
+- Sends an **ICMP timestamp request** (ICMP type 13)
+- Host replies with a timestamp reply (type 14)
+- **Useful when echo (ping) is blocked** but timestamp isn't — some firewalls block echo but forget to block timestamp
+- A "second-chance" discovery method
+
+### ICMP Address Mask Scan — `-PM`
+
+```bash
+sudo nmap -PM -sn 192.168.1.0/24
+```
+
+- Sends an **ICMP address mask request** (ICMP type 17)
+- Originally designed for diskless workstations to learn their subnet mask
+- **Rarely answered by modern systems**, but occasionally slips past firewalls that block echo + timestamp
+- Last-resort ICMP method
+
+### TCP SYN Ping — `-PS`
+
+```bash
+sudo nmap -PS -sn target.com              # default port 80
+sudo nmap -PS22,80,443 -sn target.com     # specific ports
+```
+
+- Sends a **TCP SYN** (connection request) to the given port(s)
+- If the host replies (with SYN/ACK = open, or RST = closed), it's **up**
+- **Works even when ICMP is blocked** — most firewalls allow SYN to common ports like 80/443
+- Default port is 80 if you don't specify
+- Doesn't complete the handshake (sends RST after SYN/ACK), so no full connection is made
+
+### TCP ACK Ping — `-PA`
+
+```bash
+sudo nmap -PA -sn target.com
+sudo nmap -PA80,443 -sn target.com
+```
+
+- Sends a **TCP ACK** packet (pretends to be part of an existing connection)
+- A live host responds with **RST** (because there's no real connection) → proves it's up
+- **Useful for bypassing stateless firewalls** that block incoming SYN but allow ACK
+- Pairs well with `-PS` — try both: SYN gets through some firewalls, ACK gets through others
+
+### UDP Ping — `-PU`
+
+```bash
+sudo nmap -PU -sn target.com
+sudo nmap -PU53,161 -sn target.com
+```
+
+- Sends a **UDP packet** to the given port(s)
+- A closed UDP port replies with **ICMP port unreachable** → host is up
+- **Useful when TCP is heavily filtered** but UDP isn't
+- Good for finding hosts behind firewalls that only filter TCP
+
+### Combining probes
+
+```bash
+# Use multiple discovery methods at once (more thorough)
+sudo nmap -sn -PE -PS21,22,23,80,443,3389 -PA80,443 -PU161 192.168.1.0/24
+
+# Skip discovery entirely (when you KNOW the host is up but it blocks all pings)
+nmap -Pn target.com
+```
+
+### Choosing the right probe
+
+| Situation | Use |
+|-----------|-----|
+| Scanning your own LAN | `-PR` (ARP — automatic & best) |
+| Standard internet host | default, or `-PE` |
+| ICMP echo blocked | `-PP`, `-PM`, or `-PS`/`-PA` |
+| Firewall blocks SYN | `-PA` (ACK) |
+| Only UDP gets through | `-PU` |
+| Host blocks ALL pings but you know it's up | `-Pn` |
+
+---
+
+## 7. Host Discovery — Quick Commands
+
+```bash
+nmap -sn 192.168.1.0/24            # ping sweep (no port scan)
+nmap -Pn target.com                # skip ping, force scan (ICMP blocked)
+sudo nmap -PR 192.168.1.0/24       # ARP scan (LAN only — most accurate)
+sudo nmap -PE 192.168.1.0/24       # ICMP echo
+sudo nmap -PP 192.168.1.0/24       # ICMP timestamp
+sudo nmap -PM 192.168.1.0/24       # ICMP address mask
+sudo nmap -PS22,80,443 target.com  # TCP SYN ping
+sudo nmap -PA80,443 target.com     # TCP ACK ping
+sudo nmap -PU53,161 target.com     # UDP ping
+nmap -n -sn 192.168.1.0/24         # -n = skip reverse DNS (faster)
+nmap -R -sn 192.168.1.0/24         # -R = always do reverse DNS
 ```
 
 Use `-sn` to map a network before deciding which hosts to scan in detail.
 
 ---
 
-## 4. Port Scanning Types
+## 8. Port Scanning Types
 
 | Flag | Scan | When to use |
 |------|------|-------------|
@@ -10336,7 +10591,7 @@ nmap -sT target.com                # no root needed
 
 ---
 
-## 5. Port Selection
+## 9. Port Selection
 
 ```bash
 nmap target.com                          # default = top 1000 TCP ports
@@ -10351,7 +10606,7 @@ nmap --exclude-ports 22 -p- target.com   # all except port 22
 
 ---
 
-## 6. Service & Version Detection
+## 10. Service & Version Detection
 
 ```bash
 nmap -sV target.com                       # detect service versions
@@ -10365,7 +10620,7 @@ Service detection tells you not just "port 80 is open" but "Apache 2.4.41 on Ubu
 
 ---
 
-## 7. OS Detection
+## 11. OS Detection
 
 ```bash
 sudo nmap -O target.com                       # detect OS
@@ -10377,7 +10632,45 @@ OS detection works by analyzing TCP/IP stack quirks. Needs at least one open and
 
 ---
 
-## 8. Aggressive Scanning
+## 12. What Nmap Can Detect
+
+A complete nmap scan can reveal a lot about a target:
+
+| Detection | Flag | What you learn |
+|-----------|------|----------------|
+| **Live hosts** | `-sn` | Which IPs are alive on a network |
+| **Open ports** | default | Which services are listening |
+| **Port state** | default | open / closed / filtered |
+| **Services** | `-sV` | What software runs on each port |
+| **Service versions** | `-sV` | Exact version (→ known CVEs) |
+| **Operating system** | `-O` | OS family + version guess |
+| **Device type** | `-O` | Router, printer, server, phone, etc. |
+| **MAC address & vendor** | (LAN scans) | Hardware manufacturer |
+| **Hostnames** | default | Reverse-DNS names |
+| **Uptime guess** | `-O` | Approximate time since reboot |
+| **Network path** | `--traceroute` | Hops between you and the target |
+| **Firewall presence** | `-sA` | Whether packets are being filtered |
+| **Vulnerabilities** | `--script vuln` | Known CVEs via NSE scripts |
+| **Running scripts/apps** | NSE | Banners, titles, shares, certs, etc. |
+
+### One command to detect most of it
+
+```bash
+sudo nmap -A target.com
+```
+
+`-A` enables: service/version detection (`-sV`), OS detection (`-O`), default scripts (`-sC`), and traceroute — giving you the fullest picture in a single run.
+
+### What nmap can NOT reliably tell you
+
+- Content **behind a login** (it sees the port, not the data)
+- Application-layer logic bugs (that's for Burp/manual testing)
+- Whether a "filtered" port is open or closed (firewall hides it)
+- Exact OS with 100% certainty (it's an educated guess)
+
+---
+
+## 13. Aggressive Scanning
 
 ```bash
 nmap -A target.com   # version + OS + scripts + traceroute (all-in-one)
@@ -10387,7 +10680,7 @@ nmap -A target.com   # version + OS + scripts + traceroute (all-in-one)
 
 ---
 
-## 9. Timing Templates
+## 14. Timing Templates
 
 Control speed vs stealth.
 
@@ -10416,7 +10709,7 @@ nmap --max-retries 1 target.com       # fewer retries (faster)
 
 ---
 
-## 10. NSE — Nmap Scripting Engine
+## 15. NSE — Nmap Scripting Engine
 
 Nmap ships with **600+ scripts** for vulnerability detection, enumeration, brute force, etc.
 
@@ -10488,7 +10781,7 @@ locate *.nse | head
 
 ---
 
-## 11. Output Formats
+## 16. Output Formats
 
 ```bash
 nmap -oN out.txt target.com      # human-readable text
@@ -10513,7 +10806,7 @@ grep "open" scan.gnmap
 
 ---
 
-## 12. Stealth / Evasion
+## 17. Stealth / Evasion
 
 ```bash
 nmap -f target.com                         # fragment packets
@@ -10530,7 +10823,7 @@ nmap --spoof-mac Cisco target.com          # spoof MAC address vendor
 
 ---
 
-## 13. Practical Recipes
+## 18. Practical Recipes
 
 ### Quick recon scan
 
@@ -10594,7 +10887,7 @@ nmap -p 22 -sV --open 192.168.1.0/24 -oG - | grep ssh
 
 ---
 
-## 14. Interpreting Output
+## 19. Interpreting Output
 
 Sample output:
 
@@ -10618,7 +10911,7 @@ PORT     STATE    SERVICE     VERSION
 
 ---
 
-## 15. Common Mistakes
+## 20. Common Mistakes
 
 | Mistake | Fix |
 |---------|-----|
@@ -10631,7 +10924,7 @@ PORT     STATE    SERVICE     VERSION
 
 ---
 
-## 16. Quick Reference
+## 21. Quick Reference
 
 ```bash
 # Discovery
@@ -12746,7 +13039,7 @@ const CHEATSHEETS = [
     ],
     "icon": "14",
     "color": "pink",
-    "topicCount": 16
+    "topicCount": 21
   },
   {
     "id": "gobuster",
