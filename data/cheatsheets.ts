@@ -9,7 +9,7 @@
 // `color` is one of the four "Tropical Punch" accents.
 // ---------------------------------------------------------------------------
 
-export type CheatsheetColor = "orange" | "pink" | "yellow" | "teal";
+export type CheatsheetColor = "orange" | "pink" | "yellow" | "teal" | "red";
 
 export interface Cheatsheet {
   /** URL slug, also the filename of the Markdown body in /content. */
@@ -535,7 +535,25 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "icon": "01",
     "color": "orange",
     "topicCount": 13
-  }
+  },
+  {
+  "id": "offensive-vs-defensive",
+  "title": "Offensive vs Defensive Security",
+  "subtitle": "Red, Blue & Purple Teams",
+  "description": "The two sides of cybersecurity: how red, blue, and purple teams work together, plus pentesting, the cyber kill chain, SIEM, threat hunting, and incident response.",
+  "tags": [
+    "Red Team",
+    "Blue Team",
+    "Purple Team",
+    "Pentesting",
+    "Kill Chain",
+    "SIEM",
+    "Incident Response"
+  ],
+  "icon": "30",
+  "color": "red",
+  "topicCount": 15
+}
 ];
 
 /** Cheatsheets sorted newest-first (highest icon number on top). */
