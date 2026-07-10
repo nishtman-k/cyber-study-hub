@@ -164,9 +164,20 @@ a { color: inherit; text-decoration: none; }
   font-family: var(--font-mono); font-size: 12px; color: var(--text-muted);
   padding: 3px 8px; background: var(--bg); border: 1px solid var(--border); border-radius: 6px;
 }
-.section-title { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 28px; gap: 24px; }
+.section-title { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 28px; gap: 24px; flex-wrap: wrap; }
 .section-title h2 { font-family: var(--font-display); font-weight: 700; font-size: 32px; margin: 0; letter-spacing: -0.025em; }
 .section-title .meta { font-size: 14px; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.section-controls { display: flex; align-items: center; gap: 16px; }
+.sort-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 14px; border-radius: var(--radius-sm);
+  font-family: var(--font-mono); font-size: 12px; font-weight: 500;
+  letter-spacing: 0.04em; color: var(--text-muted);
+  background: var(--bg-elev); border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm); transition: all 0.2s ease;
+}
+.sort-btn:hover { border-color: var(--teal); color: var(--teal); background: var(--teal-soft); }
+.sort-btn-arrow { font-size: 14px; font-weight: 700; line-height: 1; }
 .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 24px; }
 .card {
   display: block; position: relative; background: var(--bg-elev);

@@ -9,8 +9,11 @@ import Card from './Card';
  *
  * Filtering matches the original hub: title, subtitle, description, tags AND
  * the full Markdown body (provided as a prebuilt lowercased `searchIndex`).
- * Keyboard: `/` focuses search, `Esc` clears it.
+ * Cards can be sorted by sheet number, ascending (01 first, the default) or
+ * descending. Keyboard: `/` focuses search, `Esc` clears it.
  */
+type SortDir = 'asc' | 'desc';
+
 export default function CardGrid({
   cheatsheets,
   searchIndex,
@@ -19,13 +22,19 @@ export default function CardGrid({
   searchIndex: Record<string, string>;
 }) {
   const [query, setQuery] = useState('');
+  const [sortDir, setSortDir] = useState<SortDir>('asc');
   const inputRef = useRef<HTMLInputElement>(null);
 
   const q = query.trim().toLowerCase();
   const visible = useMemo(() => {
-    if (!q) return cheatsheets;
-    return cheatsheets.filter((c) => (searchIndex[c.id] ?? '').includes(q));
-  }, [q, cheatsheets, searchIndex]);
+    const filtered = q
+      ? cheatsheets.filter((c) => (searchIndex[c.id] ?? '').includes(q))
+      : cheatsheets;
+    return [...filtered].sort((a, b) => {
+      const diff = Number(a.icon) - Number(b.icon);
+      return sortDir === 'asc' ? diff : -diff;
+    });
+  }, [q, sortDir, cheatsheets, searchIndex]);
 
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
@@ -73,9 +82,24 @@ export default function CardGrid({
 
       <div className="section-title">
         <h2>Cheatsheets</h2>
-        <span className="meta" id="visibleCount">
-          {countText}
-        </span>
+        <div className="section-controls">
+          <button
+            type="button"
+            className="sort-btn"
+            onClick={() => setSortDir((d) => (d === 'asc' ? 'desc' : 'asc'))}
+            aria-label={`Sort by sheet number, currently ${
+              sortDir === 'asc' ? 'oldest first' : 'newest first'
+            }. Click to reverse.`}
+          >
+            <span className="sort-btn-arrow" aria-hidden="true">
+              {sortDir === 'asc' ? '↑' : '↓'}
+            </span>
+            {sortDir === 'asc' ? 'Oldest first' : 'Newest first'}
+          </button>
+          <span className="meta" id="visibleCount">
+            {countText}
+          </span>
+        </div>
       </div>
 
       <div className="cards-grid" id="cardsGrid">

@@ -1,4 +1,4 @@
-import { CHEATSHEETS_SORTED } from '@/data/cheatsheets';
+import { CHEATSHEETS } from '@/data/cheatsheets';
 import { getCheatsheetMarkdown } from '@/lib/markdown';
 import Hero from '@/components/Hero';
 import CardGrid from '@/components/CardGrid';
@@ -10,7 +10,7 @@ import CardGrid from '@/components/CardGrid';
  */
 export default function HomePage() {
   const searchIndex: Record<string, string> = {};
-  for (const sheet of CHEATSHEETS_SORTED) {
+  for (const sheet of CHEATSHEETS) {
     const body = getCheatsheetMarkdown(sheet.id);
     searchIndex[sheet.id] = [
       sheet.title,
@@ -26,7 +26,7 @@ export default function HomePage() {
   return (
     <main className="home-view" id="homeView">
       <Hero />
-      <CardGrid cheatsheets={CHEATSHEETS_SORTED} searchIndex={searchIndex} />
+      <CardGrid cheatsheets={CHEATSHEETS} searchIndex={searchIndex} />
       <footer className="home-footer">
         <span>
           By Nishtman - Built for learning. <span className="heart">♥</span>

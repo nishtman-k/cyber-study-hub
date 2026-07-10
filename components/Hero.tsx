@@ -15,7 +15,7 @@ export default function Hero() {
         <h1>
           Learn Linux
           <br />
-          security, <span className="accent">deliciously</span>.
+          security, <span className="accent">deliciously </span>.
         </h1>
         <p>
           A friendly, hands-on collection of cheatsheets for cybersecurity
