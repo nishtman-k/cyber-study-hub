@@ -11,7 +11,7 @@ import CardGrid from '@/components/CardGrid';
 export default function HomePage() {
   const searchIndex: Record<string, string> = {};
   for (const sheet of CHEATSHEETS) {
-    const body = getCheatsheetMarkdown(sheet.id);
+    const body = getCheatsheetMarkdown(sheet);
     searchIndex[sheet.id] = [
       sheet.title,
       sheet.subtitle,

@@ -36,7 +36,7 @@ export default async function CheatsheetPage({
   const sheet = getCheatsheet(id);
   if (!sheet) notFound();
 
-  const markdown = getCheatsheetMarkdown(id);
+  const markdown = getCheatsheetMarkdown(sheet);
   const headings = extractHeadings(markdown);
 
   return (

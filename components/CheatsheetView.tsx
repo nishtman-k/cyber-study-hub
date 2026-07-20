@@ -1,4 +1,4 @@
-import type { Cheatsheet } from '@/data/cheatsheets';
+import { categoryOf, type Cheatsheet } from '@/data/cheatsheets';
 import type { Heading } from '@/lib/headings';
 import Topbar from './Topbar';
 import TOC from './TOC';
@@ -20,7 +20,7 @@ export default function CheatsheetView({
 }) {
   return (
     <>
-      <Topbar title={sheet.title} />
+      <Topbar title={sheet.title} category={categoryOf(sheet)} />
       <main className="cheatsheet-view" id="cheatsheetView">
         <TOC headings={headings} />
         <article className="content" id="contentArea">

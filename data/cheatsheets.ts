@@ -11,6 +11,11 @@
 
 export type CheatsheetColor = "orange" | "pink" | "yellow" | "teal" | "red";
 
+/** Landing-page tab a cheatsheet belongs to. */
+export type CheatsheetCategory = "common-core" | "offensive";
+
+export const DEFAULT_CATEGORY: CheatsheetCategory = "common-core";
+
 export interface Cheatsheet {
   /** URL slug, also the filename of the Markdown body in /content. */
   id: string;
@@ -23,6 +28,19 @@ export interface Cheatsheet {
   color: CheatsheetColor;
   /** Number of `##` sections in the Markdown body. */
   topicCount: number;
+  /** Landing-page tab. Omitted entries fall back to `DEFAULT_CATEGORY`. */
+  category?: CheatsheetCategory;
+}
+
+/** Tabs shown on the landing page, in display order. */
+export const CATEGORIES: { id: CheatsheetCategory; label: string }[] = [
+  { id: "common-core", label: "Common Core Cybersecurity" },
+  { id: "offensive", label: "Offensive Security" },
+];
+
+/** A cheatsheet's category, resolving the default for untagged entries. */
+export function categoryOf(sheet: Cheatsheet): CheatsheetCategory {
+  return sheet.category ?? DEFAULT_CATEGORY;
 }
 
 export const CHEATSHEETS: Cheatsheet[] = [
@@ -550,10 +568,65 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "SIEM",
     "Incident Response"
   ],
-  "icon": "30",
+  "icon": "01",
   "color": "red",
-  "topicCount": 15
-}
+  "topicCount": 15,
+  "category": "offensive"
+  },
+  {
+    "id": "cvss-scoring",
+    "title": "CVSS Scoring",
+    "subtitle": "Reading severity scores",
+    "description": "How CVSS rates vulnerability severity — the base, temporal, and environmental metric groups, reading a vector string, the 0–10 severity bands, and how CVSS ties into CVE and NVD when prioritizing.",
+    "tags": [
+      "CVSS",
+      "CVE",
+      "NVD",
+      "vector string",
+      "severity",
+      "risk"
+    ],
+    "icon": "02",
+    "color": "teal",
+    "topicCount": 10,
+    "category": "offensive"
+  },
+  {
+    "id": "nessus",
+    "title": "Nessus",
+    "subtitle": "Vulnerability scanner",
+    "description": "The Nessus vulnerability scanner — installing Essentials on Kali, starting the service, running a scan, reading results and CVSS scores, exporting reports, and where it fits between discovery and exploitation.",
+    "tags": [
+      "Nessus",
+      "vuln scanner",
+      "CVE",
+      "CVSS",
+      "Kali",
+      "scanning"
+    ],
+    "icon": "03",
+    "color": "orange",
+    "topicCount": 10,
+    "category": "offensive"
+  },
+  {
+    "id": "metasploit",
+    "title": "Metasploit",
+    "subtitle": "Exploitation framework",
+    "description": "The standard exploitation framework — core concepts (exploit, payload, module, session), msfconsole, the search-use-set-run workflow, staged vs stageless payloads, Meterpreter, and hashdump for post-exploitation.",
+    "tags": [
+      "Metasploit",
+      "msfconsole",
+      "Meterpreter",
+      "payload",
+      "exploit",
+      "hashdump"
+    ],
+    "icon": "04",
+    "color": "pink",
+    "topicCount": 11,
+    "category": "offensive"
+  }
 ];
 
 /** Cheatsheets sorted newest-first (highest icon number on top). */

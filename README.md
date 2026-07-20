@@ -37,13 +37,16 @@ components/                      Card, CardGrid, Hero, Topbar, ThemeToggle,
                                  CopyButton, HashScroll
 data/
   cheatsheets.ts                 cheatsheet metadata — single source of truth
-content/                         one Markdown file per cheatsheet (<id>.md)
+content/                         Markdown bodies, grouped by category folder
+  common-core/                   one <id>.md per Common Core cheatsheet
+  offensive/                     one <id>.md per Offensive Security cheatsheet
 lib/                             markdown loading, heading extraction, slugify
 .github/workflows/deploy.yml     build + publish to GitHub Pages
 ```
 
 `data/cheatsheets.ts` is the source of truth: both the cards and the routes read
-from it, and each entry's `id` maps to `content/<id>.md`.
+from it. Each entry's `id` maps to `content/<category>/<id>.md`, where
+`<category>` is the entry's `category` (defaults to `common-core`).
 
 ## Getting started
 
@@ -85,12 +88,15 @@ The workflow also drops a `.nojekyll` file so Pages serves the `_next/` folder.
 
 ## Adding a cheatsheet
 
-1. Add a Markdown file at `content/<id>.md` (use `## ` headings — they become
-   the table of contents).
-2. Add a matching entry to `CHEATSHEETS` in `data/cheatsheets.ts`
-   (`topicCount` = number of `##` sections).
+1. Add a matching entry to `CHEATSHEETS` in `data/cheatsheets.ts`
+   (`topicCount` = number of `##` sections). Set `category` to `offensive` for
+   the Offensive Security tab, or omit it to default to `common-core`.
+2. Add the Markdown body at `content/<category>/<id>.md` (use `## ` headings —
+   they become the table of contents). The folder must match the entry's
+   category, and the filename must match its `id`.
 
-Cards sort by `icon` (highest number first).
+Cards are grouped into landing-page tabs by `category` and sort by `icon`
+(the toggle switches oldest/newest first).
 
 ---
 
