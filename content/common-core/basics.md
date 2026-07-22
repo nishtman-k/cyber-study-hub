@@ -1,4 +1,4 @@
-# Linux Security — Cheatsheet
+# Linux Security Basics
 
 ---
 

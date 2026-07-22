@@ -12,7 +12,7 @@
 export type CheatsheetColor = "orange" | "pink" | "yellow" | "teal" | "red";
 
 /** Landing-page tab a cheatsheet belongs to. */
-export type CheatsheetCategory = "common-core" | "offensive";
+export type CheatsheetCategory = "common-core" | "offensive" | "defensive";
 
 export const DEFAULT_CATEGORY: CheatsheetCategory = "common-core";
 
@@ -34,8 +34,9 @@ export interface Cheatsheet {
 
 /** Tabs shown on the landing page, in display order. */
 export const CATEGORIES: { id: CheatsheetCategory; label: string }[] = [
-  { id: "common-core", label: "Common Core Cybersecurity" },
+  { id: "common-core", label: "Foundations" },
   { id: "offensive", label: "Offensive Security" },
+  { id: "defensive", label: "Defensive Security" },
 ];
 
 /** A cheatsheet's category, resolving the default for untagged entries. */
@@ -522,7 +523,7 @@ export const CHEATSHEETS: Cheatsheet[] = [
   },
   {
     "id": "security",
-    "title": "Linux Security — Complete",
+    "title": "Linux Security Complete",
     "subtitle": "Comprehensive guide",
     "description": "Deep dive into Kali Linux, the shell, permissions, monitoring, network analysis with nmap/tcpdump/lynis, firewalls, and SCP workflows.",
     "tags": [
