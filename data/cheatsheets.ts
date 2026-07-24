@@ -627,6 +627,44 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "color": "pink",
     "topicCount": 11,
     "category": "offensive"
+  },
+  {
+    "id": "firstwatch",
+    "title": "First Watch — Security Posture Assessment",
+    "subtitle": "Identify function fundamentals",
+    "description": "Asset inventory, criticality and data classification, gap analysis, and risk treatment for a board-ready posture assessment — the CIA triad, control categories/functions, threat intel validation, and writing for the board.",
+    "tags": [
+      "risk assessment",
+      "asset inventory",
+      "CIA triad",
+      "gap analysis",
+      "risk treatment",
+      "NIST CSF",
+      "GRC"
+    ],
+    "icon": "01",
+    "color": "teal",
+    "topicCount": 13,
+    "category": "defensive"
+  },
+  {
+    "id": "know-your-enemy",
+    "title": "Know Your Enemy",
+    "subtitle": "Threat landscape analysis",
+    "description": "Correlating external threats with internal posture gaps — the six threat-actor categories, motivations, ransomware/RaaS, insider and supply-chain risk, threat vectors, social engineering, attack-path tracing, MITRE ATT&CK, the Cyber Kill Chain, STRIDE, and writing a board-ready threat landscape report.",
+    "tags": [
+      "threat actors",
+      "MITRE ATT&CK",
+      "kill chain",
+      "STRIDE",
+      "ransomware",
+      "social engineering",
+      "threat intelligence"
+    ],
+    "icon": "02",
+    "color": "red",
+    "topicCount": 19,
+    "category": "defensive"
   }
 ];
 
