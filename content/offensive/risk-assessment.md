@@ -151,7 +151,7 @@ Treatment decisions flow from these. A risk inside tolerance can often be accept
 
 ## 6. Threat Actors and How Motivation Drives Likelihood
 
-You covered actor categories in the Know Your Enemy project. Here the focus is narrow: **how an actor's motivation changes the likelihood of an attack.**
+**how an actor's motivation changes the likelihood of an attack.**
 
 | Actor | Main motivation | Effect on likelihood |
 |-------|-----------------|----------------------|
@@ -410,7 +410,7 @@ Know what each one is **for**, not every clause. The useful question is always w
 
 - **NIST RMF (800-37) has 7 steps:** Prepare, Categorize, Select, Implement, Assess, Authorize, Monitor.
 - **NIST SP 800-39 uses 3 tiers:** organization, mission/business process, and information system.
-- **OWASP Risk Rating** breaks likelihood into threat-agent and vulnerability factors, and impact into technical and business factors, then combines them. It is the go-to for scoring findings in a web app pentest, which fits your AppSec direction.
+- **OWASP Risk Rating** breaks likelihood into threat-agent and vulnerability factors, and impact into technical and business factors, then combines them. It is the go-to for scoring findings in a web app pentest.
 - **ISO 31000 vs 27005:** 31000 is the broad enterprise risk umbrella; 27005 applies those ideas specifically to information security. 27005 supports 27001.
 
 ## 16. Templates
@@ -726,7 +726,6 @@ Practical things that matter in real work and rarely appear in the slides.
 - **Accept is a real, common treatment.** Document why, do not pretend the risk is gone.
 - **Transfer (insurance) does not remove operational or reputational impact,** only some of the financial loss.
 - **Map recommendations to a framework the org already uses** (NIST or ISO). Recommendations land better when they fit the existing language.
-- **Your web dev background is an edge here.** OWASP Risk Rating and threat modeling of web apps will feel natural, and that is exactly where AppSec risk work lives.
 
 ## 23. Fast Recall
 
