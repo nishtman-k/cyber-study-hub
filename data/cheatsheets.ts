@@ -632,7 +632,7 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "id": "risk-assessment",
     "title": "Risk Assessment & Mitigation",
     "subtitle": "From findings to decisions",
-    "description": "Turning raw findings into business decisions — the components of risk, inherent vs residual, appetite vs tolerance, qualitative/quantitative methods (SLE, ARO, ALE, ROSI), the risk matrix, CVSS vs EPSS vs KEV, the four T's of treatment, control types, and register/report templates.",
+    "description": "Turning raw findings into business decisions — the components of risk, inherent vs residual, appetite vs tolerance, qualitative/quantitative methods (SLE, ARO, ALE, ROSI), the risk matrix, CVSS vs EPSS vs KEV, DREAD, FAIR loss forms, the four T's of treatment, remediation SLAs, breach economics, and the Equifax and Colonial Pipeline case studies.",
     "tags": [
       "risk",
       "risk matrix",
@@ -640,12 +640,14 @@ export const CHEATSHEETS: Cheatsheet[] = [
       "CVSS",
       "EPSS",
       "KEV",
+      "DREAD",
+      "FAIR",
       "NIST 800-30",
-      "ISO 27005"
+      "breach cost"
     ],
     "icon": "05",
     "color": "yellow",
-    "topicCount": 19,
+    "topicCount": 24,
     "category": "offensive"
   },
   {

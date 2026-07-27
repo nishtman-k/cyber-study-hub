@@ -23,6 +23,11 @@
 - [The Risk Assessment Process](#the-risk-assessment-process)
 - [Frameworks and Standards Map](#frameworks-and-standards-map)
 - [Templates](#templates)
+- [DREAD and Other Scoring Models](#dread-and-other-scoring-models)
+- [FAIR in Depth](#fair-in-depth)
+- [Remediation Timelines and SLAs](#remediation-timelines-and-slas)
+- [Breach Economics](#breach-economics)
+- [Case Studies](#case-studies)
 - [Field Notes](#field-notes)
 - [Fast Recall](#fast-recall)
 - [Resources](#resources)
@@ -73,7 +78,7 @@ Organizations never have enough time, money, or people to fix everything. Risk a
 
 ## 3. The Components of Risk
 
-Risk is built from four parts. Learn these cold, they are the most tested items in the project.
+Risk is built from four parts. These four terms underpin every framework in this section.
 
 | Component | Question it answers | Example |
 |-----------|---------------------|---------|
@@ -193,7 +198,7 @@ The risk matrix approach. You rate likelihood and impact on a scale, multiply or
 
 ### Quantitative (the money math)
 
-Learn these formulas, they are frequently tested:
+The core formulas:
 
 ```text
 SLE (Single Loss Expectancy) = Asset Value × Exposure Factor (EF)
@@ -382,7 +387,7 @@ The standard flow, based on **NIST SP 800-30**. Four stages.
 
 ## 15. Frameworks and Standards Map
 
-Know what each one is **for**, not every clause. Tests ask "which standard covers X," not the full text.
+Know what each one is **for**, not every clause. The useful question is always which standard covers which problem.
 
 | Framework | Use it for | Do not treat it as |
 |-----------|-----------|--------------------|
@@ -493,7 +498,220 @@ A short, high-level summary for leadership. Not the full assessment.
 - Treatment progress       what has been fixed since last report
 ```
 
-## 17. Field Notes
+## 17. DREAD and Other Scoring Models
+
+CVSS is not the only way to score a finding. Several models exist, and each answers a slightly different question.
+
+### DREAD
+
+Developed at Microsoft as a companion to STRIDE. Where STRIDE finds threats, DREAD rates them. Five categories, each scored (commonly 1 to 10):
+
+| Letter | Category | Question it asks |
+|--------|----------|------------------|
+| **D** | **Damage** | How bad is the harm if it is exploited? |
+| **R** | **Reproducibility** | How reliably can the attack be repeated? |
+| **E** | **Exploitability** | How much skill or effort does it take? |
+| **A** | **Affected users** | How many people are hit? |
+| **D** | **Discoverability** | How easily can an attacker find the flaw? |
+
+```text
+DREAD score = D + R + E + A + D
+Range on a 1 to 10 scale: 5 (minimum) to 50 (maximum)
+```
+
+**Typical banding (1 to 10 scale):**
+
+| Total score | Risk level |
+|-------------|-----------|
+| 5 to 15 | Low |
+| 16 to 25 | Medium |
+| 26 to 39 | High |
+| 40 to 50 | Critical |
+
+A score in the **40 to 50** range is the top band: **Critical**. It means severe damage, easy and repeatable exploitation, wide user impact, and a flaw that is easy to find.
+
+> Note: some organizations use a 1 to 3 scale per category instead, giving a range of 5 to 15, and the bands shift accordingly. Always check which scale is in use before comparing scores.
+
+**Criticism worth knowing:** DREAD is highly subjective. Two analysts can rate the same flaw very differently, especially on Discoverability. Microsoft eventually moved away from it internally. It is still taught because it is simple and shows the principle of decomposing a risk into rateable factors.
+
+### Comparing the scoring models
+
+| Model | What it rates | Output | Best for |
+|-------|--------------|--------|----------|
+| **CVSS** | Technical severity of a vulnerability | 0 to 10 | Standardized, comparable severity across the industry |
+| **DREAD** | Threat risk during threat modeling | 5 to 50 | Quick internal ranking alongside STRIDE |
+| **OWASP Risk Rating** | Likelihood and impact factors for app risks | Low / Med / High | Web application findings |
+| **FAIR** | Probable financial loss | Currency | Business cases and budget decisions |
+
+### Other models to recognize
+
+- **STRIDE:** finds threat *types* (Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege). Pairs naturally with DREAD.
+- **PASTA:** Process for Attack Simulation and Threat Analysis. A seven-stage, risk-centric threat modeling method that ties technical threats to business impact.
+- **Attack trees:** a tree diagram with the attacker's goal at the root and the possible paths branching below it.
+- **OWASP Risk Rating:** likelihood is split into threat-agent factors (skill, motive, opportunity, size) and vulnerability factors (ease of discovery, ease of exploit, awareness, intrusion detection). Impact is split into technical factors (loss of confidentiality, integrity, availability, accountability) and business factors (financial, reputation, non-compliance, privacy violation).
+
+## 18. FAIR in Depth
+
+FAIR (Factor Analysis of Information Risk) is the main **quantitative** framework. It breaks risk down into measurable factors and expresses the result in money, which is what makes it useful for budget conversations.
+
+### The FAIR taxonomy
+
+```text
+Risk = Loss Event Frequency (LEF) × Loss Magnitude (LM)
+
+LEF  = Threat Event Frequency (TEF) × Vulnerability
+TEF  = Contact Frequency × Probability of Action
+Vulnerability = Threat Capability vs Resistance Strength
+
+LM   = Primary Loss + Secondary Loss
+```
+
+In plain terms: how often will a loss happen, and how much will it cost when it does.
+
+- **Threat Event Frequency:** how often an attacker even attempts it.
+- **Vulnerability (in FAIR):** the probability an attempt succeeds, which is threat capability measured against the strength of your controls. Note this is a probability, not a CVE.
+- **Loss Magnitude:** the total cost of one event.
+
+### The six forms of loss
+
+FAIR defines six loss forms, and splits them into primary and secondary.
+
+| Form of loss | Type | What it is |
+|--------------|------|-----------|
+| **Productivity** | Primary | Lost output while operations are disrupted |
+| **Response** | Primary | Cost of investigating, containing, and remediating |
+| **Replacement** | Primary | Cost of replacing damaged or stolen assets |
+| **Fines and judgments** | Secondary | Regulatory penalties, legal settlements |
+| **Competitive advantage** | Secondary | Lost market position, stolen IP or trade secrets |
+| **Reputation** | Secondary | Lost trust, customer churn, higher cost of capital |
+
+**The key distinction:**
+
+- **Primary loss** falls directly on the organization as an immediate result of the event. Productivity, response, and replacement are the primary forms.
+- **Secondary loss** comes from the *reaction of other parties* to the event: regulators fining you, customers leaving, competitors gaining, media coverage. Fines and judgments, competitive advantage, and reputation are secondary.
+
+> A useful way to remember it: primary loss is what the incident costs you. Secondary loss is what everyone else's reaction costs you. Secondary loss is often much larger and much harder to estimate.
+
+### Why FAIR matters
+
+- Replaces "this is a High risk" with "this represents an expected annual loss of 100,000 to 400,000."
+- Uses **distributions and ranges**, not single numbers, so uncertainty is expressed honestly.
+- Makes control investment a straightforward comparison: does the control cost less than the loss it avoids.
+
+## 19. Remediation Timelines and SLAs
+
+Scoring a risk is useless if nothing happens afterward. Organizations set **remediation SLAs** that tie a severity rating to a deadline.
+
+**A common baseline:**
+
+| Severity | CVSS | Typical remediation window |
+|----------|------|---------------------------|
+| **Critical** | 9.0 to 10.0 | Immediately, within 24 hours |
+| **High** | 7.0 to 8.9 | 24 to 72 hours |
+| **Medium** | 4.0 to 6.9 | 30 days |
+| **Low** | 0.1 to 3.9 | 90 days, or the next patch cycle |
+
+**Things that shorten the clock regardless of score:**
+- The vulnerability is on the **CISA KEV** list (actively exploited in the wild).
+- A public exploit or proof of concept exists.
+- The asset is internet-facing or holds regulated data.
+- A high EPSS probability.
+
+**Where the numbers come from:** these windows are set by organizational policy, not by a single standard, so they vary. Some published reference points:
+
+- **CISA BOD 22-01** requires US federal agencies to remediate KEV-listed vulnerabilities within set deadlines, typically two weeks for recent entries.
+- **PCI DSS** requires critical vulnerabilities to be addressed within one month of patch release.
+
+> Practical note: an SLA the organization cannot actually meet is worse than no SLA, because it manufactures permanent non-compliance. Set windows the patching team can realistically hit, then tighten them.
+
+## 20. Breach Economics
+
+Risk conversations get concrete when you attach real numbers. These figures come mostly from the **IBM and Ponemon Cost of a Data Breach Report**, the standard annual benchmark.
+
+### Headline figures (2024 report)
+
+| Metric | Figure |
+|--------|--------|
+| Global average cost of a breach | 4.88 million USD |
+| Healthcare average (highest of any industry) | 9.77 million USD |
+| Finance average (second highest) | around 6.1 million USD |
+| Lost business and post-breach response | 2.8 million USD of the average total |
+| Average time to identify and contain | around 194 days to identify, 64 to contain |
+
+Healthcare has been the costliest sector for well over a decade, driven by the sensitivity of the data, heavy regulation, and the fact that downtime directly affects patient care.
+
+### Cost per record
+
+Per-record figures vary a lot by source and year, so always cite which report you are using.
+
+| Context | Approximate cost per record |
+|---------|----------------------------|
+| Cross-industry average | around 150 to 165 USD |
+| Healthcare records | around 429 to 499 USD |
+
+**Healthcare records are the most expensive**, commonly cited at roughly **499 USD per record**. A single patient record can contain enough information for insurance fraud, identity theft, and prescription abuse all at once, which is why it is worth far more than a stolen card number.
+
+### Other useful numbers
+
+- Healthcare EHR and system downtime has been estimated at around **7,900 USD per minute**.
+- **Mega breaches** (1 to 10 million records) cost roughly nine times the average.
+- Organizations with an **IR team and a tested plan** saw dramatically lower costs than those without.
+- Use of **AI and automation** in security operations reduced average breach cost by around 2.2 million USD.
+- **Severe security staffing shortages** added around 1.76 million USD to breach costs.
+
+> These figures are averages across hundreds of organizations. Use them for scale and comparison in a business case, not as a precise prediction for one company. If you cite them in a report, name the source and the year.
+
+## 21. Case Studies
+
+Two breaches that appear in almost every risk assessment course, because both were caused by a known, fixable gap rather than an exotic attack.
+
+### Equifax (2017)
+
+| | |
+|---|---|
+| **Primary vulnerability** | An **unpatched Apache Struts** flaw (CVE-2017-5638) in a public-facing web application |
+| **Records exposed** | Around 147 million people |
+| **Cost** | Well over 1 billion USD, including a settlement of around 700 million USD |
+
+**What went wrong:**
+- A patch was available roughly two months before the breach and was never applied to the affected system.
+- No reliable **asset inventory**, so the team did not know the vulnerable system existed where it did.
+- A **certificate on a traffic inspection tool had expired**, leaving encrypted attacker traffic uninspected for months.
+- **Flat network** with poor segmentation, letting attackers move to dozens of databases.
+- Credentials stored in plaintext on internal systems.
+
+**Risk lessons:** the vulnerability was known, scored critical, and had a vendor patch. The failure was in **process, not knowledge**: no asset inventory, no verification that the patch was actually applied, no segmentation to limit spread, and a broken detective control nobody noticed. Every one of those is a procedural or operational vulnerability, not a technical one.
+
+### Colonial Pipeline (2021)
+
+| | |
+|---|---|
+| **Primary attack vector** | **Compromised VPN credentials on an account without MFA** |
+| **Attacker** | DarkSide ransomware operation |
+| **Impact** | 5,500 miles of pipeline shut down, fuel shortages and panic buying across the US East Coast |
+| **Ransom** | Around 4.4 million USD paid, a portion later recovered by the FBI |
+
+**What went wrong:**
+- A **legacy VPN account** that was no longer in active use remained enabled.
+- The account was protected by a **password only, with no multi-factor authentication**.
+- The password appeared in a set of leaked credentials, suggesting reuse from another breach.
+- No process caught the dormant account before an attacker did.
+
+**Risk lessons:** one missing control (MFA) on one forgotten account took down critical national infrastructure. Note also that the **operational impact came from the shutdown decision**, not from the malware reaching the pipeline controls directly. This is a clean example of impact extending far beyond the compromised system, and of why offboarding and account hygiene are risk controls, not housekeeping.
+
+### Other breaches worth recognizing
+
+| Breach | Year | Primary cause | Lesson |
+|--------|------|---------------|--------|
+| **Target** | 2013 | Stolen third-party HVAC vendor credentials | Third-party risk and network segmentation |
+| **WannaCry** | 2017 | Unpatched SMB flaw (EternalBlue) | Patch management at scale |
+| **Capital One** | 2019 | Misconfigured WAF leading to SSRF against cloud metadata | Cloud misconfiguration is a leading breach cause |
+| **SolarWinds** | 2020 | Compromised software build pipeline | Supply chain risk |
+| **Log4Shell** | 2021 | Critical flaw in a ubiquitous logging library | You cannot patch what you do not know you use (SBOM) |
+
+**The pattern across all of them:** almost none required a novel attack. They exploited known weaknesses that were not tracked, not owned, or not fixed in time. That is exactly the gap risk assessment exists to close.
+
+## 22. Field Notes
 
 Practical things that matter in real work and rarely appear in the slides.
 
@@ -510,7 +728,7 @@ Practical things that matter in real work and rarely appear in the slides.
 - **Map recommendations to a framework the org already uses** (NIST or ISO). Recommendations land better when they fit the existing language.
 - **Your web dev background is an edge here.** OWASP Risk Rating and threat modeling of web apps will feel natural, and that is exactly where AppSec risk work lives.
 
-## 18. Fast Recall
+## 23. Fast Recall
 
 - **Risk = Likelihood × Impact.** If threat, vulnerability, or impact is zero, risk is zero.
 - Four risk components: **threat, vulnerability, likelihood, impact.**
@@ -528,8 +746,15 @@ Practical things that matter in real work and rarely appear in the slides.
 - **NIST 800-30** = how to assess risk. **800-37** = RMF lifecycle. **800-53** = controls catalog.
 - **ISO 31000** = enterprise risk. **27005** = infosec risk. **FAIR** = quantitative. **OCTAVE** = asset-focused.
 - Risk assessment is a **cycle**: prepare, conduct, communicate, maintain.
+- **STRIDE** finds threats. **DREAD** rates them: Damage, Reproducibility, Exploitability, Affected users, Discoverability. On a 1 to 10 scale the total runs 5 to 50, and **40 to 50 is Critical**.
+- **FAIR** = Factor Analysis of Information Risk. Risk = Loss Event Frequency × Loss Magnitude.
+- FAIR **primary** losses: productivity, response, replacement. **Secondary** losses: fines and judgments, competitive advantage, reputation.
+- Typical remediation windows: **Critical within 24 hours, High 24 to 72 hours, Medium 30 days, Low 90 days.**
+- Global average breach cost is around **4.88 million USD**; healthcare is highest at around **9.77 million USD**. Healthcare records run about **499 USD each**.
+- **Equifax (2017):** an unpatched Apache Struts vulnerability, around 147 million records.
+- **Colonial Pipeline (2021):** compromised VPN credentials on an account with no MFA.
 
-## 19. Resources
+## 24. Resources
 
 **NIST publications** (free, authoritative)
 - [NIST SP 800-30 Rev.1, Guide for Conducting Risk Assessments](https://csrc.nist.gov/pubs/sp/800/30/r1/final)
@@ -563,6 +788,15 @@ Practical things that matter in real work and rarely appear in the slides.
 - [OWASP Threat Dragon](https://owasp.org/www-project-threat-dragon/)
 - [Microsoft Threat Modeling Tool](https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool)
 - [draw.io](https://www.drawio.com/)
+
+**Breach data and case study sources**
+- [IBM Cost of a Data Breach Report](https://www.ibm.com/reports/data-breach)
+- [Verizon Data Breach Investigations Report (DBIR)](https://www.verizon.com/business/resources/reports/dbir/)
+- [CISA Binding Operational Directive 22-01 (KEV remediation)](https://www.cisa.gov/news-events/directives/bod-22-01-reducing-significant-risk-known-exploited-vulnerabilities)
+
+**Threat modeling methods**
+- [Microsoft STRIDE threat modeling](https://learn.microsoft.com/en-us/azure/security/develop/threat-modeling-tool-threats)
+- [OWASP Threat Modeling Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html)
 
 **Risk platforms** (commercial, good to know by name)
 - [RiskLens (FAIR-based)](https://www.risklens.com/)
