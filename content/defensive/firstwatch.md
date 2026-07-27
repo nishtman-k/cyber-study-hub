@@ -9,19 +9,19 @@
 
 ## Table of Contents
 
-1. [Core Vocabulary](#1-core-vocabulary)
-2. [The CIA Triad](#2-the-cia-triad)
-3. [Security Controls — Two Dimensions](#3-security-controls--two-dimensions)
-4. [Asset Inventory & Criticality](#4-asset-inventory--criticality)
-5. [Data Classification & Data States](#5-data-classification--data-states)
-6. [Gap Analysis](#6-gap-analysis)
-7. [Risk Treatment](#7-risk-treatment)
-8. [Prioritisation](#8-prioritisation)
-9. [Threat Intelligence Validation](#9-threat-intelligence-validation)
-10. [Writing for the Board](#10-writing-for-the-board)
-11. [Framework Quick Map](#11-framework-quick-map)
-12. [Fast Recall](#12-fast-recall)
-13. [Resources](#13-resources)
+1. [Core Vocabulary](#core-vocabulary)
+2. [The CIA Triad](#the-cia-triad)
+3. [Security Controls — Two Dimensions](#security-controls-two-dimensions)
+4. [Asset Inventory & Criticality](#asset-inventory-criticality)
+5. [Data Classification & Data States](#data-classification-data-states)
+6. [Gap Analysis](#gap-analysis)
+7. [Risk Treatment](#risk-treatment)
+8. [Prioritisation](#prioritisation)
+9. [Threat Intelligence Validation](#threat-intelligence-validation)
+10. [Writing for the Board](#writing-for-the-board)
+11. [Framework Quick Map](#framework-quick-map)
+12. [Fast Recall](#fast-recall)
+13. [Resources](#resources)
 
 ---
 

@@ -629,6 +629,26 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "category": "offensive"
   },
   {
+    "id": "risk-assessment",
+    "title": "Risk Assessment & Mitigation",
+    "subtitle": "From findings to decisions",
+    "description": "Turning raw findings into business decisions — the components of risk, inherent vs residual, appetite vs tolerance, qualitative/quantitative methods (SLE, ARO, ALE, ROSI), the risk matrix, CVSS vs EPSS vs KEV, the four T's of treatment, control types, and register/report templates.",
+    "tags": [
+      "risk",
+      "risk matrix",
+      "ALE",
+      "CVSS",
+      "EPSS",
+      "KEV",
+      "NIST 800-30",
+      "ISO 27005"
+    ],
+    "icon": "05",
+    "color": "yellow",
+    "topicCount": 19,
+    "category": "offensive"
+  },
+  {
     "id": "firstwatch",
     "title": "First Watch — Security Posture Assessment",
     "subtitle": "Identify function fundamentals",
