@@ -651,6 +651,26 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "category": "offensive"
   },
   {
+    "id": "osint",
+    "title": "OSINT Profile Builder",
+    "subtitle": "Open-source intelligence",
+    "description": "Collecting, validating, and reporting open-source intelligence — the intelligence cycle, legal and ethical boundaries, target profiling, Google dorking, username and email pivots, WHOIS/DNS/certificate transparency, metadata extraction, confidence levels, ATT&CK reconnaissance, and defensive OSINT.",
+    "tags": [
+      "OSINT",
+      "recon",
+      "Google dorks",
+      "theHarvester",
+      "Sherlock",
+      "Shodan",
+      "ExifTool",
+      "Maltego"
+    ],
+    "icon": "06",
+    "color": "teal",
+    "topicCount": 16,
+    "category": "offensive"
+  },
+  {
     "id": "firstwatch",
     "title": "First Watch — Security Posture Assessment",
     "subtitle": "Identify function fundamentals",
