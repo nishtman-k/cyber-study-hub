@@ -691,6 +691,46 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "category": "offensive"
   },
   {
+    "id": "passive-recon",
+    "title": "Passive Recon Tools",
+    "subtitle": "Recon without a packet",
+    "description": "Mapping a target's footprint without sending traffic to it — a stage-by-stage workflow with primary tools and fallbacks: WHOIS and ownership, DNS intelligence, certificate-transparency subdomains, Shodan/Censys and ASN mapping, theHarvester and breach exposure, dorking and metadata, and correlation in Maltego.",
+    "tags": [
+      "passive recon",
+      "OSINT",
+      "whois",
+      "crt.sh",
+      "Shodan",
+      "theHarvester",
+      "subfinder",
+      "Maltego"
+    ],
+    "icon": "08",
+    "color": "teal",
+    "topicCount": 14,
+    "category": "offensive"
+  },
+  {
+    "id": "active-recon",
+    "title": "Active Recon Tools",
+    "subtitle": "Scanning & enumeration",
+    "description": "Directly enumerating hosts, ports, services, and content under authorization — a stage-by-stage workflow with primary tools and fallbacks: nmap host discovery and port scanning, service/version detection, gobuster/nikto web enumeration, DNS zone transfer and brute-force, and nmap/nuclei vulnerability identification.",
+    "tags": [
+      "active recon",
+      "nmap",
+      "masscan",
+      "gobuster",
+      "nikto",
+      "nuclei",
+      "port scan",
+      "authorization"
+    ],
+    "icon": "09",
+    "color": "red",
+    "topicCount": 14,
+    "category": "offensive"
+  },
+  {
     "id": "firstwatch",
     "title": "First Watch, Security Posture Assessment",
     "subtitle": "Identify function fundamentals",

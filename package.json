@@ -2,6 +2,7 @@
   "name": "cyber-study-hub",
   "version": "1.0.0",
   "private": true,
+  "license": "MIT",
   "description": "A friendly, hands-on collection of cybersecurity cheatsheets — rebuilt as a static Next.js app.",
   "scripts": {
     "dev": "next dev",

@@ -98,6 +98,10 @@ The workflow also drops a `.nojekyll` file so Pages serves the `_next/` folder.
 Cards are grouped into landing-page tabs by `category` and sort by `icon`
 (the toggle switches oldest/newest first).
 
+## License
+
+MIT — see [LICENSE](LICENSE).
+
 ---
 
 By Nishtman — Built for learning. ♥

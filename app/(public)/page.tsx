@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { CHEATSHEETS } from '@/data/cheatsheets';
 import { getCheatsheetMarkdown } from '@/lib/markdown';
 import Hero from '@/components/Hero';
@@ -30,6 +31,19 @@ export default function HomePage() {
       <footer className="home-footer">
         <span>
           By Nishtman - Built for learning. <span className="heart">♥</span>
+          {'  ·  '}
+          <Link className="footer-link" href="/legal">
+            Legal &amp; Terms of Use
+          </Link>
+          {'  ·  '}
+          <a
+            className="footer-link"
+            href="https://github.com/nishtman-k/cyber-study-hub"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Source on GitHub
+          </a>
         </span>
         <span>
           Press{' '}
