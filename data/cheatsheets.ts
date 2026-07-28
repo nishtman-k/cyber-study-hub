@@ -671,8 +671,28 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "category": "offensive"
   },
   {
+    "id": "web-fundamentals",
+    "title": "Web Fundamentals",
+    "subtitle": "How the web works",
+    "description": "The web end to end for security work — the request lifecycle, HTTP methods/status codes/headers, cookie attributes, Web 1.0 to 3.0, PWAs and service workers, REST and API flaws (BOLA, mass assignment), same-origin policy and CORS, sessions vs JWTs, the OWASP Top 10:2025, SAST/DAST/SCA, and bug bounty programs.",
+    "tags": [
+      "HTTP",
+      "OWASP Top 10",
+      "CORS",
+      "same-origin",
+      "JWT",
+      "XSS",
+      "REST API",
+      "bug bounty"
+    ],
+    "icon": "07",
+    "color": "orange",
+    "topicCount": 17,
+    "category": "offensive"
+  },
+  {
     "id": "firstwatch",
-    "title": "First Watch — Security Posture Assessment",
+    "title": "First Watch, Security Posture Assessment",
     "subtitle": "Identify function fundamentals",
     "description": "Asset inventory, criticality and data classification, gap analysis, and risk treatment for a board-ready posture assessment — the CIA triad, control categories/functions, threat intel validation, and writing for the board.",
     "tags": [

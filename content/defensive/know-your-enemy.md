@@ -1,4 +1,4 @@
-# Know Your Enemy — Cheatsheet
+# Know Your Enemy
 
 > **Project:** Know Your Enemy — Threat Landscape Analysis
 > **Tab:** Defence (first module)
