@@ -9,7 +9,13 @@
 // `color` is one of the four "Tropical Punch" accents.
 // ---------------------------------------------------------------------------
 
-export type CheatsheetColor = "orange" | "pink" | "yellow" | "teal" | "red";
+export type CheatsheetColor =
+  | "orange"
+  | "pink"
+  | "yellow"
+  | "teal"
+  | "red"
+  | "purple";
 
 /** Landing-page tab a cheatsheet belongs to. */
 export type CheatsheetCategory = "common-core" | "offensive" | "defensive";
@@ -728,6 +734,25 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "icon": "09",
     "color": "red",
     "topicCount": 14,
+    "category": "offensive"
+  },
+  {
+    "id": "advanced-nmap",
+    "title": "Advanced Network Enumeration with Nmap",
+    "subtitle": "Scan Mechanics & NSE",
+    "description": "The mechanics behind Nmap's advanced scans: how SYN, Connect, ACK, FIN, NULL, and Xmas scans work at the packet level, how they map firewalls and evade IDS, how the Nmap Scripting Engine and NSEDoc work, and how to correlate findings with known vulnerabilities.",
+    "tags": [
+      "Nmap",
+      "NSE",
+      "Port Scanning",
+      "SYN Scan",
+      "Firewall",
+      "Enumeration",
+      "Stealth"
+    ],
+    "icon": "10",
+    "color": "purple",
+    "topicCount": 20,
     "category": "offensive"
   },
   {
