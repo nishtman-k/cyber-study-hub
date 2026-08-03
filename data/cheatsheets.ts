@@ -792,6 +792,66 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "color": "red",
     "topicCount": 19,
     "category": "defensive"
+  },
+  {
+    "id": "the-weak-links",
+    "title": "The Weak Links",
+    "subtitle": "Vulnerability assessment",
+    "description": "Turning a vulnerability scan into threat-informed intelligence — the CVE/NVD/CVSS/CWE ecosystem, NVD research workflow, exploit research with searchsploit, CISA KEV as a prioritisation signal, the vulnerability taxonomy, the management lifecycle, triage, false positives, and response strategies.",
+    "tags": [
+      "vulnerability",
+      "CVE",
+      "CVSS",
+      "CWE",
+      "KEV",
+      "Exploit-DB",
+      "triage",
+      "Lynis"
+    ],
+    "icon": "03",
+    "color": "orange",
+    "topicCount": 19,
+    "category": "defensive"
+  },
+  {
+    "id": "locking-the-gates",
+    "title": "Locking the Gates",
+    "subtitle": "Linux system hardening",
+    "description": "Hardening Linux servers with CIS-inspired controls and automation — SSH and kernel (sysctl) hardening, filesystem and mount options, PAM password quality and lockout, AppArmor confinement, auditd, rsyslog, host firewalls, Lynis scoring, and idempotent hardening scripts with JSON output.",
+    "tags": [
+      "hardening",
+      "CIS Benchmark",
+      "SSH",
+      "sysctl",
+      "PAM",
+      "AppArmor",
+      "auditd",
+      "Lynis"
+    ],
+    "icon": "04",
+    "color": "yellow",
+    "topicCount": 19,
+    "category": "defensive"
+  },
+  {
+    "id": "cryptographic-foundation",
+    "title": "The Cryptographic Foundation",
+    "subtitle": "Applied cryptography",
+    "description": "Applying cryptography across a real environment — symmetric vs asymmetric, modern algorithm choices, hashing and password storage (bcrypt/Argon2), Diffie-Hellman, digital signatures, X.509 certificates and the chain of trust, TLS configuration, OpenSSL recipes, LUKS, and TPM/HSM/KMS hardware.",
+    "tags": [
+      "AES",
+      "RSA",
+      "TLS",
+      "hashing",
+      "Argon2",
+      "X.509",
+      "OpenSSL",
+      "LUKS"
+    ],
+    "icon": "05",
+    "color": "pink",
+    "topicCount": 20,
+    "category": "defensive"
   }
 ];
 

@@ -1,9 +1,7 @@
 # Know Your Enemy
 
-> **Project:** Know Your Enemy — Threat Landscape Analysis
-> **Tab:** Defence (first module)
-> **Section ID:** `know-your-enemy`
-> **Scenario:** MedDefense Health Systems — Junior Security Analyst, Week 2. Use Marcus's threat-intelligence files, external evidence and the Project 0x00 posture assessment to explain who targets hospitals, how they attack, and which MedDefense gaps deserve priority. Deliverable: a board-ready Threat Landscape Report.
+> **Scope:** Explaining who targets an organisation, how they attack, and which posture gaps deserve priority — threat-actor categories, motivations, ransomware and insider threats, attack-path tracing, ATT&CK and STRIDE, and producing a board-ready threat landscape report.
+
 > **Why it matters:** A posture assessment describes internal weakness; a threat landscape describes external intent and capability. Defence becomes actionable only when the two are correlated. The goal is not to predict every possible attack. It is to identify the actors, paths and consequences that are both credible and relevant to MedDefense.
 
 ---

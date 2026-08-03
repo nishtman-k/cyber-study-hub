@@ -1,8 +1,7 @@
 # First Watch
 
-> **Project:** First Watch, Security Posture Assessment
-> **Tab:** Defence (first module)
-> **Scenario:** MedDefense Health Systems — Junior Security Analyst, Day 1. 3 sites, ~2,000 staff, 12 IT staff, no prior security function. Deliverable: a board-ready posture assessment.
+> **Scope:** Producing a board-ready security posture assessment — asset inventory, criticality, data classification, gap analysis, and risk treatment. Worked through a running example: a three-site hospital group with ~2,000 staff, 12 IT staff, and no prior security function.
+
 > **Why it matters:** Every security role starts here. SOC triage, IR prioritisation, pentest impact ratings and GRC audits all depend on knowing what you have, how critical it is, and what protects it. No scanning, no exploitation — this is the *Identify* function.
 
 ---
