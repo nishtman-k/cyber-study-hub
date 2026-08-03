@@ -795,7 +795,7 @@ export const CHEATSHEETS: Cheatsheet[] = [
   },
   {
     "id": "the-weak-links",
-    "title": "The Weak Links",
+    "title": "Weak Links",
     "subtitle": "Vulnerability assessment",
     "description": "Turning a vulnerability scan into threat-informed intelligence — the CVE/NVD/CVSS/CWE ecosystem, NVD research workflow, exploit research with searchsploit, CISA KEV as a prioritisation signal, the vulnerability taxonomy, the management lifecycle, triage, false positives, and response strategies.",
     "tags": [
@@ -828,14 +828,14 @@ export const CHEATSHEETS: Cheatsheet[] = [
       "auditd",
       "Lynis"
     ],
-    "icon": "04",
+    "icon": "07",
     "color": "yellow",
     "topicCount": 19,
     "category": "defensive"
   },
   {
     "id": "cryptographic-foundation",
-    "title": "The Cryptographic Foundation",
+    "title": "Cryptographic Foundation",
     "subtitle": "Applied cryptography",
     "description": "Applying cryptography across a real environment — symmetric vs asymmetric, modern algorithm choices, hashing and password storage (bcrypt/Argon2), Diffie-Hellman, digital signatures, X.509 certificates and the chain of trust, TLS configuration, OpenSSL recipes, LUKS, and TPM/HSM/KMS hardware.",
     "tags": [
@@ -851,6 +851,45 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "icon": "05",
     "color": "pink",
     "topicCount": 20,
+    "category": "defensive"
+  },
+  {
+    "id": "board-briefing",
+    "title": "Board Briefing",
+    "subtitle": "Findings to decisions",
+    "description": "The capstone: turning technical findings into a decision a board can fund — the four levels of security thinking, translating an advisory into organisational risk, attack-chain and ATT&CK mapping, business impact categories, SLE/ALE quantification, risk treatment, the 72-hour response plan, the IR lifecycle, and briefing executives under pressure.",
+    "tags": [
+      "board briefing",
+      "risk",
+      "business impact",
+      "ALE",
+      "MITRE ATT&CK",
+      "incident response",
+      "executive comms"
+    ],
+    "icon": "06",
+    "color": "purple",
+    "topicCount": 19,
+    "category": "defensive"
+  },
+  {
+    "id": "defense-blueprint",
+    "title": "Defense Blueprint",
+    "subtitle": "Strategy & governance",
+    "description": "Building a business-aligned, cost-justified security strategy — governance and the policy hierarchy, NIST CSF 2.0, CIS Controls v8.1 and implementation groups, ISO 27001 and PDCA, data roles and RACI, SLE/ALE quantification, risk treatment, cost-benefit analysis, control selection, and a phased roadmap.",
+    "tags": [
+      "governance",
+      "NIST CSF",
+      "CIS Controls",
+      "ISO 27001",
+      "RACI",
+      "ALE",
+      "roadmap",
+      "risk register"
+    ],
+    "icon": "04",
+    "color": "teal",
+    "topicCount": 19,
     "category": "defensive"
   }
 ];
