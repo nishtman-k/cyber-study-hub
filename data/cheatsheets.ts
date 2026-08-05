@@ -891,6 +891,26 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "color": "teal",
     "topicCount": 19,
     "category": "defensive"
+  },
+  {
+    "id": "windows-fortress",
+    "title": "The Windows Fortress",
+    "subtitle": "Windows & AD hardening",
+    "description": "Securing Windows and Active Directory — AD and Group Policy, password and Kerberos hardening, advanced audit policy and critical event IDs, Sysmon, PowerShell controls, AppLocker/WDAC, Windows Firewall, SMB/RDP hardening, gMSA service accounts, Tier 0 domain-controller protection, and defending the AD attack chain.",
+    "tags": [
+      "Windows",
+      "Active Directory",
+      "Group Policy",
+      "Kerberos",
+      "Sysmon",
+      "AppLocker",
+      "gMSA",
+      "Tier 0"
+    ],
+    "icon": "08",
+    "color": "red",
+    "topicCount": 20,
+    "category": "defensive"
   }
 ];
 

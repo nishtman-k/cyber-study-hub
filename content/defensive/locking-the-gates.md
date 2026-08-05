@@ -4,8 +4,6 @@
 
 > **Scope:** Hardening Linux servers with CIS-based controls, automation, and measurable improvement. This sheet explains not just what to set but why, and how to decide what to skip. For Linux basics (permissions, FHS, process and network monitoring), see the companion **Linux Security** sheet.
 
-**Section ID:** `linux-hardening`
-
 ## Table of Contents
 
 - [Core Concepts](#1-core-concepts)
