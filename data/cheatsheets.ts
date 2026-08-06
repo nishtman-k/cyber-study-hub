@@ -776,6 +776,26 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "category": "offensive"
   },
   {
+    "id": "sql-nosql-injection",
+    "title": "SQL & NoSQL Injection",
+    "subtitle": "Injection attacks & defenses",
+    "description": "The full injection attack chain and its defenses — finding injection points, in-band and UNION-based extraction, information_schema, blind (boolean and time-based) and second-order SQLi, NoSQL/MongoDB operator injection and $regex enumeration, and the code-level fixes: parameterized queries, validation, ORMs, stored procedures, and escaping.",
+    "tags": [
+      "SQLi",
+      "NoSQL",
+      "MongoDB",
+      "UNION",
+      "blind injection",
+      "CWE-89",
+      "parameterized queries",
+      "ORM"
+    ],
+    "icon": "12",
+    "color": "teal",
+    "topicCount": 21,
+    "category": "offensive"
+  },
+  {
     "id": "firstwatch",
     "title": "First Watch, Security Posture Assessment",
     "subtitle": "Identify function fundamentals",
