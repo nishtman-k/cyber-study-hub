@@ -756,6 +756,26 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "category": "offensive"
   },
   {
+    "id": "advanced-shell-bash",
+    "title": "Advanced Shell & Bash",
+    "subtitle": "Shells, scripting & bypasses",
+    "description": "A deep shell reference across Linux and Windows — how Bash (text streams) and PowerShell (object pipeline) work, Bash basics, redirection, expansions, scripting and test operators, CMD vs PowerShell, cross-platform pwsh, automation, and the offensive techniques for bypassing command restrictions and escaping restricted shells.",
+    "tags": [
+      "Bash",
+      "PowerShell",
+      "scripting",
+      "restricted shell",
+      "GTFOBins",
+      "command injection",
+      "globbing",
+      "pwsh"
+    ],
+    "icon": "11",
+    "color": "orange",
+    "topicCount": 20,
+    "category": "offensive"
+  },
+  {
     "id": "firstwatch",
     "title": "First Watch, Security Posture Assessment",
     "subtitle": "Identify function fundamentals",
