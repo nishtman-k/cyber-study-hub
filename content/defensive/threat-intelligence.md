@@ -1,4 +1,4 @@
-# Know Your Enemy
+# Threat Intelligence & Landscape
 
 > **Scope:** Explaining who targets an organisation, how they attack, and which posture gaps deserve priority — threat-actor categories, motivations, ransomware and insider threats, attack-path tracing, ATT&CK and STRIDE, and producing a board-ready threat landscape report.
 

@@ -1,4 +1,4 @@
-# The Defense Blueprint
+# Security Governance & Strategy
 
 > `Plans are worthless, but planning is everything.` — Dwight D. Eisenhower
 

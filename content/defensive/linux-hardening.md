@@ -1,8 +1,8 @@
-# Locking the Gates
+# Linux System Hardening
 
 > **⚠️ AUTHORIZED USE ONLY.** This material is for education and authorized system administration. Apply hardening only to systems you own or are explicitly authorized to change. Several controls here (disabling password auth, default-deny firewalls, AppArmor enforce mode) can lock you out or break services if applied without testing. Always keep a working access path open and validate on a non-production system first. See the Legal and Terms of Use page.
 
-> **Scope:** Hardening Linux servers with CIS-based controls, automation, and measurable improvement. This sheet explains not just what to set but why, and how to decide what to skip. For Linux basics (permissions, FHS, process and network monitoring), see the companion **Linux Security** sheet.
+> **Scope:** Hardening Linux servers with CIS-based controls, automation, and measurable improvement. This sheet explains not just what to set but why, and how to decide what to skip.
 
 ## Table of Contents
 

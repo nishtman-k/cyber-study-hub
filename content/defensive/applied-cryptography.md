@@ -1,4 +1,4 @@
-# The Cryptographic Foundation
+# Applied Cryptography
 
 > **Scope:** Securing databases, backups, TLS, authentication, and data flows using modern cryptographic controls.
 

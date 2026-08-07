@@ -796,9 +796,9 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "category": "offensive"
   },
   {
-    "id": "firstwatch",
-    "title": "First Watch, Security Posture Assessment",
-    "subtitle": "Identify function fundamentals",
+    "id": "security-assessment",
+    "title": "Security Posture Assessment",
+    "subtitle": "Assets, criticality & gaps",
     "description": "Asset inventory, criticality and data classification, gap analysis, and risk treatment for a board-ready posture assessment — the CIA triad, control categories/functions, threat intel validation, and writing for the board.",
     "tags": [
       "risk assessment",
@@ -815,9 +815,9 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "category": "defensive"
   },
   {
-    "id": "know-your-enemy",
-    "title": "Know Your Enemy",
-    "subtitle": "Threat landscape analysis",
+    "id": "threat-intelligence",
+    "title": "Threat Intelligence & Landscape",
+    "subtitle": "Actors, TTPs & ATT&CK",
     "description": "Correlating external threats with internal posture gaps — the six threat-actor categories, motivations, ransomware/RaaS, insider and supply-chain risk, threat vectors, social engineering, attack-path tracing, MITRE ATT&CK, the Cyber Kill Chain, STRIDE, and writing a board-ready threat landscape report.",
     "tags": [
       "threat actors",
@@ -834,9 +834,9 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "category": "defensive"
   },
   {
-    "id": "the-weak-links",
-    "title": "Weak Links",
-    "subtitle": "Vulnerability assessment",
+    "id": "vulnerability-assessment",
+    "title": "Vulnerability Assessment",
+    "subtitle": "CVE, CVSS & triage",
     "description": "Turning a vulnerability scan into threat-informed intelligence — the CVE/NVD/CVSS/CWE ecosystem, NVD research workflow, exploit research with searchsploit, CISA KEV as a prioritisation signal, the vulnerability taxonomy, the management lifecycle, triage, false positives, and response strategies.",
     "tags": [
       "vulnerability",
@@ -854,9 +854,9 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "category": "defensive"
   },
   {
-    "id": "locking-the-gates",
-    "title": "Locking the Gates",
-    "subtitle": "Linux system hardening",
+    "id": "linux-hardening",
+    "title": "Linux System Hardening",
+    "subtitle": "CIS baselines & auditing",
     "description": "Hardening Linux servers with CIS-inspired controls and automation — SSH and kernel (sysctl) hardening, filesystem and mount options, PAM password quality and lockout, AppArmor confinement, auditd, rsyslog, host firewalls, Lynis scoring, and idempotent hardening scripts with JSON output.",
     "tags": [
       "hardening",
@@ -874,9 +874,9 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "category": "defensive"
   },
   {
-    "id": "cryptographic-foundation",
-    "title": "Cryptographic Foundation",
-    "subtitle": "Applied cryptography",
+    "id": "applied-cryptography",
+    "title": "Applied Cryptography",
+    "subtitle": "Encryption, hashing & PKI",
     "description": "Applying cryptography across a real environment — symmetric vs asymmetric, modern algorithm choices, hashing and password storage (bcrypt/Argon2), Diffie-Hellman, digital signatures, X.509 certificates and the chain of trust, TLS configuration, OpenSSL recipes, LUKS, and TPM/HSM/KMS hardware.",
     "tags": [
       "AES",
@@ -894,9 +894,9 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "category": "defensive"
   },
   {
-    "id": "board-briefing",
-    "title": "Board Briefing",
-    "subtitle": "Findings to decisions",
+    "id": "risk-communication",
+    "title": "Executive Risk Communication",
+    "subtitle": "Reporting & incident response",
     "description": "The capstone: turning technical findings into a decision a board can fund — the four levels of security thinking, translating an advisory into organisational risk, attack-chain and ATT&CK mapping, business impact categories, SLE/ALE quantification, risk treatment, the 72-hour response plan, the IR lifecycle, and briefing executives under pressure.",
     "tags": [
       "board briefing",
@@ -913,9 +913,9 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "category": "defensive"
   },
   {
-    "id": "defense-blueprint",
-    "title": "Defense Blueprint",
-    "subtitle": "Strategy & governance",
+    "id": "security-strategy",
+    "title": "Security Governance & Strategy",
+    "subtitle": "Frameworks, GRC & roadmap",
     "description": "Building a business-aligned, cost-justified security strategy — governance and the policy hierarchy, NIST CSF 2.0, CIS Controls v8.1 and implementation groups, ISO 27001 and PDCA, data roles and RACI, SLE/ALE quantification, risk treatment, cost-benefit analysis, control selection, and a phased roadmap.",
     "tags": [
       "governance",
@@ -933,9 +933,9 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "category": "defensive"
   },
   {
-    "id": "windows-fortress",
-    "title": "The Windows Fortress",
-    "subtitle": "Windows & AD hardening",
+    "id": "windows-hardening",
+    "title": "Windows & Active Directory Hardening",
+    "subtitle": "GPO, Kerberos & Tier 0",
     "description": "Securing Windows and Active Directory — AD and Group Policy, password and Kerberos hardening, advanced audit policy and critical event IDs, Sysmon, PowerShell controls, AppLocker/WDAC, Windows Firewall, SMB/RDP hardening, gMSA service accounts, Tier 0 domain-controller protection, and defending the AD attack chain.",
     "tags": [
       "Windows",
@@ -949,6 +949,25 @@ export const CHEATSHEETS: Cheatsheet[] = [
     ],
     "icon": "08",
     "color": "red",
+    "topicCount": 20,
+    "category": "defensive"
+  },
+  {
+    "id": "endpoint-detection",
+    "title": "Endpoint Detection & Telemetry",
+    "subtitle": "Detection engineering & ATT&CK coverage",
+    "description": "Validating endpoint telemetry on hardened systems: Sysmon event IDs mapped to attacker behavior, PowerShell Script Block Logging, auditd and auth.log, controlled attack simulation, ground-truth correlation, detection matrices, telemetry quality assessment, JSON export and normalization, and MITRE ATT&CK gap analysis.",
+    "tags": [
+      "telemetry",
+      "detection engineering",
+      "Sysmon",
+      "auditd",
+      "MITRE ATT&CK",
+      "SOC",
+      "blue team"
+    ],
+    "icon": "09",
+    "color": "orange",
     "topicCount": 20,
     "category": "defensive"
   }

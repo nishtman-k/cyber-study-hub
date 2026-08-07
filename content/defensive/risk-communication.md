@@ -1,4 +1,4 @@
-# The Board Briefing
+# Executive Risk Communication
 
 > `Everyone has a plan until they get punched in the mouth.` — Mike Tyson
 

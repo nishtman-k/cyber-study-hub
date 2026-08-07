@@ -1,10 +1,10 @@
-# The Windows Fortress
+# Windows & Active Directory Hardening
 
 > `Attackers don't hack in. They log in.` — Jen Easterly
 
 > **⚠️ AUTHORIZED USE ONLY.** This material is for education and authorized system administration. Apply these controls only to systems you own or are explicitly authorized to administer. Several controls here (AppLocker enforce mode, firewall default-deny, Kerberos and authentication changes) can lock out users or break services if applied without testing. Validate in a lab or audit mode first, and keep a recovery path open. See the [Legal and Terms of Use](/legal) page.
 
-> **Scope:** Securing Windows and Active Directory environments: AD and Group Policy, authentication and Kerberos hardening, auditing and event monitoring, Sysmon, PowerShell controls, AppLocker, Windows Firewall, SMB and RDP, service accounts, and domain controller protection. For Linux server hardening, see the companion **Locking the Gates** sheet.
+> **Scope:** Securing Windows and Active Directory environments: AD and Group Policy, authentication and Kerberos hardening, auditing and event monitoring, Sysmon, PowerShell controls, AppLocker, Windows Firewall, SMB and RDP, service accounts, and domain controller protection.
 
 ---
 

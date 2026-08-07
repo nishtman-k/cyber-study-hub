@@ -1,4 +1,4 @@
-# First Watch
+# Security Posture Assessment
 
 > **Scope:** Producing a board-ready security posture assessment — asset inventory, criticality, data classification, gap analysis, and risk treatment. Worked through a running example: a three-site hospital group with ~2,000 staff, 12 IT staff, and no prior security function.
 
