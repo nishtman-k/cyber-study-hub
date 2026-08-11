@@ -796,6 +796,25 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "category": "offensive"
   },
   {
+    "id": "xss",
+    "title": "Cross-Site Scripting (XSS)",
+    "subtitle": "Client-side exploitation",
+    "description": "Client-side exploitation through XSS: reflected, stored, and DOM-based families, injection contexts and breakouts, sources and sinks, postMessage and eval, filter and encoding evasion, Content Security Policy and its bypasses, plus the output-encoding defenses that actually stop it.",
+    "tags": [
+      "XSS",
+      "DOM XSS",
+      "CSP",
+      "filter bypass",
+      "JavaScript",
+      "OWASP",
+      "client-side"
+    ],
+    "icon": "13",
+    "color": "pink",
+    "topicCount": 27,
+    "category": "offensive"
+  },
+  {
     "id": "security-assessment",
     "title": "Security Posture Assessment",
     "subtitle": "Assets, criticality & gaps",
