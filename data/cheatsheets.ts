@@ -815,6 +815,25 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "category": "offensive"
   },
   {
+    "id": "idor",
+    "title": "Insecure Direct Object Reference (IDOR)",
+    "subtitle": "Broken Access Control",
+    "description": "Broken object-level authorization: how IDOR works and differs from injection, its types and escalation directions, a hands-on detection methodology using two accounts with Burp Suite, curl, and ffuf, plus the ownership checks and indirect references that prevent it.",
+    "tags": [
+      "IDOR",
+      "Access Control",
+      "BOLA",
+      "Burp Suite",
+      "Authorization",
+      "OWASP",
+      "API Security"
+    ],
+    "icon": "14",
+    "color": "yellow",
+    "topicCount": 22,
+    "category": "offensive"
+  },
+  {
     "id": "security-assessment",
     "title": "Security Posture Assessment",
     "subtitle": "Assets, criticality & gaps",
