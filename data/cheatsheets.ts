@@ -834,6 +834,25 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "category": "offensive"
   },
   {
+    "id": "ssrf",
+    "title": "Server-Side Request Forgery (SSRF)",
+    "subtitle": "Internal Pivoting",
+    "description": "Forcing a server to make attacker-controlled requests: in-band and blind SSRF, internal network enumeration, cloud metadata and IMDSv2, protocol smuggling, IP and URL-parser filter bypasses, DNS rebinding, and the allow-listing and egress controls that prevent it.",
+    "tags": [
+      "SSRF",
+      "Cloud Metadata",
+      "IMDSv2",
+      "Internal Recon",
+      "Blind SSRF",
+      "OWASP",
+      "CWE-918"
+    ],
+    "icon": "15",
+    "color": "red",
+    "topicCount": 22,
+    "category": "offensive"
+  },
+  {
     "id": "security-assessment",
     "title": "Security Posture Assessment",
     "subtitle": "Assets, criticality & gaps",
