@@ -853,6 +853,25 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "category": "offensive"
   },
   {
+    "id": "file-inclusion",
+    "title": "File Inclusion (LFI & RFI)",
+    "subtitle": "Path Traversal & RCE",
+    "description": "Practical exploitation and prevention of Local and Remote File Inclusion: path traversal payloads, Linux and Windows target files, filter bypasses, PHP wrappers, and the log poisoning, session, upload, and wrapper paths from LFI to remote code execution.",
+    "tags": [
+      "LFI",
+      "RFI",
+      "Path Traversal",
+      "PHP Wrappers",
+      "Log Poisoning",
+      "RCE",
+      "CWE-98"
+    ],
+    "icon": "16",
+    "color": "red",
+    "topicCount": 14,
+    "category": "offensive"
+  },
+  {
     "id": "security-assessment",
     "title": "Security Posture Assessment",
     "subtitle": "Assets, criticality & gaps",
