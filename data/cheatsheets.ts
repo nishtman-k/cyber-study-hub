@@ -867,7 +867,7 @@ export const CHEATSHEETS: Cheatsheet[] = [
       "CWE-98"
     ],
     "icon": "16",
-    "color": "red",
+    "color": "purple",
     "topicCount": 14,
     "category": "offensive"
   },
@@ -1046,6 +1046,63 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "color": "orange",
     "topicCount": 20,
     "category": "defensive"
+  },
+  {
+    "id": "the-patch-equation",
+    "title": "The Patch Equation",
+    "subtitle": "Patch & Vulnerability Management",
+    "description": "Linux patch engineering as measurable work: CVE-to-package mapping, risk-based prioritization beyond CVSS, apt/dpkg repair, security-only patching, validation, rollback and pinning, and JSON evidence.",
+    "tags": [
+      "Patch Management",
+      "APT",
+      "dpkg",
+      "CVE",
+      "CISA KEV",
+      "Rollback",
+      "unattended-upgrades"
+    ],
+    "icon": "10",
+    "color": "purple",
+    "topicCount": 21,
+    "category": "defensive"
+  },
+  {
+    "id": "perimeter-network-defense",
+    "title": "Perimeter and Network Defense",
+    "subtitle": "Firewalls, IDS & PCAP",
+    "description": "Network defense end to end: zone design and segmentation, nftables default-deny policy, Windows Firewall alignment, secure-protocol audits, DNS filtering, scan detection, Suricata PCAP replay and custom rules, and tshark investigation.",
+    "tags": [
+      "nftables",
+      "Firewall",
+      "Suricata",
+      "IDS/IPS",
+      "PCAP",
+      "tshark",
+      "Segmentation"
+    ],
+    "icon": "11",
+    "color": "pink",
+    "topicCount": 21,
+    "category": "defensive"
+  },
+  {
+    "id": "command-injection-log4shell",
+    "title": "Command Injection & Log4Shell",
+    "subtitle": "OS Command Execution",
+    "description": "Untrusted input reaching a shell: separators and Bash operators, special variables, IFS manipulation for space bypass, blind and out-of-band detection, filter evasion, and a full CVE-2021-44228 breakdown from JNDI lookup to RCE.",
+    "tags": [
+      "Command Injection",
+      "Log4Shell",
+      "CVE-2021-44228",
+      "Bash",
+      "IFS",
+      "JNDI",
+      "OAST"
+    ],
+    "icon": "17",
+    "color": "teal",
+    "topicCount": 21,
+    "category": "offensive"
   }
 ];
 
