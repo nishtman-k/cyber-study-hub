@@ -1,12 +1,15 @@
 import { CHEATSHEETS } from '@/data/cheatsheets';
+import { countCommands, formatStat } from '@/lib/commands';
 
 /**
  * Landing hero: brand mark, headline, blurb, and live stats
- * (cheatsheet count + total topics, computed from the data).
+ * (cheatsheet count, total topics, and command count — all computed from the
+ * data and content at build time, so none of them go stale).
  */
 export default function Hero() {
   const cheatsheetCount = CHEATSHEETS.length;
   const topicCount = CHEATSHEETS.reduce((sum, c) => sum + c.topicCount, 0);
+  const commandCount = formatStat(countCommands());
 
   return (
     <section className="hero">
@@ -35,7 +38,9 @@ export default function Hero() {
             <span className="stat-label">topics covered</span>
           </div>
           <div className="stat">
-            <span className="stat-num">200+</span>
+            <span className="stat-num" id="statCommands">
+              {commandCount}
+            </span>
             <span className="stat-label">commands</span>
           </div>
         </div>
