@@ -15,7 +15,8 @@ export type CheatsheetColor =
   | "yellow"
   | "teal"
   | "red"
-  | "purple";
+  | "purple"
+  | "indigo";
 
 /** Landing-page tab a cheatsheet belongs to. */
 export type CheatsheetCategory = "common-core" | "offensive" | "defensive";
@@ -613,7 +614,7 @@ export const CHEATSHEETS: Cheatsheet[] = [
     ],
     "icon": "03",
     "color": "orange",
-    "topicCount": 10,
+    "topicCount": 20,
     "category": "offensive"
   },
   {
@@ -1103,6 +1104,25 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "color": "teal",
     "topicCount": 21,
     "category": "offensive"
+  },
+  {
+    "id": "the-defensible-endpoint-package",
+    "title": "The Defensible Endpoint Package",
+    "subtitle": "Engineering Handoff",
+    "description": "Composing hardening, telemetry, patching, and network defense into one delivered package: baseline intake, target state as data, idempotent orchestration, binary validation, machine-readable compliance reports, manifests with hashes, and verifiable handoff.",
+    "tags": [
+      "Handoff",
+      "Automation",
+      "Idempotency",
+      "Compliance",
+      "SHA256",
+      "Manifest",
+      "Capstone"
+    ],
+    "icon": "12",
+    "color": "indigo",
+    "topicCount": 23,
+    "category": "defensive"
   }
 ];
 
