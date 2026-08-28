@@ -15,8 +15,7 @@ export type CheatsheetColor =
   | "yellow"
   | "teal"
   | "red"
-  | "purple"
-  | "indigo";
+  | "purple";
 
 /** Landing-page tab a cheatsheet belongs to. */
 export type CheatsheetCategory = "common-core" | "offensive" | "defensive";
@@ -1120,9 +1119,28 @@ export const CHEATSHEETS: Cheatsheet[] = [
       "Capstone"
     ],
     "icon": "12",
-    "color": "indigo",
+    "color": "yellow",
     "topicCount": 23,
     "category": "defensive"
+  },
+  {
+    "id": "buffer-overflow",
+    "title": "Buffer Overflow & Process Memory",
+    "subtitle": "Memory Corruption",
+    "description": "Memory corruption from first principles: Linux process memory layout, how stack overflows reach the return address, overflow types, the exploitation chain and why modern attacks need an info leak, detection with ASan and fuzzing, mitigations, and live process memory work via /proc.",
+    "tags": [
+      "Buffer Overflow",
+      "Memory Corruption",
+      "Stack",
+      "Heap",
+      "/proc",
+      "ASLR",
+      "ASan"
+    ],
+    "icon": "18",
+    "color": "pink",
+    "topicCount": 19,
+    "category": "offensive"
   }
 ];
 
