@@ -36,6 +36,7 @@ export function countCommands(): number {
 
     let inFence = false;
     let isShell = false;
+    let continued = false; // previous line ended in `\`, so this one is its tail
 
     for (const line of body.split('\n')) {
       const fence = line.match(/^\s*```([a-zA-Z0-9+-]*)/);
@@ -47,22 +48,20 @@ export function countCommands(): number {
           inFence = true;
           isShell = SHELL_LANGS.has(fence[1].toLowerCase());
         }
+        continued = false;
         continue;
       }
       if (!inFence || !isShell) continue;
 
       const trimmed = line.trim();
-      if (!trimmed || trimmed.startsWith('#')) continue; // blanks and comments
-      total += 1;
+      if (!trimmed || trimmed.startsWith('#')) {
+        continued = false; // blanks and comments end any continuation
+        continue;
+      }
+      if (!continued) total += 1; // wrapped lines are one command, not several
+      continued = trimmed.endsWith('\\');
     }
   }
 
   return total;
-}
-
-/** Round down to a clean "N+" figure for display, e.g. 2240 -> "2K+". */
-export function formatStat(n: number): string {
-  if (n < 100) return `${n}+`;
-  if (n < 1000) return `${Math.floor(n / 100) * 100}+`;
-  return `${Math.floor(n / 1000)}K+`;
 }

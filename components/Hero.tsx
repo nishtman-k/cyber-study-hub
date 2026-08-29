@@ -1,5 +1,5 @@
 import { CHEATSHEETS } from '@/data/cheatsheets';
-import { countCommands, formatStat } from '@/lib/commands';
+import { countCommands } from '@/lib/commands';
 
 /**
  * Landing hero: brand mark, headline, blurb, and live stats
@@ -9,16 +9,16 @@ import { countCommands, formatStat } from '@/lib/commands';
 export default function Hero() {
   const cheatsheetCount = CHEATSHEETS.length;
   const topicCount = CHEATSHEETS.reduce((sum, c) => sum + c.topicCount, 0);
-  const commandCount = formatStat(countCommands());
+  const commandCount = countCommands();
 
   return (
     <section className="hero">
       <div className="hero-text">
         <div className="brand-mark">Cybersecurity Study Hub</div>
         <h1>
-          Learn Linux
+          Learn Cyber
           <br />
-          security, <span className="accent">deliciously </span>.
+          Security, <span className="accent">Deliciously</span>
         </h1>
         <p>
           A friendly, hands-on collection of cheatsheets for cybersecurity
