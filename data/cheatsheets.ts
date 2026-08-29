@@ -15,7 +15,6 @@ export type CheatsheetColor =
   | "yellow"
   | "teal"
   | "red"
-  | "purple";
 
 /** Landing-page tab a cheatsheet belongs to. */
 export type CheatsheetCategory = "common-core" | "offensive" | "defensive";
@@ -751,7 +750,7 @@ export const CHEATSHEETS: Cheatsheet[] = [
       "Stealth"
     ],
     "icon": "10",
-    "color": "purple",
+    "color": "yellow",
     "topicCount": 20,
     "category": "offensive"
   },
@@ -867,7 +866,7 @@ export const CHEATSHEETS: Cheatsheet[] = [
       "CWE-98"
     ],
     "icon": "16",
-    "color": "purple",
+    "color": "orange",
     "topicCount": 14,
     "category": "offensive"
   },
@@ -984,7 +983,7 @@ export const CHEATSHEETS: Cheatsheet[] = [
       "executive comms"
     ],
     "icon": "06",
-    "color": "purple",
+    "color": "red",
     "topicCount": 19,
     "category": "defensive"
   },
@@ -1062,7 +1061,7 @@ export const CHEATSHEETS: Cheatsheet[] = [
       "unattended-upgrades"
     ],
     "icon": "10",
-    "color": "purple",
+    "color": "teal",
     "topicCount": 21,
     "category": "defensive"
   },
