@@ -1140,6 +1140,25 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "color": "pink",
     "topicCount": 19,
     "category": "offensive"
+  },
+  {
+    "id": "advanced-web-exploitation",
+    "title": "Advanced Web Exploitation",
+    "subtitle": "SSTI, Deserialization & Chaining",
+    "description": "Vulnerabilities that require interpretation rather than scanning: template injection detection and engine-specific RCE, PHP magic methods and POP chains, phar deserialization, session and privilege manipulation, and chaining moderate findings into critical compromise.",
+    "tags": [
+      "SSTI",
+      "Deserialization",
+      "POP Chain",
+      "Jinja2",
+      "PHP",
+      "Chaining",
+      "CWE-502"
+    ],
+    "icon": "19",
+    "color": "red",
+    "topicCount": 16,
+    "category": "offensive"
   }
 ];
 
