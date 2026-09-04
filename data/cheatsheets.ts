@@ -616,17 +616,18 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "category": "offensive"
   },
   {
-    "id": "metasploit",
-    "title": "Metasploit",
-    "subtitle": "Exploitation framework",
-    "description": "The standard exploitation framework — core concepts (exploit, payload, module, session), msfconsole, the search-use-set-run workflow, staged vs stageless payloads, Meterpreter, and hashdump for post-exploitation.",
+  "id": "metasploit",
+    "title": "Metasploit Basics",
+    "subtitle": "Exploitation Framework",
+    "description": "The Metasploit workflow end to end: PostgreSQL backend and workspaces, filtered module search, exploits and auxiliary scanners, payload generation with msfvenom, session and Meterpreter handling, and documenting findings with notes and loot.",
     "tags": [
       "Metasploit",
       "msfconsole",
+      "msfvenom",
+      "PostgreSQL",
       "Meterpreter",
-      "payload",
-      "exploit",
-      "hashdump"
+      "Auxiliary",
+      "Payloads"
     ],
     "icon": "04",
     "color": "pink",
