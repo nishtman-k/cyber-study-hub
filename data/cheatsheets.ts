@@ -872,6 +872,25 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "category": "offensive"
   },
   {
+    "id": "ruby-scripting",
+    "title": "Ruby Scripting (Cyber)",
+    "subtitle": "Scripting for Security",
+    "description": "Enough Ruby to read and write security scripts: methods and the implicit return, blocks, classes and inheritance, exceptions, then log parsing, HTTP requests, socket port scanning, threading, hashing, and how every Metasploit module is a Ruby class.",
+    "tags": [
+      "Ruby",
+      "Scripting",
+      "Sockets",
+      "Port Scanner",
+      "Metasploit",
+      "Automation",
+      "Hashing"
+    ],
+    "icon": "20",
+    "color": "yellow",
+    "topicCount": 19,
+    "category": "offensive"
+  },
+  {
     "id": "security-assessment",
     "title": "Security Posture Assessment",
     "subtitle": "Assets, criticality & gaps",
