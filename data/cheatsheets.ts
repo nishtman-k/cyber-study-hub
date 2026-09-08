@@ -560,6 +560,7 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "color": "orange",
     "topicCount": 13
   },
+   //  OFFENSIVE SECTION START
   {
   "id": "offensive-vs-defensive",
   "title": "Offensive vs Defensive Security",
@@ -871,6 +872,63 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "topicCount": 14,
     "category": "offensive"
   },
+    {
+    "id": "command-injection-log4shell",
+    "title": "Command Injection & Log4Shell",
+    "subtitle": "OS Command Execution",
+    "description": "Untrusted input reaching a shell: separators and Bash operators, special variables, IFS manipulation for space bypass, blind and out-of-band detection, filter evasion, and a full CVE-2021-44228 breakdown from JNDI lookup to RCE.",
+    "tags": [
+      "Command Injection",
+      "Log4Shell",
+      "CVE-2021-44228",
+      "Bash",
+      "IFS",
+      "JNDI",
+      "OAST"
+    ],
+    "icon": "17",
+    "color": "teal",
+    "topicCount": 21,
+    "category": "offensive"
+  },
+    {
+    "id": "buffer-overflow",
+    "title": "Buffer Overflow & Process Memory",
+    "subtitle": "Memory Corruption",
+    "description": "Memory corruption from first principles: Linux process memory layout, how stack overflows reach the return address, overflow types, the exploitation chain and why modern attacks need an info leak, detection with ASan and fuzzing, mitigations, and live process memory work via /proc.",
+    "tags": [
+      "Buffer Overflow",
+      "Memory Corruption",
+      "Stack",
+      "Heap",
+      "/proc",
+      "ASLR",
+      "ASan"
+    ],
+    "icon": "18",
+    "color": "pink",
+    "topicCount": 19,
+    "category": "offensive"
+  },
+    {
+    "id": "advanced-web-exploitation",
+    "title": "Advanced Web Exploitation",
+    "subtitle": "SSTI, Deserialization & Chaining",
+    "description": "Vulnerabilities that require interpretation rather than scanning: template injection detection and engine-specific RCE, PHP magic methods and POP chains, phar deserialization, session and privilege manipulation, and chaining moderate findings into critical compromise.",
+    "tags": [
+      "SSTI",
+      "Deserialization",
+      "POP Chain",
+      "Jinja2",
+      "PHP",
+      "Chaining",
+      "CWE-502"
+    ],
+    "icon": "19",
+    "color": "red",
+    "topicCount": 16,
+    "category": "offensive"
+  },
   {
     "id": "ruby-scripting",
     "title": "Ruby Scripting (Cyber)",
@@ -890,6 +948,26 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "topicCount": 19,
     "category": "offensive"
   },
+  {
+    "id": "metasploit-scripting",
+    "title": "Metasploit Scripting",
+    "subtitle": "Writing Modules",
+    "description": "Writing Metasploit modules in Ruby rather than only running them: module anatomy and mixins, a custom auxiliary scanner, a vulnerability checker, resource-script automation, post-exploitation modules, and the truth about payload encoding and AV evasion.",
+    "tags": [
+      "Metasploit",
+      "Ruby",
+      "Module Development",
+      "Auxiliary",
+      "Post-Exploitation",
+      "msfvenom",
+      "Automation"
+    ],
+    "icon": "21",
+    "color": "orange",
+    "topicCount": 15,
+    "category": "offensive"
+  },
+  //  DEFENSIVE SECTION START
   {
     "id": "security-assessment",
     "title": "Security Posture Assessment",
@@ -949,22 +1027,22 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "category": "defensive"
   },
   {
-    "id": "linux-hardening",
-    "title": "Linux System Hardening",
-    "subtitle": "CIS baselines & auditing",
-    "description": "Hardening Linux servers with CIS-inspired controls and automation — SSH and kernel (sysctl) hardening, filesystem and mount options, PAM password quality and lockout, AppArmor confinement, auditd, rsyslog, host firewalls, Lynis scoring, and idempotent hardening scripts with JSON output.",
+    "id": "security-strategy",
+    "title": "Security Governance & Strategy",
+    "subtitle": "Frameworks, GRC & roadmap",
+    "description": "Building a business-aligned, cost-justified security strategy — governance and the policy hierarchy, NIST CSF 2.0, CIS Controls v8.1 and implementation groups, ISO 27001 and PDCA, data roles and RACI, SLE/ALE quantification, risk treatment, cost-benefit analysis, control selection, and a phased roadmap.",
     "tags": [
-      "hardening",
-      "CIS Benchmark",
-      "SSH",
-      "sysctl",
-      "PAM",
-      "AppArmor",
-      "auditd",
-      "Lynis"
+      "governance",
+      "NIST CSF",
+      "CIS Controls",
+      "ISO 27001",
+      "RACI",
+      "ALE",
+      "roadmap",
+      "risk register"
     ],
-    "icon": "07",
-    "color": "yellow",
+    "icon": "04",
+    "color": "teal",
     "topicCount": 19,
     "category": "defensive"
   },
@@ -1008,22 +1086,22 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "category": "defensive"
   },
   {
-    "id": "security-strategy",
-    "title": "Security Governance & Strategy",
-    "subtitle": "Frameworks, GRC & roadmap",
-    "description": "Building a business-aligned, cost-justified security strategy — governance and the policy hierarchy, NIST CSF 2.0, CIS Controls v8.1 and implementation groups, ISO 27001 and PDCA, data roles and RACI, SLE/ALE quantification, risk treatment, cost-benefit analysis, control selection, and a phased roadmap.",
+    "id": "linux-hardening",
+    "title": "Linux System Hardening",
+    "subtitle": "CIS baselines & auditing",
+    "description": "Hardening Linux servers with CIS-inspired controls and automation — SSH and kernel (sysctl) hardening, filesystem and mount options, PAM password quality and lockout, AppArmor confinement, auditd, rsyslog, host firewalls, Lynis scoring, and idempotent hardening scripts with JSON output.",
     "tags": [
-      "governance",
-      "NIST CSF",
-      "CIS Controls",
-      "ISO 27001",
-      "RACI",
-      "ALE",
-      "roadmap",
-      "risk register"
+      "hardening",
+      "CIS Benchmark",
+      "SSH",
+      "sysctl",
+      "PAM",
+      "AppArmor",
+      "auditd",
+      "Lynis"
     ],
-    "icon": "04",
-    "color": "teal",
+    "icon": "07",
+    "color": "yellow",
     "topicCount": 19,
     "category": "defensive"
   },
@@ -1105,25 +1183,6 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "category": "defensive"
   },
   {
-    "id": "command-injection-log4shell",
-    "title": "Command Injection & Log4Shell",
-    "subtitle": "OS Command Execution",
-    "description": "Untrusted input reaching a shell: separators and Bash operators, special variables, IFS manipulation for space bypass, blind and out-of-band detection, filter evasion, and a full CVE-2021-44228 breakdown from JNDI lookup to RCE.",
-    "tags": [
-      "Command Injection",
-      "Log4Shell",
-      "CVE-2021-44228",
-      "Bash",
-      "IFS",
-      "JNDI",
-      "OAST"
-    ],
-    "icon": "17",
-    "color": "teal",
-    "topicCount": 21,
-    "category": "offensive"
-  },
-  {
     "id": "the-defensible-endpoint-package",
     "title": "The Defensible Endpoint Package",
     "subtitle": "Engineering Handoff",
@@ -1141,44 +1200,6 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "color": "yellow",
     "topicCount": 23,
     "category": "defensive"
-  },
-  {
-    "id": "buffer-overflow",
-    "title": "Buffer Overflow & Process Memory",
-    "subtitle": "Memory Corruption",
-    "description": "Memory corruption from first principles: Linux process memory layout, how stack overflows reach the return address, overflow types, the exploitation chain and why modern attacks need an info leak, detection with ASan and fuzzing, mitigations, and live process memory work via /proc.",
-    "tags": [
-      "Buffer Overflow",
-      "Memory Corruption",
-      "Stack",
-      "Heap",
-      "/proc",
-      "ASLR",
-      "ASan"
-    ],
-    "icon": "18",
-    "color": "pink",
-    "topicCount": 19,
-    "category": "offensive"
-  },
-  {
-    "id": "advanced-web-exploitation",
-    "title": "Advanced Web Exploitation",
-    "subtitle": "SSTI, Deserialization & Chaining",
-    "description": "Vulnerabilities that require interpretation rather than scanning: template injection detection and engine-specific RCE, PHP magic methods and POP chains, phar deserialization, session and privilege manipulation, and chaining moderate findings into critical compromise.",
-    "tags": [
-      "SSTI",
-      "Deserialization",
-      "POP Chain",
-      "Jinja2",
-      "PHP",
-      "Chaining",
-      "CWE-502"
-    ],
-    "icon": "19",
-    "color": "red",
-    "topicCount": 16,
-    "category": "offensive"
   }
 ];
 
