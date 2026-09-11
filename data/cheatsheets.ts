@@ -967,6 +967,25 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "topicCount": 15,
     "category": "offensive"
   },
+  {
+    "id": "active-directory-fundamentals",
+    "title": "Active Directory Fundamentals",
+    "subtitle": "AD Concepts & Structure",
+    "description": "The concepts and vocabulary of Active Directory: authentication versus authorization, the forest and domain structure, domain controllers and NTDS.dit, users and nested groups, organizational units, Group Policy and LSDOU, trusts, and LDAP as the query protocol.",
+    "tags": [
+      "Active Directory",
+      "LDAP",
+      "Domain Controller",
+      "Kerberos",
+      "GPO",
+      "Windows",
+      "Forest"
+    ],
+    "icon": "22",
+    "color": "teal",
+    "topicCount": 16,
+    "category": "offensive"
+  },
   //  DEFENSIVE SECTION START
   {
     "id": "security-assessment",
