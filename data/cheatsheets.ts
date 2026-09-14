@@ -986,6 +986,25 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "topicCount": 16,
     "category": "offensive"
   },
+  {
+    "id": "active-directory-enumeration",
+    "title": "AD Enumeration & Credential Abuse",
+    "subtitle": "The AD Attack Chain",
+    "description": "The reconnaissance and credential-abuse phase of an AD engagement from Kali: LDAP and SMB enumeration of users, groups, and trusts, then AS-REP Roasting, Kerberoasting, hashcat cracking, NTLM capture with Responder, and DCSync to domain compromise.",
+    "tags": [
+      "Active Directory",
+      "Kerberoasting",
+      "AS-REP Roasting",
+      "DCSync",
+      "Impacket",
+      "Responder",
+      "hashcat"
+    ],
+    "icon": "23",
+    "color": "pink",
+    "topicCount": 17,
+    "category": "offensive"
+  },
   //  DEFENSIVE SECTION START
   {
     "id": "security-assessment",
