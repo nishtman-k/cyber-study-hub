@@ -1005,6 +1005,25 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "topicCount": 17,
     "category": "offensive"
   },
+  {
+    "id": "active-directory-ldap",
+    "title": "AD Directory Enumeration (Hands-On)",
+    "subtitle": "LDAP, RPC & BloodHound",
+    "description": "Enumerating an AD domain through every channel: anonymous and authenticated ldapsearch, bulk enumeration with NetExec, RPC with rpcclient, BloodHound collection, and advanced userAccountControl filters, with the theme that each protocol reveals what the others hide.",
+    "tags": [
+      "Active Directory",
+      "LDAP",
+      "ldapsearch",
+      "rpcclient",
+      "BloodHound",
+      "NetExec",
+      "Enumeration"
+    ],
+    "icon": "24",
+    "color": "red",
+    "topicCount": 15,
+    "category": "offensive"
+  },
   //  DEFENSIVE SECTION START
   {
     "id": "security-assessment",
