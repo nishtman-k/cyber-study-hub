@@ -988,7 +988,7 @@ export const CHEATSHEETS: Cheatsheet[] = [
   },
   {
     "id": "active-directory-enumeration",
-    "title": "AD Enumeration & Credential Abuse",
+    "title": "Active Dorectory Enumeration",
     "subtitle": "The AD Attack Chain",
     "description": "The reconnaissance and credential-abuse phase of an AD engagement from Kali: LDAP and SMB enumeration of users, groups, and trusts, then AS-REP Roasting, Kerberoasting, hashcat cracking, NTLM capture with Responder, and DCSync to domain compromise.",
     "tags": [
@@ -1007,7 +1007,7 @@ export const CHEATSHEETS: Cheatsheet[] = [
   },
   {
     "id": "active-directory-ldap",
-    "title": "AD Directory Enumeration (Hands-On)",
+    "title": "Active Dorectory Enumeration (Hands-On)",
     "subtitle": "LDAP, RPC & BloodHound",
     "description": "Enumerating an AD domain through every channel: anonymous and authenticated ldapsearch, bulk enumeration with NetExec, RPC with rpcclient, BloodHound collection, and advanced userAccountControl filters, with the theme that each protocol reveals what the others hide.",
     "tags": [
@@ -1022,6 +1022,25 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "icon": "24",
     "color": "red",
     "topicCount": 15,
+    "category": "offensive"
+  },
+  {
+    "id": "active-directory-bloodhound",
+    "title": "Active Dorectory (BloodHound)",
+    "subtitle": "Graph-Driven AD Compromise",
+    "description": "Using BloodHound to map and exploit AD attack paths: collection and reading the graph, Cypher queries, ACL abuse (GenericAll, WriteDacl), chaining misconfigurations from a low-privilege user through DCSync to a Golden Ticket, SYSVOL leakage, and detection by Windows Event ID.",
+    "tags": [
+      "Active Directory",
+      "BloodHound",
+      "ACL Abuse",
+      "GenericAll",
+      "Golden Ticket",
+      "Cypher",
+      "Attack Paths"
+    ],
+    "icon": "25",
+    "color": "yellow",
+    "topicCount": 17,
     "category": "offensive"
   },
   //  DEFENSIVE SECTION START
@@ -1257,7 +1276,26 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "color": "yellow",
     "topicCount": 23,
     "category": "defensive"
-  }
+  },
+  {
+    "id": "evidence-pipeline",
+    "title": "Evidence Pipeline",
+    "subtitle": "Log Normalization & Handoff",
+    "description": "Security evidence engineering without a SIEM: parsing EVTX, syslog, Suricata EVE JSON, firewall CSV and generic JSON into one unified schema, timestamp normalization, deduplication, enrichment, quality validation, provenance, and analyst-ready handoff.",
+    "tags": [
+      "Log Analysis",
+      "EVTX",
+      "Suricata",
+      "Normalization",
+      "Timeline",
+      "SOC",
+      "Evidence"
+    ],
+    "icon": "13",
+    "color": "red",
+    "topicCount": 27,
+    "category": "defensive"
+  },
 ];
 
 /** Cheatsheets sorted newest-first (highest icon number on top). */
