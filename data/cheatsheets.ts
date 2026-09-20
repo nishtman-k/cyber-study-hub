@@ -1296,6 +1296,45 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "topicCount": 27,
     "category": "defensive"
   },
+  {
+    "id": "reading-the-noise",
+    "title": "Reading the Noise",
+    "subtitle": "Behavioral Baselines & Anomaly Detection",
+    "description": "Behavioral analysis of normalized security evidence: authentication, process, network, file, and temporal baselines, anomaly detection classes, deviation scoring, cross-source correlation, composite risk scoring, false-positive validation, and reusable baseline packaging.",
+    "tags": [
+      "Baselining",
+      "Anomaly Detection",
+      "SOC",
+      "Behavioral Analysis",
+      "Correlation",
+      "Risk Scoring",
+      "Threat Hunting"
+    ],
+    "icon": "14",
+    "color": "orange",
+    "topicCount": 27,
+    "category": "defensive"
+  },
+  {
+  "id": "the-alert-factory",
+  "title": "The Alert Factory",
+  "subtitle": "Detection Engineering",
+  "description": "Sigma detection engineering: rule structure, log sources, modifiers, boolean conditions, aggregation, correlation, MITRE ATT&CK mapping, sigma-cli, ground-truth testing, precision/recall metrics, tuning, and alert queue generation.",
+  "tags": [
+    "Sigma",
+    "Detection Engineering",
+    "MITRE ATT&CK",
+    "SIEM",
+    "sigma-cli",
+    "pySigma",
+    "Tuning",
+    "Correlation"
+  ],
+  icon: "15",
+  color: "teal",
+  topicCount: 24,
+  "category": "defensive"
+},
 ];
 
 /** Cheatsheets sorted newest-first (highest icon number on top). */
