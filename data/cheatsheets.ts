@@ -1043,6 +1043,45 @@ export const CHEATSHEETS: Cheatsheet[] = [
     "topicCount": 17,
     "category": "offensive"
   },
+  {
+    "id": "active-directory-powerview",
+    "title": "Active Directory (PowerView)",
+    "subtitle": "Enumeration & Defensive Hardening",
+    "description": "PowerView-driven AD reconnaissance: users, groups, computers, OUs, GPOs, ACLs, trusts, shares, and sessions from the CLI. Paired with defender hardening: DC lockdown, GPO security policies, Windows LAPS deployment, AppLocker, SMB/LDAP signing, audit configuration, and PowerShell logging for detection.",
+    "tags": [
+      "PowerView",
+      "Active Directory",
+      "Enumeration",
+      "ACL Abuse",
+      "GPO Hardening",
+      "Windows LAPS",
+      "Auditing",
+      "Least Privilege"
+    ],
+    "icon": "26",
+    "color": "orange",
+    "topicCount": 20,
+    "category": "offensive"
+  },
+ {
+  "id": "linux-privesc",
+  "title": "Linux Privilege Escalation",
+  "subtitle": "Post-Exploitation",
+  "description": "Escalating from a low privilege shell to root on Linux: system enumeration, kernel and sudo CVEs, SUID and capabilities abuse, cron and wildcard injection, PATH and LD_PRELOAD hijacking, credential hunting, privileged groups, and hardening.",
+  "tags": [
+    "Privilege Escalation",
+    "Linux",
+    "SUID",
+    "GTFOBins",
+    "Capabilities",
+    "LinPEAS",
+    "John the Ripper"
+  ],
+  "icon": "27",
+  "color": "teal",
+  "topicCount": 25,
+  "category": "offensive"
+},
   //  DEFENSIVE SECTION START
   {
     "id": "security-assessment",
