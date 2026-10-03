@@ -1082,6 +1082,44 @@ export const CHEATSHEETS: Cheatsheet[] = [
   "topicCount": 25,
   "category": "offensive"
 },
+{
+  "id": "windows-privesc",
+  "title": "Windows Privilege Escalation",
+  "subtitle": "Post-Exploitation",
+  "description": "Escalating from a low-privileged foothold to SYSTEM on Windows: token and potato attacks, service and registry misconfigurations, unquoted paths, DLL hijacking, scheduled tasks, UAC bypass, BITS abuse, credential hunting and theft, and hardening.",
+  "tags": [
+    "Privilege Escalation",
+    "Windows",
+    "SeImpersonate",
+    "Potato Attacks",
+    "Mimikatz",
+    "PowerUp",
+    "UAC Bypass"
+  ],
+  "icon": "28",
+  "color": "pink",
+  "topicCount": 23,
+  "category": "offensive"
+},
+{
+  "id": "re-fundamentals",
+  "title": "Reverse Engineering Fundamentals",
+  "subtitle": "Reverse Engineering",
+  "description": "The foundations of reverse engineering: disassembly vs decompilation, static vs dynamic analysis, ELF structure and sections, the command-line toolkit (file, strings, readelf, objdump, ldd), the major disassemblers and debuggers, and anti-RE basics.",
+  "tags": [
+    "Reverse Engineering",
+    "ELF",
+    "objdump",
+    "readelf",
+    "Disassembly",
+    "Ghidra",
+    "Static Analysis"
+  ],
+  "icon": "29",
+  "color": "red",
+  "topicCount": 17,
+  "category": "offensive"
+},
   //  DEFENSIVE SECTION START
   {
     "id": "security-assessment",
