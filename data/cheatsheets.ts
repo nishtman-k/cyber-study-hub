@@ -9,12 +9,7 @@
 // `color` is one of the four "Tropical Punch" accents.
 // ---------------------------------------------------------------------------
 
-export type CheatsheetColor =
-  | "orange"
-  | "pink"
-  | "yellow"
-  | "teal"
-  | "red"
+export type CheatsheetColor = "orange" | "pink" | "yellow" | "teal" | "red";
 
 /** Landing-page tab a cheatsheet belongs to. */
 export type CheatsheetCategory = "common-core" | "offensive" | "defensive";
@@ -51,29 +46,31 @@ export function categoryOf(sheet: Cheatsheet): CheatsheetCategory {
 
 export const CHEATSHEETS: Cheatsheet[] = [
   {
-    "id": "careers",
-    "title": "Career Pathways in Cybersecurity",
-    "subtitle": "Roles, skills & certs",
-    "description": "A map of cybersecurity careers — offensive vs defensive (red/blue/purple), roles (pentester, red team, consultant, bug bounty), progression to CISO, skills, languages, soft skills, and certifications (OSCP vs CEH vs GPEN).",
-    "tags": [
+    id: "careers",
+    title: "Career Pathways in Cybersecurity",
+    subtitle: "Roles, skills & certs",
+    description:
+      "A map of cybersecurity careers — offensive vs defensive (red/blue/purple), roles (pentester, red team, consultant, bug bounty), progression to CISO, skills, languages, soft skills, and certifications (OSCP vs CEH vs GPEN).",
+    tags: [
       "careers",
       "red team",
       "blue team",
       "OSCP",
       "CEH",
       "pentester",
-      "certifications"
+      "certifications",
     ],
-    "icon": "29",
-    "color": "orange",
-    "topicCount": 19
+    icon: "29",
+    color: "orange",
+    topicCount: 19,
   },
   {
-    "id": "secpolicy",
-    "title": "Security Policy Analysis",
-    "subtitle": "Policies & compliance",
-    "description": "Security policies explained — policy vs standard vs procedure vs guideline, policy types (AUP, access control, password, data classification, incident response), enforcement, exceptions, frameworks (NIST, ISO 27001, CIS), and compliance (GDPR, HIPAA, PCI-DSS).",
-    "tags": [
+    id: "secpolicy",
+    title: "Security Policy Analysis",
+    subtitle: "Policies & compliance",
+    description:
+      "Security policies explained — policy vs standard vs procedure vs guideline, policy types (AUP, access control, password, data classification, incident response), enforcement, exceptions, frameworks (NIST, ISO 27001, CIS), and compliance (GDPR, HIPAA, PCI-DSS).",
+    tags: [
       "policy",
       "compliance",
       "NIST",
@@ -81,70 +78,67 @@ export const CHEATSHEETS: Cheatsheet[] = [
       "GDPR",
       "HIPAA",
       "PCI-DSS",
-      "AUP"
+      "AUP",
     ],
-    "icon": "28",
-    "color": "teal",
-    "topicCount": 18
+    icon: "28",
+    color: "teal",
+    topicCount: 18,
   },
   {
-    "id": "threatmodel",
-    "title": "Threat Modeling Fundamentals",
-    "subtitle": "Think like an attacker",
-    "description": "Structured threat modeling — CIA triad, assets/threats/vulnerabilities/risks, trust boundaries, DFDs, STRIDE, DREAD, PASTA, risk scoring, prioritized threat lists, mitigations, and the tools.",
-    "tags": [
+    id: "threatmodel",
+    title: "Threat Modeling Fundamentals",
+    subtitle: "Think like an attacker",
+    description:
+      "Structured threat modeling — CIA triad, assets/threats/vulnerabilities/risks, trust boundaries, DFDs, STRIDE, DREAD, PASTA, risk scoring, prioritized threat lists, mitigations, and the tools.",
+    tags: [
       "threat modeling",
       "STRIDE",
       "DREAD",
       "PASTA",
       "CIA triad",
       "risk",
-      "DFD"
+      "DFD",
     ],
-    "icon": "27",
-    "color": "yellow",
-    "topicCount": 17
+    icon: "27",
+    color: "yellow",
+    topicCount: 17,
   },
   {
-    "id": "uploadvuln",
-    "title": "Upload Vulnerabilities",
-    "subtitle": "Unsafe file uploads",
-    "description": "How unrestricted file uploads are exploited and defended — web shells, MIME/content-type spoofing, client-side bypass, magic bytes, extension filtering, size limits, permissions, and non-executable upload dirs.",
-    "tags": [
+    id: "uploadvuln",
+    title: "Upload Vulnerabilities",
+    subtitle: "Unsafe file uploads",
+    description:
+      "How unrestricted file uploads are exploited and defended — web shells, MIME/content-type spoofing, client-side bypass, magic bytes, extension filtering, size limits, permissions, and non-executable upload dirs.",
+    tags: [
       "file upload",
       "web shell",
       "MIME",
       "content-type",
       "validation",
-      "bypass"
+      "bypass",
     ],
-    "icon": "26",
-    "color": "pink",
-    "topicCount": 16
+    icon: "26",
+    color: "pink",
+    topicCount: 16,
   },
   {
-    "id": "cvecwenvd",
-    "title": "CVE, CWE & NVD",
-    "subtitle": "Vulnerability identifiers",
-    "description": "How the global vulnerability ecosystem works — CVE identifiers and CNAs, CWE weakness types and the Top 25, the NVD with CVSS scoring, data feeds, searching, and tool integration.",
-    "tags": [
-      "CVE",
-      "CWE",
-      "NVD",
-      "CVSS",
-      "CNA",
-      "vulnerability management"
-    ],
-    "icon": "25",
-    "color": "orange",
-    "topicCount": 18
+    id: "cvecwenvd",
+    title: "CVE, CWE & NVD",
+    subtitle: "Vulnerability identifiers",
+    description:
+      "How the global vulnerability ecosystem works — CVE identifiers and CNAs, CWE weakness types and the Top 25, the NVD with CVSS scoring, data feeds, searching, and tool integration.",
+    tags: ["CVE", "CWE", "NVD", "CVSS", "CNA", "vulnerability management"],
+    icon: "25",
+    color: "orange",
+    topicCount: 18,
   },
   {
-    "id": "vulnread",
-    "title": "Understanding Vulnerabilities",
-    "subtitle": "Concepts & reading",
-    "description": "Conceptual guide to vulnerabilities — types (software/hardware/network/human), vulnerability vs threat vs risk, CVE/CVSS, vulnerability management, static vs dynamic analysis, injection, CSRF, patching, and responsible disclosure.",
-    "tags": [
+    id: "vulnread",
+    title: "Understanding Vulnerabilities",
+    subtitle: "Concepts & reading",
+    description:
+      "Conceptual guide to vulnerabilities — types (software/hardware/network/human), vulnerability vs threat vs risk, CVE/CVSS, vulnerability management, static vs dynamic analysis, injection, CSRF, patching, and responsible disclosure.",
+    tags: [
       "vulnerability",
       "CVE",
       "threat",
@@ -152,71 +146,67 @@ export const CHEATSHEETS: Cheatsheet[] = [
       "SAST",
       "DAST",
       "CSRF",
-      "patching"
+      "patching",
     ],
-    "icon": "24",
-    "color": "teal",
-    "topicCount": 14
+    icon: "24",
+    color: "teal",
+    topicCount: 14,
   },
   {
-    "id": "contentdisc",
-    "title": "Mastering Content Discovery",
-    "subtitle": "Finding hidden resources",
-    "description": "Discover hidden directories, files, and endpoints — directory brute-forcing, wordlists, fuzzing, and the full toolset: gobuster, feroxbuster, ffuf, dirb, DirBuster, Nikto, Burp, and ZAP.",
-    "tags": [
+    id: "contentdisc",
+    title: "Mastering Content Discovery",
+    subtitle: "Finding hidden resources",
+    description:
+      "Discover hidden directories, files, and endpoints — directory brute-forcing, wordlists, fuzzing, and the full toolset: gobuster, feroxbuster, ffuf, dirb, DirBuster, Nikto, Burp, and ZAP.",
+    tags: [
       "content discovery",
       "gobuster",
       "feroxbuster",
       "Nikto",
       "wordlists",
       "fuzzing",
-      "dirb"
+      "dirb",
     ],
-    "icon": "23",
-    "color": "yellow",
-    "topicCount": 17
+    icon: "23",
+    color: "yellow",
+    topicCount: 17,
   },
   {
-    "id": "burpsuite",
-    "title": "Burp Suite Fundamentals",
-    "subtitle": "Web app testing proxy",
-    "description": "The industry-standard web pentesting proxy — proxy setup, HTTPS cert config, components (Repeater, Intruder, Scanner, Spider), attack types, and result interpretation.",
-    "tags": [
+    id: "burpsuite",
+    title: "Burp Suite Fundamentals",
+    subtitle: "Web app testing proxy",
+    description:
+      "The industry-standard web pentesting proxy — proxy setup, HTTPS cert config, components (Repeater, Intruder, Scanner, Spider), attack types, and result interpretation.",
+    tags: [
       "Burp Suite",
       "proxy",
       "Repeater",
       "Intruder",
       "Scanner",
-      "web pentest"
+      "web pentest",
     ],
-    "icon": "22",
-    "color": "pink",
-    "topicCount": 15
+    icon: "22",
+    color: "pink",
+    topicCount: 15,
   },
   {
-    "id": "owasp",
-    "title": "OWASP Top 10",
-    "subtitle": "Web app security risks",
-    "description": "The 2021 OWASP Top 10 — broken access control, injection/XSS, crypto failures, misconfiguration/XXE, vulnerable components, auth failures, insecure deserialization, SSRF, and modern API risks.",
-    "tags": [
-      "OWASP",
-      "XSS",
-      "injection",
-      "SSRF",
-      "access control",
-      "API",
-      "XXE"
-    ],
-    "icon": "21",
-    "color": "orange",
-    "topicCount": 15
+    id: "owasp",
+    title: "OWASP Top 10",
+    subtitle: "Web app security risks",
+    description:
+      "The 2021 OWASP Top 10 — broken access control, injection/XSS, crypto failures, misconfiguration/XXE, vulnerable components, auth failures, insecure deserialization, SSRF, and modern API risks.",
+    tags: ["OWASP", "XSS", "injection", "SSRF", "access control", "API", "XXE"],
+    icon: "21",
+    color: "orange",
+    topicCount: 15,
   },
   {
-    "id": "nta",
-    "title": "Network Traffic Analysis",
-    "subtitle": "Wireshark & tcpdump",
-    "description": "Packet capture and analysis — tcpdump BPF filters, Wireshark dissection, capture vs display filters, following TCP streams, statistics tools, DNS analysis, anomaly detection, and SOC workflows.",
-    "tags": [
+    id: "nta",
+    title: "Network Traffic Analysis",
+    subtitle: "Wireshark & tcpdump",
+    description:
+      "Packet capture and analysis — tcpdump BPF filters, Wireshark dissection, capture vs display filters, following TCP streams, statistics tools, DNS analysis, anomaly detection, and SOC workflows.",
+    tags: [
       "Wireshark",
       "tcpdump",
       "PCAP",
@@ -224,135 +214,111 @@ export const CHEATSHEETS: Cheatsheet[] = [
       "SOC",
       "DNS",
       "C2",
-      "forensics"
+      "forensics",
     ],
-    "icon": "20",
-    "color": "teal",
-    "topicCount": 16
+    icon: "20",
+    color: "teal",
+    topicCount: 16,
   },
   {
-    "id": "python",
-    "title": "Python for Cybersecurity",
-    "subtitle": "Scripting & automation",
-    "description": "Python fundamentals, file I/O, the socket module, dnspython, requests, and BeautifulSoup — plus web scraping vs crawling, recursion, and quick cybersec recipes.",
-    "tags": [
+    id: "python",
+    title: "Python for Cybersecurity",
+    subtitle: "Scripting & automation",
+    description:
+      "Python fundamentals, file I/O, the socket module, dnspython, requests, and BeautifulSoup — plus web scraping vs crawling, recursion, and quick cybersec recipes.",
+    tags: [
       "Python",
       "socket",
       "requests",
       "dnspython",
       "BeautifulSoup",
-      "scraping"
+      "scraping",
     ],
-    "icon": "19",
-    "color": "yellow",
-    "topicCount": 14
+    icon: "19",
+    color: "yellow",
+    topicCount: 14,
   },
   {
-    "id": "aircrack",
-    "title": "Aircrack-ng Suite",
-    "subtitle": "Wi-Fi auditing",
-    "description": "Full wireless audit workflow — monitor mode, airodump-ng captures, deauth attacks, WPA2 handshake cracking with aircrack-ng and hashcat, PMKID, WPS attacks.",
-    "tags": [
-      "aircrack-ng",
-      "airodump",
-      "WPA2",
-      "Wi-Fi",
-      "deauth",
-      "PMKID"
-    ],
-    "icon": "18",
-    "color": "pink",
-    "topicCount": 13
+    id: "aircrack",
+    title: "Aircrack-ng Suite",
+    subtitle: "Wi-Fi auditing",
+    description:
+      "Full wireless audit workflow — monitor mode, airodump-ng captures, deauth attacks, WPA2 handshake cracking with aircrack-ng and hashcat, PMKID, WPS attacks.",
+    tags: ["aircrack-ng", "airodump", "WPA2", "Wi-Fi", "deauth", "PMKID"],
+    icon: "18",
+    color: "pink",
+    topicCount: 13,
   },
   {
-    "id": "wpscan",
-    "title": "WPScan",
-    "subtitle": "WordPress security",
-    "description": "WordPress version + plugin + theme vulnerabilities, user enumeration, password brute-force, stealth options, API token usage, and WP hardening checklist.",
-    "tags": [
-      "WPScan",
-      "WordPress",
-      "CVE",
-      "plugins",
-      "enumeration"
-    ],
-    "icon": "17",
-    "color": "orange",
-    "topicCount": 15
+    id: "wpscan",
+    title: "WPScan",
+    subtitle: "WordPress security",
+    description:
+      "WordPress version + plugin + theme vulnerabilities, user enumeration, password brute-force, stealth options, API token usage, and WP hardening checklist.",
+    tags: ["WPScan", "WordPress", "CVE", "plugins", "enumeration"],
+    icon: "17",
+    color: "orange",
+    topicCount: 15,
   },
   {
-    "id": "sqlmap",
-    "title": "SQLMap Deep Dive",
-    "subtitle": "Automated SQL injection",
-    "description": "Detection techniques (boolean/error/union/time), database enumeration, dumping, WAF bypass with tamper scripts, file system access, OS shell, and full workflow examples.",
-    "tags": [
-      "sqlmap",
-      "SQLi",
-      "MySQL",
-      "tamper",
-      "dump",
-      "WAF bypass"
-    ],
-    "icon": "16",
-    "color": "teal",
-    "topicCount": 15
+    id: "sqlmap",
+    title: "SQLMap Deep Dive",
+    subtitle: "Automated SQL injection",
+    description:
+      "Detection techniques (boolean/error/union/time), database enumeration, dumping, WAF bypass with tamper scripts, file system access, OS shell, and full workflow examples.",
+    tags: ["sqlmap", "SQLi", "MySQL", "tamper", "dump", "WAF bypass"],
+    icon: "16",
+    color: "teal",
+    topicCount: 15,
   },
   {
-    "id": "gobuster",
-    "title": "Gobuster",
-    "subtitle": "Directory & DNS brute-force",
-    "description": "Directory, DNS, vhost, and S3 bucket discovery — modes, filtering by length/status, authenticated scans, extension fuzzing, and comparison with ffuf.",
-    "tags": [
-      "gobuster",
-      "directories",
-      "subdomains",
-      "vhost",
-      "fuzzing"
-    ],
-    "icon": "15",
-    "color": "yellow",
-    "topicCount": 12
+    id: "gobuster",
+    title: "Gobuster",
+    subtitle: "Directory & DNS brute-force",
+    description:
+      "Directory, DNS, vhost, and S3 bucket discovery — modes, filtering by length/status, authenticated scans, extension fuzzing, and comparison with ffuf.",
+    tags: ["gobuster", "directories", "subdomains", "vhost", "fuzzing"],
+    icon: "15",
+    color: "yellow",
+    topicCount: 12,
   },
   {
-    "id": "nmap",
-    "title": "Nmap — Network Mapper",
-    "subtitle": "Port scanner deep dive",
-    "description": "Complete nmap reference — host discovery, all scan types (SYN/UDP/ACK/etc), service & OS detection, NSE scripts, timing, evasion, output formats, and practical recipes.",
-    "tags": [
-      "nmap",
-      "scanning",
-      "NSE",
-      "ports",
-      "fingerprinting"
-    ],
-    "icon": "14",
-    "color": "pink",
-    "topicCount": 21
+    id: "nmap",
+    title: "Nmap — Network Mapper",
+    subtitle: "Port scanner deep dive",
+    description:
+      "Complete nmap reference — host discovery, all scan types (SYN/UDP/ACK/etc), service & OS detection, NSE scripts, timing, evasion, output formats, and practical recipes.",
+    tags: ["nmap", "scanning", "NSE", "ports", "fingerprinting"],
+    icon: "14",
+    color: "pink",
+    topicCount: 21,
   },
   {
-    "id": "active",
-    "title": "Active Reconnaissance",
-    "subtitle": "Scanning & enumeration",
-    "description": "Host discovery, port scanning with nmap, OS fingerprinting, banner grabbing, DNS enumeration, SMTP user enumeration, web tech fingerprinting (Wappalyzer), and sqlmap for SQL injection.",
-    "tags": [
+    id: "active",
+    title: "Active Reconnaissance",
+    subtitle: "Scanning & enumeration",
+    description:
+      "Host discovery, port scanning with nmap, OS fingerprinting, banner grabbing, DNS enumeration, SMTP user enumeration, web tech fingerprinting (Wappalyzer), and sqlmap for SQL injection.",
+    tags: [
       "nmap",
       "sqlmap",
       "Wappalyzer",
       "DNS",
       "SMTP",
       "OS fingerprint",
-      "recon"
+      "recon",
     ],
-    "icon": "13",
-    "color": "orange",
-    "topicCount": 14
+    icon: "13",
+    color: "orange",
+    topicCount: 14,
   },
   {
-    "id": "passive",
-    "title": "Passive Reconnaissance",
-    "subtitle": "OSINT & footprinting",
-    "description": "Gather info without touching the target — WHOIS, DNS records, dig/nslookup, subdomain enumeration with subfinder & crt.sh, DNSDumpster, Shodan, Google dorking, and OSINT workflows.",
-    "tags": [
+    id: "passive",
+    title: "Passive Reconnaissance",
+    subtitle: "OSINT & footprinting",
+    description:
+      "Gather info without touching the target — WHOIS, DNS records, dig/nslookup, subdomain enumeration with subfinder & crt.sh, DNSDumpster, Shodan, Google dorking, and OSINT workflows.",
+    tags: [
       "WHOIS",
       "DNS",
       "dig",
@@ -360,18 +326,19 @@ export const CHEATSHEETS: Cheatsheet[] = [
       "Shodan",
       "OSINT",
       "crt.sh",
-      "dorking"
+      "dorking",
     ],
-    "icon": "12",
-    "color": "teal",
-    "topicCount": 18
+    icon: "12",
+    color: "teal",
+    topicCount: 18,
   },
   {
-    "id": "netproto",
-    "title": "Network Protocols: Auditing & Securing",
-    "subtitle": "Hardening & audits",
-    "description": "SSL/TLS, SSH, IPSec, WireGuard, NFS, SNMP, SMTP enumeration, iptables firewall rules, SSH hardening, and auditing tools (lynis, nmap, hping3, showmount).",
-    "tags": [
+    id: "netproto",
+    title: "Network Protocols: Auditing & Securing",
+    subtitle: "Hardening & audits",
+    description:
+      "SSL/TLS, SSH, IPSec, WireGuard, NFS, SNMP, SMTP enumeration, iptables firewall rules, SSH hardening, and auditing tools (lynis, nmap, hping3, showmount).",
+    tags: [
       "TLS",
       "SSH",
       "IPSec",
@@ -379,268 +346,194 @@ export const CHEATSHEETS: Cheatsheet[] = [
       "iptables",
       "lynis",
       "SNMP",
-      "NFS"
+      "NFS",
     ],
-    "icon": "11",
-    "color": "yellow",
-    "topicCount": 18
+    icon: "11",
+    color: "yellow",
+    topicCount: 18,
   },
   {
-    "id": "email",
-    "title": "Email Security Protocols",
-    "subtitle": "SPF, DKIM & DMARC",
-    "description": "Email authentication with SPF, DKIM, and DMARC — record syntax, alignment, policy deployment, key rotation, troubleshooting, and how all three work together.",
-    "tags": [
-      "SPF",
-      "DKIM",
-      "DMARC",
-      "DNS",
-      "email",
-      "phishing",
-      "anti-spoofing"
-    ],
-    "icon": "10",
-    "color": "pink",
-    "topicCount": 14
+    id: "email",
+    title: "Email Security Protocols",
+    subtitle: "SPF, DKIM & DMARC",
+    description:
+      "Email authentication with SPF, DKIM, and DMARC — record syntax, alignment, policy deployment, key rotation, troubleshooting, and how all three work together.",
+    tags: ["SPF", "DKIM", "DMARC", "DNS", "email", "phishing", "anti-spoofing"],
+    icon: "10",
+    color: "pink",
+    topicCount: 14,
   },
   {
-    "id": "ffuf",
-    "title": "FFUF & SecLists Tools",
-    "subtitle": "Web fuzzing",
-    "description": "ffuf web fuzzer with SecLists wordlists — directory discovery, subdomain enumeration, login bruteforce, JSON API fuzzing, parameter discovery, and filtering strategies.",
-    "tags": [
-      "ffuf",
-      "SecLists",
-      "fuzzing",
-      "bruteforce",
-      "subdomains",
-      "FUZZ"
-    ],
-    "icon": "09",
-    "color": "orange",
-    "topicCount": 13
+    id: "ffuf",
+    title: "FFUF & SecLists Tools",
+    subtitle: "Web fuzzing",
+    description:
+      "ffuf web fuzzer with SecLists wordlists — directory discovery, subdomain enumeration, login bruteforce, JSON API fuzzing, parameter discovery, and filtering strategies.",
+    tags: ["ffuf", "SecLists", "fuzzing", "bruteforce", "subdomains", "FUZZ"],
+    icon: "09",
+    color: "orange",
+    topicCount: 13,
   },
   {
-    "id": "auth",
-    "title": "Authentication vs Authorization",
-    "subtitle": "Identity & access",
-    "description": "AuthN vs AuthZ, three authentication factors, MFA, RBAC vs ABAC, authorization components, 401 vs 403, OAuth/SAML/JWT, and OWASP access control.",
-    "tags": [
-      "AuthN",
-      "AuthZ",
-      "MFA",
-      "RBAC",
-      "ABAC",
-      "OAuth",
-      "JWT",
-      "401/403"
-    ],
-    "icon": "08",
-    "color": "teal",
-    "topicCount": 18
+    id: "auth",
+    title: "Authentication vs Authorization",
+    subtitle: "Identity & access",
+    description:
+      "AuthN vs AuthZ, three authentication factors, MFA, RBAC vs ABAC, authorization components, 401 vs 403, OAuth/SAML/JWT, and OWASP access control.",
+    tags: ["AuthN", "AuthZ", "MFA", "RBAC", "ABAC", "OAuth", "JWT", "401/403"],
+    icon: "08",
+    color: "teal",
+    topicCount: 18,
   },
   {
-    "id": "crypto",
-    "title": "Cryptography Basics",
-    "subtitle": "Encryption & cracking",
-    "description": "Symmetric & asymmetric encryption, hashing (SHA family), OpenSSL toolkit, password cracking with John the Ripper and hashcat, and defensive cryptography.",
-    "tags": [
-      "AES",
-      "RSA",
-      "SHA-256",
-      "OpenSSL",
-      "John",
-      "hashcat",
-      "bcrypt"
-    ],
-    "icon": "07",
-    "color": "yellow",
-    "topicCount": 15
+    id: "crypto",
+    title: "Cryptography Basics",
+    subtitle: "Encryption & cracking",
+    description:
+      "Symmetric & asymmetric encryption, hashing (SHA family), OpenSSL toolkit, password cracking with John the Ripper and hashcat, and defensive cryptography.",
+    tags: ["AES", "RSA", "SHA-256", "OpenSSL", "John", "hashcat", "bcrypt"],
+    icon: "07",
+    color: "yellow",
+    topicCount: 15,
   },
   {
-    "id": "networking",
-    "title": "Networking Foundations",
-    "subtitle": "Network architecture",
-    "description": "OSI/TCP-IP models, subnetting, DNS, DHCP, NAT, routing, VLANs, Wi-Fi security, firewalls, IDS/IPS, port scanning, and Zero Trust architecture.",
-    "tags": [
-      "OSI",
-      "TCP/IP",
-      "DNS",
-      "DHCP",
-      "VLAN",
-      "BGP",
-      "nmap",
-      "subnetting"
-    ],
-    "icon": "06",
-    "color": "pink",
-    "topicCount": 33
+    id: "networking",
+    title: "Networking Foundations",
+    subtitle: "Network architecture",
+    description:
+      "OSI/TCP-IP models, subnetting, DNS, DHCP, NAT, routing, VLANs, Wi-Fi security, firewalls, IDS/IPS, port scanning, and Zero Trust architecture.",
+    tags: ["OSI", "TCP/IP", "DNS", "DHCP", "VLAN", "BGP", "nmap", "subnetting"],
+    icon: "06",
+    color: "pink",
+    topicCount: 33,
   },
   {
-    "id": "forensics",
-    "title": "Digital Forensics & Ethics",
-    "subtitle": "Investigations",
-    "description": "Digital forensics ethics, ACPO principles, chain of custody, evidence handling, forensic methodologies, SIEM, and Linux forensic analysis.",
-    "tags": [
-      "ACPO",
-      "chain of custody",
-      "Autopsy",
+    id: "forensics",
+    title: "Digital Forensics & Ethics",
+    subtitle: "Investigations",
+    description:
+      "Digital forensics ethics, ACPO principles, chain of custody, evidence handling, forensic methodologies, SIEM, and Linux forensic analysis.",
+    tags: ["ACPO", "chain of custody", "Autopsy", "SIEM", "NIST", "evidence"],
+    icon: "05",
+    color: "orange",
+    topicCount: 19,
+  },
+  {
+    id: "mac",
+    title: "MAC, SELinux & AppArmor",
+    subtitle: "Advanced defense",
+    description:
+      "Mandatory Access Control concepts, SELinux labels and policy, AppArmor profiles, capabilities, and troubleshooting audit logs.",
+    tags: ["SELinux", "AppArmor", "semanage", "MAC", "capabilities"],
+    icon: "04",
+    color: "teal",
+    topicCount: 18,
+  },
+  {
+    id: "permissions",
+    title: "Permissions, SUID & SGID",
+    subtitle: "Access control",
+    description:
+      "Master file permissions, ownership, special bits (SUID/SGID/sticky), umask, users & groups, and how to audit it all.",
+    tags: ["chmod", "chown", "SUID", "umask", "sudo", "useradd"],
+    icon: "03",
+    color: "yellow",
+    topicCount: 14,
+  },
+  {
+    id: "security",
+    title: "Linux Security Complete",
+    subtitle: "Comprehensive guide",
+    description:
+      "Deep dive into Kali Linux, the shell, permissions, monitoring, network analysis with nmap/tcpdump/lynis, firewalls, and SCP workflows.",
+    tags: ["Kali", "nmap", "tcpdump", "iptables", "lynis", "ss"],
+    icon: "02",
+    color: "pink",
+    topicCount: 15,
+  },
+  {
+    id: "basics",
+    title: "Linux Security Basics",
+    subtitle: "Fundamentals",
+    description:
+      "Linux fundamentals, the file system hierarchy, monitoring system activity, network basics, and your first firewall.",
+    tags: ["Linux", "FHS", "ps", "netstat", "ufw", "scp"],
+    icon: "01",
+    color: "orange",
+    topicCount: 13,
+  },
+  //  OFFENSIVE SECTION START
+  {
+    id: "offensive-vs-defensive",
+    title: "Offensive vs Defensive Security",
+    subtitle: "Red, Blue & Purple Teams",
+    description:
+      "The two sides of cybersecurity: how red, blue, and purple teams work together, plus pentesting, the cyber kill chain, SIEM, threat hunting, and incident response.",
+    tags: [
+      "Red Team",
+      "Blue Team",
+      "Purple Team",
+      "Pentesting",
+      "Kill Chain",
       "SIEM",
-      "NIST",
-      "evidence"
+      "Incident Response",
     ],
-    "icon": "05",
-    "color": "orange",
-    "topicCount": 19
+    icon: "01",
+    color: "red",
+    topicCount: 15,
+    category: "offensive",
   },
   {
-    "id": "mac",
-    "title": "MAC, SELinux & AppArmor",
-    "subtitle": "Advanced defense",
-    "description": "Mandatory Access Control concepts, SELinux labels and policy, AppArmor profiles, capabilities, and troubleshooting audit logs.",
-    "tags": [
-      "SELinux",
-      "AppArmor",
-      "semanage",
-      "MAC",
-      "capabilities"
-    ],
-    "icon": "04",
-    "color": "teal",
-    "topicCount": 18
+    id: "cvss-scoring",
+    title: "CVSS Scoring",
+    subtitle: "Reading severity scores",
+    description:
+      "How CVSS rates vulnerability severity — the base, temporal, and environmental metric groups, reading a vector string, the 0–10 severity bands, and how CVSS ties into CVE and NVD when prioritizing.",
+    tags: ["CVSS", "CVE", "NVD", "vector string", "severity", "risk"],
+    icon: "02",
+    color: "teal",
+    topicCount: 10,
+    category: "offensive",
   },
   {
-    "id": "permissions",
-    "title": "Permissions, SUID & SGID",
-    "subtitle": "Access control",
-    "description": "Master file permissions, ownership, special bits (SUID/SGID/sticky), umask, users & groups, and how to audit it all.",
-    "tags": [
-      "chmod",
-      "chown",
-      "SUID",
-      "umask",
-      "sudo",
-      "useradd"
-    ],
-    "icon": "03",
-    "color": "yellow",
-    "topicCount": 14
+    id: "nessus",
+    title: "Nessus",
+    subtitle: "Vulnerability scanner",
+    description:
+      "The Nessus vulnerability scanner — installing Essentials on Kali, starting the service, running a scan, reading results and CVSS scores, exporting reports, and where it fits between discovery and exploitation.",
+    tags: ["Nessus", "vuln scanner", "CVE", "CVSS", "Kali", "scanning"],
+    icon: "03",
+    color: "orange",
+    topicCount: 20,
+    category: "offensive",
   },
   {
-    "id": "security",
-    "title": "Linux Security Complete",
-    "subtitle": "Comprehensive guide",
-    "description": "Deep dive into Kali Linux, the shell, permissions, monitoring, network analysis with nmap/tcpdump/lynis, firewalls, and SCP workflows.",
-    "tags": [
-      "Kali",
-      "nmap",
-      "tcpdump",
-      "iptables",
-      "lynis",
-      "ss"
-    ],
-    "icon": "02",
-    "color": "pink",
-    "topicCount": 15
-  },
-  {
-    "id": "basics",
-    "title": "Linux Security Basics",
-    "subtitle": "Fundamentals",
-    "description": "Linux fundamentals, the file system hierarchy, monitoring system activity, network basics, and your first firewall.",
-    "tags": [
-      "Linux",
-      "FHS",
-      "ps",
-      "netstat",
-      "ufw",
-      "scp"
-    ],
-    "icon": "01",
-    "color": "orange",
-    "topicCount": 13
-  },
-   //  OFFENSIVE SECTION START
-  {
-  "id": "offensive-vs-defensive",
-  "title": "Offensive vs Defensive Security",
-  "subtitle": "Red, Blue & Purple Teams",
-  "description": "The two sides of cybersecurity: how red, blue, and purple teams work together, plus pentesting, the cyber kill chain, SIEM, threat hunting, and incident response.",
-  "tags": [
-    "Red Team",
-    "Blue Team",
-    "Purple Team",
-    "Pentesting",
-    "Kill Chain",
-    "SIEM",
-    "Incident Response"
-  ],
-  "icon": "01",
-  "color": "red",
-  "topicCount": 15,
-  "category": "offensive"
-  },
-  {
-    "id": "cvss-scoring",
-    "title": "CVSS Scoring",
-    "subtitle": "Reading severity scores",
-    "description": "How CVSS rates vulnerability severity — the base, temporal, and environmental metric groups, reading a vector string, the 0–10 severity bands, and how CVSS ties into CVE and NVD when prioritizing.",
-    "tags": [
-      "CVSS",
-      "CVE",
-      "NVD",
-      "vector string",
-      "severity",
-      "risk"
-    ],
-    "icon": "02",
-    "color": "teal",
-    "topicCount": 10,
-    "category": "offensive"
-  },
-  {
-    "id": "nessus",
-    "title": "Nessus",
-    "subtitle": "Vulnerability scanner",
-    "description": "The Nessus vulnerability scanner — installing Essentials on Kali, starting the service, running a scan, reading results and CVSS scores, exporting reports, and where it fits between discovery and exploitation.",
-    "tags": [
-      "Nessus",
-      "vuln scanner",
-      "CVE",
-      "CVSS",
-      "Kali",
-      "scanning"
-    ],
-    "icon": "03",
-    "color": "orange",
-    "topicCount": 20,
-    "category": "offensive"
-  },
-  {
-  "id": "metasploit",
-    "title": "Metasploit Basics",
-    "subtitle": "Exploitation Framework",
-    "description": "The Metasploit workflow end to end: PostgreSQL backend and workspaces, filtered module search, exploits and auxiliary scanners, payload generation with msfvenom, session and Meterpreter handling, and documenting findings with notes and loot.",
-    "tags": [
+    id: "metasploit",
+    title: "Metasploit Basics",
+    subtitle: "Exploitation Framework",
+    description:
+      "The Metasploit workflow end to end: PostgreSQL backend and workspaces, filtered module search, exploits and auxiliary scanners, payload generation with msfvenom, session and Meterpreter handling, and documenting findings with notes and loot.",
+    tags: [
       "Metasploit",
       "msfconsole",
       "msfvenom",
       "PostgreSQL",
       "Meterpreter",
       "Auxiliary",
-      "Payloads"
+      "Payloads",
     ],
-    "icon": "04",
-    "color": "pink",
-    "topicCount": 11,
-    "category": "offensive"
+    icon: "04",
+    color: "pink",
+    topicCount: 11,
+    category: "offensive",
   },
   {
-    "id": "risk-assessment",
-    "title": "Risk Assessment & Mitigation",
-    "subtitle": "From findings to decisions",
-    "description": "Turning raw findings into business decisions — the components of risk, inherent vs residual, appetite vs tolerance, qualitative/quantitative methods (SLE, ARO, ALE, ROSI), the risk matrix, CVSS vs EPSS vs KEV, DREAD, FAIR loss forms, the four T's of treatment, remediation SLAs, breach economics, and the Equifax and Colonial Pipeline case studies.",
-    "tags": [
+    id: "risk-assessment",
+    title: "Risk Assessment & Mitigation",
+    subtitle: "From findings to decisions",
+    description:
+      "Turning raw findings into business decisions — the components of risk, inherent vs residual, appetite vs tolerance, qualitative/quantitative methods (SLE, ARO, ALE, ROSI), the risk matrix, CVSS vs EPSS vs KEV, DREAD, FAIR loss forms, the four T's of treatment, remediation SLAs, breach economics, and the Equifax and Colonial Pipeline case studies.",
+    tags: [
       "risk",
       "risk matrix",
       "ALE",
@@ -650,19 +543,20 @@ export const CHEATSHEETS: Cheatsheet[] = [
       "DREAD",
       "FAIR",
       "NIST 800-30",
-      "breach cost"
+      "breach cost",
     ],
-    "icon": "05",
-    "color": "yellow",
-    "topicCount": 24,
-    "category": "offensive"
+    icon: "05",
+    color: "yellow",
+    topicCount: 24,
+    category: "offensive",
   },
   {
-    "id": "osint",
-    "title": "OSINT Profile Builder",
-    "subtitle": "Open-source intelligence",
-    "description": "Collecting, validating, and reporting open-source intelligence — the intelligence cycle, legal and ethical boundaries, target profiling, Google dorking, username and email pivots, WHOIS/DNS/certificate transparency, metadata extraction, confidence levels, ATT&CK reconnaissance, and defensive OSINT.",
-    "tags": [
+    id: "osint",
+    title: "OSINT Profile Builder",
+    subtitle: "Open-source intelligence",
+    description:
+      "Collecting, validating, and reporting open-source intelligence — the intelligence cycle, legal and ethical boundaries, target profiling, Google dorking, username and email pivots, WHOIS/DNS/certificate transparency, metadata extraction, confidence levels, ATT&CK reconnaissance, and defensive OSINT.",
+    tags: [
       "OSINT",
       "recon",
       "Google dorks",
@@ -670,19 +564,20 @@ export const CHEATSHEETS: Cheatsheet[] = [
       "Sherlock",
       "Shodan",
       "ExifTool",
-      "Maltego"
+      "Maltego",
     ],
-    "icon": "06",
-    "color": "teal",
-    "topicCount": 16,
-    "category": "offensive"
+    icon: "06",
+    color: "teal",
+    topicCount: 16,
+    category: "offensive",
   },
   {
-    "id": "web-fundamentals",
-    "title": "Web Fundamentals",
-    "subtitle": "How the web works",
-    "description": "The web end to end for security work — the request lifecycle, HTTP methods/status codes/headers, cookie attributes, Web 1.0 to 3.0, PWAs and service workers, REST and API flaws (BOLA, mass assignment), same-origin policy and CORS, sessions vs JWTs, the OWASP Top 10:2025, SAST/DAST/SCA, and bug bounty programs.",
-    "tags": [
+    id: "web-fundamentals",
+    title: "Web Fundamentals",
+    subtitle: "How the web works",
+    description:
+      "The web end to end for security work — the request lifecycle, HTTP methods/status codes/headers, cookie attributes, Web 1.0 to 3.0, PWAs and service workers, REST and API flaws (BOLA, mass assignment), same-origin policy and CORS, sessions vs JWTs, the OWASP Top 10:2025, SAST/DAST/SCA, and bug bounty programs.",
+    tags: [
       "HTTP",
       "OWASP Top 10",
       "CORS",
@@ -690,19 +585,20 @@ export const CHEATSHEETS: Cheatsheet[] = [
       "JWT",
       "XSS",
       "REST API",
-      "bug bounty"
+      "bug bounty",
     ],
-    "icon": "07",
-    "color": "orange",
-    "topicCount": 17,
-    "category": "offensive"
+    icon: "07",
+    color: "orange",
+    topicCount: 17,
+    category: "offensive",
   },
   {
-    "id": "passive-recon",
-    "title": "Passive Recon Tools",
-    "subtitle": "Recon without a packet",
-    "description": "Mapping a target's footprint without sending traffic to it — a stage-by-stage workflow with primary tools and fallbacks: WHOIS and ownership, DNS intelligence, certificate-transparency subdomains, Shodan/Censys and ASN mapping, theHarvester and breach exposure, dorking and metadata, and correlation in Maltego.",
-    "tags": [
+    id: "passive-recon",
+    title: "Passive Recon Tools",
+    subtitle: "Recon without a packet",
+    description:
+      "Mapping a target's footprint without sending traffic to it — a stage-by-stage workflow with primary tools and fallbacks: WHOIS and ownership, DNS intelligence, certificate-transparency subdomains, Shodan/Censys and ASN mapping, theHarvester and breach exposure, dorking and metadata, and correlation in Maltego.",
+    tags: [
       "passive recon",
       "OSINT",
       "whois",
@@ -710,19 +606,20 @@ export const CHEATSHEETS: Cheatsheet[] = [
       "Shodan",
       "theHarvester",
       "subfinder",
-      "Maltego"
+      "Maltego",
     ],
-    "icon": "08",
-    "color": "teal",
-    "topicCount": 14,
-    "category": "offensive"
+    icon: "08",
+    color: "teal",
+    topicCount: 14,
+    category: "offensive",
   },
   {
-    "id": "active-recon",
-    "title": "Active Recon Tools",
-    "subtitle": "Scanning & enumeration",
-    "description": "Directly enumerating hosts, ports, services, and content under authorization — a stage-by-stage workflow with primary tools and fallbacks: nmap host discovery and port scanning, service/version detection, gobuster/nikto web enumeration, DNS zone transfer and brute-force, and nmap/nuclei vulnerability identification.",
-    "tags": [
+    id: "active-recon",
+    title: "Active Recon Tools",
+    subtitle: "Scanning & enumeration",
+    description:
+      "Directly enumerating hosts, ports, services, and content under authorization — a stage-by-stage workflow with primary tools and fallbacks: nmap host discovery and port scanning, service/version detection, gobuster/nikto web enumeration, DNS zone transfer and brute-force, and nmap/nuclei vulnerability identification.",
+    tags: [
       "active recon",
       "nmap",
       "masscan",
@@ -730,38 +627,40 @@ export const CHEATSHEETS: Cheatsheet[] = [
       "nikto",
       "nuclei",
       "port scan",
-      "authorization"
+      "authorization",
     ],
-    "icon": "09",
-    "color": "red",
-    "topicCount": 14,
-    "category": "offensive"
+    icon: "09",
+    color: "red",
+    topicCount: 14,
+    category: "offensive",
   },
   {
-    "id": "advanced-nmap",
-    "title": "Advanced Network Enumeration with Nmap",
-    "subtitle": "Scan Mechanics & NSE",
-    "description": "The mechanics behind Nmap's advanced scans: how SYN, Connect, ACK, FIN, NULL, and Xmas scans work at the packet level, how they map firewalls and evade IDS, how the Nmap Scripting Engine and NSEDoc work, and how to correlate findings with known vulnerabilities.",
-    "tags": [
+    id: "advanced-nmap",
+    title: "Advanced Network Enumeration with Nmap",
+    subtitle: "Scan Mechanics & NSE",
+    description:
+      "The mechanics behind Nmap's advanced scans: how SYN, Connect, ACK, FIN, NULL, and Xmas scans work at the packet level, how they map firewalls and evade IDS, how the Nmap Scripting Engine and NSEDoc work, and how to correlate findings with known vulnerabilities.",
+    tags: [
       "Nmap",
       "NSE",
       "Port Scanning",
       "SYN Scan",
       "Firewall",
       "Enumeration",
-      "Stealth"
+      "Stealth",
     ],
-    "icon": "10",
-    "color": "yellow",
-    "topicCount": 20,
-    "category": "offensive"
+    icon: "10",
+    color: "yellow",
+    topicCount: 20,
+    category: "offensive",
   },
   {
-    "id": "advanced-shell-bash",
-    "title": "Advanced Shell & Bash",
-    "subtitle": "Shells, scripting & bypasses",
-    "description": "A deep shell reference across Linux and Windows — how Bash (text streams) and PowerShell (object pipeline) work, Bash basics, redirection, expansions, scripting and test operators, CMD vs PowerShell, cross-platform pwsh, automation, and the offensive techniques for bypassing command restrictions and escaping restricted shells.",
-    "tags": [
+    id: "advanced-shell-bash",
+    title: "Advanced Shell & Bash",
+    subtitle: "Shells, scripting & bypasses",
+    description:
+      "A deep shell reference across Linux and Windows — how Bash (text streams) and PowerShell (object pipeline) work, Bash basics, redirection, expansions, scripting and test operators, CMD vs PowerShell, cross-platform pwsh, automation, and the offensive techniques for bypassing command restrictions and escaping restricted shells.",
+    tags: [
       "Bash",
       "PowerShell",
       "scripting",
@@ -769,19 +668,20 @@ export const CHEATSHEETS: Cheatsheet[] = [
       "GTFOBins",
       "command injection",
       "globbing",
-      "pwsh"
+      "pwsh",
     ],
-    "icon": "11",
-    "color": "orange",
-    "topicCount": 20,
-    "category": "offensive"
+    icon: "11",
+    color: "orange",
+    topicCount: 20,
+    category: "offensive",
   },
   {
-    "id": "sql-nosql-injection",
-    "title": "SQL & NoSQL Injection",
-    "subtitle": "Injection attacks & defenses",
-    "description": "The full injection attack chain and its defenses — finding injection points, in-band and UNION-based extraction, information_schema, blind (boolean and time-based) and second-order SQLi, NoSQL/MongoDB operator injection and $regex enumeration, and the code-level fixes: parameterized queries, validation, ORMs, stored procedures, and escaping.",
-    "tags": [
+    id: "sql-nosql-injection",
+    title: "SQL & NoSQL Injection",
+    subtitle: "Injection attacks & defenses",
+    description:
+      "The full injection attack chain and its defenses — finding injection points, in-band and UNION-based extraction, information_schema, blind (boolean and time-based) and second-order SQLi, NoSQL/MongoDB operator injection and $regex enumeration, and the code-level fixes: parameterized queries, validation, ORMs, stored procedures, and escaping.",
+    tags: [
       "SQLi",
       "NoSQL",
       "MongoDB",
@@ -789,266 +689,280 @@ export const CHEATSHEETS: Cheatsheet[] = [
       "blind injection",
       "CWE-89",
       "parameterized queries",
-      "ORM"
+      "ORM",
     ],
-    "icon": "12",
-    "color": "teal",
-    "topicCount": 21,
-    "category": "offensive"
+    icon: "12",
+    color: "teal",
+    topicCount: 21,
+    category: "offensive",
   },
   {
-    "id": "xss",
-    "title": "Cross-Site Scripting (XSS)",
-    "subtitle": "Client-side exploitation",
-    "description": "Client-side exploitation through XSS: reflected, stored, and DOM-based families, injection contexts and breakouts, sources and sinks, postMessage and eval, filter and encoding evasion, Content Security Policy and its bypasses, plus the output-encoding defenses that actually stop it.",
-    "tags": [
+    id: "xss",
+    title: "Cross-Site Scripting (XSS)",
+    subtitle: "Client-side exploitation",
+    description:
+      "Client-side exploitation through XSS: reflected, stored, and DOM-based families, injection contexts and breakouts, sources and sinks, postMessage and eval, filter and encoding evasion, Content Security Policy and its bypasses, plus the output-encoding defenses that actually stop it.",
+    tags: [
       "XSS",
       "DOM XSS",
       "CSP",
       "filter bypass",
       "JavaScript",
       "OWASP",
-      "client-side"
+      "client-side",
     ],
-    "icon": "13",
-    "color": "pink",
-    "topicCount": 27,
-    "category": "offensive"
+    icon: "13",
+    color: "pink",
+    topicCount: 27,
+    category: "offensive",
   },
   {
-    "id": "idor",
-    "title": "Insecure Direct Object Reference (IDOR)",
-    "subtitle": "Broken Access Control",
-    "description": "Broken object-level authorization: how IDOR works and differs from injection, its types and escalation directions, a hands-on detection methodology using two accounts with Burp Suite, curl, and ffuf, plus the ownership checks and indirect references that prevent it.",
-    "tags": [
+    id: "idor",
+    title: "Insecure Direct Object Reference (IDOR)",
+    subtitle: "Broken Access Control",
+    description:
+      "Broken object-level authorization: how IDOR works and differs from injection, its types and escalation directions, a hands-on detection methodology using two accounts with Burp Suite, curl, and ffuf, plus the ownership checks and indirect references that prevent it.",
+    tags: [
       "IDOR",
       "Access Control",
       "BOLA",
       "Burp Suite",
       "Authorization",
       "OWASP",
-      "API Security"
+      "API Security",
     ],
-    "icon": "14",
-    "color": "yellow",
-    "topicCount": 22,
-    "category": "offensive"
+    icon: "14",
+    color: "yellow",
+    topicCount: 22,
+    category: "offensive",
   },
   {
-    "id": "ssrf",
-    "title": "Server-Side Request Forgery (SSRF)",
-    "subtitle": "Internal Pivoting",
-    "description": "Forcing a server to make attacker-controlled requests: in-band and blind SSRF, internal network enumeration, cloud metadata and IMDSv2, protocol smuggling, IP and URL-parser filter bypasses, DNS rebinding, and the allow-listing and egress controls that prevent it.",
-    "tags": [
+    id: "ssrf",
+    title: "Server-Side Request Forgery (SSRF)",
+    subtitle: "Internal Pivoting",
+    description:
+      "Forcing a server to make attacker-controlled requests: in-band and blind SSRF, internal network enumeration, cloud metadata and IMDSv2, protocol smuggling, IP and URL-parser filter bypasses, DNS rebinding, and the allow-listing and egress controls that prevent it.",
+    tags: [
       "SSRF",
       "Cloud Metadata",
       "IMDSv2",
       "Internal Recon",
       "Blind SSRF",
       "OWASP",
-      "CWE-918"
+      "CWE-918",
     ],
-    "icon": "15",
-    "color": "red",
-    "topicCount": 22,
-    "category": "offensive"
+    icon: "15",
+    color: "red",
+    topicCount: 22,
+    category: "offensive",
   },
   {
-    "id": "file-inclusion",
-    "title": "File Inclusion (LFI & RFI)",
-    "subtitle": "Path Traversal & RCE",
-    "description": "Practical exploitation and prevention of Local and Remote File Inclusion: path traversal payloads, Linux and Windows target files, filter bypasses, PHP wrappers, and the log poisoning, session, upload, and wrapper paths from LFI to remote code execution.",
-    "tags": [
+    id: "file-inclusion",
+    title: "File Inclusion (LFI & RFI)",
+    subtitle: "Path Traversal & RCE",
+    description:
+      "Practical exploitation and prevention of Local and Remote File Inclusion: path traversal payloads, Linux and Windows target files, filter bypasses, PHP wrappers, and the log poisoning, session, upload, and wrapper paths from LFI to remote code execution.",
+    tags: [
       "LFI",
       "RFI",
       "Path Traversal",
       "PHP Wrappers",
       "Log Poisoning",
       "RCE",
-      "CWE-98"
+      "CWE-98",
     ],
-    "icon": "16",
-    "color": "orange",
-    "topicCount": 14,
-    "category": "offensive"
+    icon: "16",
+    color: "orange",
+    topicCount: 14,
+    category: "offensive",
   },
-    {
-    "id": "command-injection-log4shell",
-    "title": "Command Injection & Log4Shell",
-    "subtitle": "OS Command Execution",
-    "description": "Untrusted input reaching a shell: separators and Bash operators, special variables, IFS manipulation for space bypass, blind and out-of-band detection, filter evasion, and a full CVE-2021-44228 breakdown from JNDI lookup to RCE.",
-    "tags": [
+  {
+    id: "command-injection-log4shell",
+    title: "Command Injection & Log4Shell",
+    subtitle: "OS Command Execution",
+    description:
+      "Untrusted input reaching a shell: separators and Bash operators, special variables, IFS manipulation for space bypass, blind and out-of-band detection, filter evasion, and a full CVE-2021-44228 breakdown from JNDI lookup to RCE.",
+    tags: [
       "Command Injection",
       "Log4Shell",
       "CVE-2021-44228",
       "Bash",
       "IFS",
       "JNDI",
-      "OAST"
+      "OAST",
     ],
-    "icon": "17",
-    "color": "teal",
-    "topicCount": 21,
-    "category": "offensive"
+    icon: "17",
+    color: "teal",
+    topicCount: 21,
+    category: "offensive",
   },
-    {
-    "id": "buffer-overflow",
-    "title": "Buffer Overflow & Process Memory",
-    "subtitle": "Memory Corruption",
-    "description": "Memory corruption from first principles: Linux process memory layout, how stack overflows reach the return address, overflow types, the exploitation chain and why modern attacks need an info leak, detection with ASan and fuzzing, mitigations, and live process memory work via /proc.",
-    "tags": [
+  {
+    id: "buffer-overflow",
+    title: "Buffer Overflow & Process Memory",
+    subtitle: "Memory Corruption",
+    description:
+      "Memory corruption from first principles: Linux process memory layout, how stack overflows reach the return address, overflow types, the exploitation chain and why modern attacks need an info leak, detection with ASan and fuzzing, mitigations, and live process memory work via /proc.",
+    tags: [
       "Buffer Overflow",
       "Memory Corruption",
       "Stack",
       "Heap",
       "/proc",
       "ASLR",
-      "ASan"
+      "ASan",
     ],
-    "icon": "18",
-    "color": "pink",
-    "topicCount": 19,
-    "category": "offensive"
+    icon: "18",
+    color: "pink",
+    topicCount: 19,
+    category: "offensive",
   },
-    {
-    "id": "advanced-web-exploitation",
-    "title": "Advanced Web Exploitation",
-    "subtitle": "SSTI, Deserialization & Chaining",
-    "description": "Vulnerabilities that require interpretation rather than scanning: template injection detection and engine-specific RCE, PHP magic methods and POP chains, phar deserialization, session and privilege manipulation, and chaining moderate findings into critical compromise.",
-    "tags": [
+  {
+    id: "advanced-web-exploitation",
+    title: "Advanced Web Exploitation",
+    subtitle: "SSTI, Deserialization & Chaining",
+    description:
+      "Vulnerabilities that require interpretation rather than scanning: template injection detection and engine-specific RCE, PHP magic methods and POP chains, phar deserialization, session and privilege manipulation, and chaining moderate findings into critical compromise.",
+    tags: [
       "SSTI",
       "Deserialization",
       "POP Chain",
       "Jinja2",
       "PHP",
       "Chaining",
-      "CWE-502"
+      "CWE-502",
     ],
-    "icon": "19",
-    "color": "red",
-    "topicCount": 16,
-    "category": "offensive"
+    icon: "19",
+    color: "red",
+    topicCount: 16,
+    category: "offensive",
   },
   {
-    "id": "ruby-scripting",
-    "title": "Ruby Scripting (Cyber)",
-    "subtitle": "Scripting for Security",
-    "description": "Enough Ruby to read and write security scripts: methods and the implicit return, blocks, classes and inheritance, exceptions, then log parsing, HTTP requests, socket port scanning, threading, hashing, and how every Metasploit module is a Ruby class.",
-    "tags": [
+    id: "ruby-scripting",
+    title: "Ruby Scripting (Cyber)",
+    subtitle: "Scripting for Security",
+    description:
+      "Enough Ruby to read and write security scripts: methods and the implicit return, blocks, classes and inheritance, exceptions, then log parsing, HTTP requests, socket port scanning, threading, hashing, and how every Metasploit module is a Ruby class.",
+    tags: [
       "Ruby",
       "Scripting",
       "Sockets",
       "Port Scanner",
       "Metasploit",
       "Automation",
-      "Hashing"
+      "Hashing",
     ],
-    "icon": "20",
-    "color": "yellow",
-    "topicCount": 19,
-    "category": "offensive"
+    icon: "20",
+    color: "yellow",
+    topicCount: 19,
+    category: "offensive",
   },
   {
-    "id": "metasploit-scripting",
-    "title": "Metasploit Scripting",
-    "subtitle": "Writing Modules",
-    "description": "Writing Metasploit modules in Ruby rather than only running them: module anatomy and mixins, a custom auxiliary scanner, a vulnerability checker, resource-script automation, post-exploitation modules, and the truth about payload encoding and AV evasion.",
-    "tags": [
+    id: "metasploit-scripting",
+    title: "Metasploit Scripting",
+    subtitle: "Writing Modules",
+    description:
+      "Writing Metasploit modules in Ruby rather than only running them: module anatomy and mixins, a custom auxiliary scanner, a vulnerability checker, resource-script automation, post-exploitation modules, and the truth about payload encoding and AV evasion.",
+    tags: [
       "Metasploit",
       "Ruby",
       "Module Development",
       "Auxiliary",
       "Post-Exploitation",
       "msfvenom",
-      "Automation"
+      "Automation",
     ],
-    "icon": "21",
-    "color": "orange",
-    "topicCount": 15,
-    "category": "offensive"
+    icon: "21",
+    color: "orange",
+    topicCount: 15,
+    category: "offensive",
   },
   {
-    "id": "active-directory-fundamentals",
-    "title": "Active Directory Fundamentals",
-    "subtitle": "AD Concepts & Structure",
-    "description": "The concepts and vocabulary of Active Directory: authentication versus authorization, the forest and domain structure, domain controllers and NTDS.dit, users and nested groups, organizational units, Group Policy and LSDOU, trusts, and LDAP as the query protocol.",
-    "tags": [
+    id: "active-directory-fundamentals",
+    title: "Active Directory Fundamentals",
+    subtitle: "AD Concepts & Structure",
+    description:
+      "The concepts and vocabulary of Active Directory: authentication versus authorization, the forest and domain structure, domain controllers and NTDS.dit, users and nested groups, organizational units, Group Policy and LSDOU, trusts, and LDAP as the query protocol.",
+    tags: [
       "Active Directory",
       "LDAP",
       "Domain Controller",
       "Kerberos",
       "GPO",
       "Windows",
-      "Forest"
+      "Forest",
     ],
-    "icon": "22",
-    "color": "teal",
-    "topicCount": 16,
-    "category": "offensive"
+    icon: "22",
+    color: "teal",
+    topicCount: 16,
+    category: "offensive",
   },
   {
-    "id": "active-directory-enumeration",
-    "title": "Active Dorectory Enumeration",
-    "subtitle": "The AD Attack Chain",
-    "description": "The reconnaissance and credential-abuse phase of an AD engagement from Kali: LDAP and SMB enumeration of users, groups, and trusts, then AS-REP Roasting, Kerberoasting, hashcat cracking, NTLM capture with Responder, and DCSync to domain compromise.",
-    "tags": [
+    id: "active-directory-enumeration",
+    title: "Active Dorectory Enumeration",
+    subtitle: "The AD Attack Chain",
+    description:
+      "The reconnaissance and credential-abuse phase of an AD engagement from Kali: LDAP and SMB enumeration of users, groups, and trusts, then AS-REP Roasting, Kerberoasting, hashcat cracking, NTLM capture with Responder, and DCSync to domain compromise.",
+    tags: [
       "Active Directory",
       "Kerberoasting",
       "AS-REP Roasting",
       "DCSync",
       "Impacket",
       "Responder",
-      "hashcat"
+      "hashcat",
     ],
-    "icon": "23",
-    "color": "pink",
-    "topicCount": 17,
-    "category": "offensive"
+    icon: "23",
+    color: "pink",
+    topicCount: 17,
+    category: "offensive",
   },
   {
-    "id": "active-directory-ldap",
-    "title": "Active Dorectory Enumeration (Hands-On)",
-    "subtitle": "LDAP, RPC & BloodHound",
-    "description": "Enumerating an AD domain through every channel: anonymous and authenticated ldapsearch, bulk enumeration with NetExec, RPC with rpcclient, BloodHound collection, and advanced userAccountControl filters, with the theme that each protocol reveals what the others hide.",
-    "tags": [
+    id: "active-directory-ldap",
+    title: "Active Dorectory Enumeration (Hands-On)",
+    subtitle: "LDAP, RPC & BloodHound",
+    description:
+      "Enumerating an AD domain through every channel: anonymous and authenticated ldapsearch, bulk enumeration with NetExec, RPC with rpcclient, BloodHound collection, and advanced userAccountControl filters, with the theme that each protocol reveals what the others hide.",
+    tags: [
       "Active Directory",
       "LDAP",
       "ldapsearch",
       "rpcclient",
       "BloodHound",
       "NetExec",
-      "Enumeration"
+      "Enumeration",
     ],
-    "icon": "24",
-    "color": "red",
-    "topicCount": 15,
-    "category": "offensive"
+    icon: "24",
+    color: "red",
+    topicCount: 15,
+    category: "offensive",
   },
   {
-    "id": "active-directory-bloodhound",
-    "title": "Active Dorectory (BloodHound)",
-    "subtitle": "Graph-Driven AD Compromise",
-    "description": "Using BloodHound to map and exploit AD attack paths: collection and reading the graph, Cypher queries, ACL abuse (GenericAll, WriteDacl), chaining misconfigurations from a low-privilege user through DCSync to a Golden Ticket, SYSVOL leakage, and detection by Windows Event ID.",
-    "tags": [
+    id: "active-directory-bloodhound",
+    title: "Active Dorectory (BloodHound)",
+    subtitle: "Graph-Driven AD Compromise",
+    description:
+      "Using BloodHound to map and exploit AD attack paths: collection and reading the graph, Cypher queries, ACL abuse (GenericAll, WriteDacl), chaining misconfigurations from a low-privilege user through DCSync to a Golden Ticket, SYSVOL leakage, and detection by Windows Event ID.",
+    tags: [
       "Active Directory",
       "BloodHound",
       "ACL Abuse",
       "GenericAll",
       "Golden Ticket",
       "Cypher",
-      "Attack Paths"
+      "Attack Paths",
     ],
-    "icon": "25",
-    "color": "yellow",
-    "topicCount": 17,
-    "category": "offensive"
+    icon: "25",
+    color: "yellow",
+    topicCount: 17,
+    category: "offensive",
   },
   {
-    "id": "active-directory-powerview",
-    "title": "Active Directory (PowerView)",
-    "subtitle": "Enumeration & Defensive Hardening",
-    "description": "PowerView-driven AD reconnaissance: users, groups, computers, OUs, GPOs, ACLs, trusts, shares, and sessions from the CLI. Paired with defender hardening: DC lockdown, GPO security policies, Windows LAPS deployment, AppLocker, SMB/LDAP signing, audit configuration, and PowerShell logging for detection.",
-    "tags": [
+    id: "active-directory-powerview",
+    title: "Active Directory (PowerView)",
+    subtitle: "Enumeration & Defensive Hardening",
+    description:
+      "PowerView-driven AD reconnaissance: users, groups, computers, OUs, GPOs, ACLs, trusts, shares, and sessions from the CLI. Paired with defender hardening: DC lockdown, GPO security policies, Windows LAPS deployment, AppLocker, SMB/LDAP signing, audit configuration, and PowerShell logging for detection.",
+    tags: [
       "PowerView",
       "Active Directory",
       "Enumeration",
@@ -1056,115 +970,142 @@ export const CHEATSHEETS: Cheatsheet[] = [
       "GPO Hardening",
       "Windows LAPS",
       "Auditing",
-      "Least Privilege"
+      "Least Privilege",
     ],
-    "icon": "26",
-    "color": "orange",
-    "topicCount": 20,
-    "category": "offensive"
+    icon: "26",
+    color: "orange",
+    topicCount: 20,
+    category: "offensive",
   },
- {
-  "id": "linux-privesc",
-  "title": "Linux Privilege Escalation",
-  "subtitle": "Post-Exploitation",
-  "description": "Escalating from a low privilege shell to root on Linux: system enumeration, kernel and sudo CVEs, SUID and capabilities abuse, cron and wildcard injection, PATH and LD_PRELOAD hijacking, credential hunting, privileged groups, and hardening.",
-  "tags": [
-    "Privilege Escalation",
-    "Linux",
-    "SUID",
-    "GTFOBins",
-    "Capabilities",
-    "LinPEAS",
-    "John the Ripper"
-  ],
-  "icon": "27",
-  "color": "teal",
-  "topicCount": 25,
-  "category": "offensive"
-},
-{
-  "id": "windows-privesc",
-  "title": "Windows Privilege Escalation",
-  "subtitle": "Post-Exploitation",
-  "description": "Escalating from a low-privileged foothold to SYSTEM on Windows: token and potato attacks, service and registry misconfigurations, unquoted paths, DLL hijacking, scheduled tasks, UAC bypass, BITS abuse, credential hunting and theft, and hardening.",
-  "tags": [
-    "Privilege Escalation",
-    "Windows",
-    "SeImpersonate",
-    "Potato Attacks",
-    "Mimikatz",
-    "PowerUp",
-    "UAC Bypass"
-  ],
-  "icon": "28",
-  "color": "pink",
-  "topicCount": 23,
-  "category": "offensive"
-},
-{
-  "id": "re-fundamentals",
-  "title": "Reverse Engineering Fundamentals",
-  "subtitle": "Reverse Engineering",
-  "description": "The foundations of reverse engineering: disassembly vs decompilation, static vs dynamic analysis, ELF structure and sections, the command-line toolkit (file, strings, readelf, objdump, ldd), the major disassemblers and debuggers, and anti-RE basics.",
-  "tags": [
-    "Reverse Engineering",
-    "ELF",
-    "objdump",
-    "readelf",
-    "Disassembly",
-    "Ghidra",
-    "Static Analysis"
-  ],
-  "icon": "29",
-  "color": "red",
-  "topicCount": 17,
-  "category": "offensive"
-},
+  {
+    id: "linux-privesc",
+    title: "Linux Privilege Escalation",
+    subtitle: "Post-Exploitation",
+    description:
+      "Escalating from a low privilege shell to root on Linux: system enumeration, kernel and sudo CVEs, SUID and capabilities abuse, cron and wildcard injection, PATH and LD_PRELOAD hijacking, credential hunting, privileged groups, and hardening.",
+    tags: [
+      "Privilege Escalation",
+      "Linux",
+      "SUID",
+      "GTFOBins",
+      "Capabilities",
+      "LinPEAS",
+      "John the Ripper",
+    ],
+    icon: "27",
+    color: "teal",
+    topicCount: 25,
+    category: "offensive",
+  },
+  {
+    id: "windows-privesc",
+    title: "Windows Privilege Escalation",
+    subtitle: "Post-Exploitation",
+    description:
+      "Escalating from a low-privileged foothold to SYSTEM on Windows: token and potato attacks, service and registry misconfigurations, unquoted paths, DLL hijacking, scheduled tasks, UAC bypass, BITS abuse, credential hunting and theft, and hardening.",
+    tags: [
+      "Privilege Escalation",
+      "Windows",
+      "SeImpersonate",
+      "Potato Attacks",
+      "Mimikatz",
+      "PowerUp",
+      "UAC Bypass",
+    ],
+    icon: "28",
+    color: "pink",
+    topicCount: 23,
+    category: "offensive",
+  },
+  {
+    id: "re-fundamentals",
+    title: "Reverse Engineering Fundamentals",
+    subtitle: "Reverse Engineering",
+    description:
+      "The foundations of reverse engineering: disassembly vs decompilation, static vs dynamic analysis, ELF structure and sections, the command-line toolkit (file, strings, readelf, objdump, ldd), the major disassemblers and debuggers, and anti-RE basics.",
+    tags: [
+      "Reverse Engineering",
+      "ELF",
+      "objdump",
+      "readelf",
+      "Disassembly",
+      "Ghidra",
+      "Static Analysis",
+    ],
+    icon: "29",
+    color: "red",
+    topicCount: 17,
+    category: "offensive",
+  },
+  {
+    id: "re-static-analysis",
+    title: "Static Analysis in Reverse Engineering",
+    subtitle: "Reverse Engineering",
+    description:
+      "A practical guide to understanding binaries without executing them: string analysis, Ghidra and Radare2 workflows, assembly and control flow, cross-references, hidden data, arithmetic obfuscation, modular exponentiation, collision handling, and evidence-based vulnerability analysis.",
+    tags: [
+      "Reverse Engineering",
+      "Static Analysis",
+      "Strings",
+      "Ghidra",
+      "Radare2",
+      "Assembly",
+      "Decompilation",
+      "Obfuscation",
+    ],
+    icon: "30",
+    color: "yellow",
+    topicCount: 21,
+    category: "offensive",
+  },
   //  DEFENSIVE SECTION START
   {
-    "id": "security-assessment",
-    "title": "Security Posture Assessment",
-    "subtitle": "Assets, criticality & gaps",
-    "description": "Asset inventory, criticality and data classification, gap analysis, and risk treatment for a board-ready posture assessment — the CIA triad, control categories/functions, threat intel validation, and writing for the board.",
-    "tags": [
+    id: "security-assessment",
+    title: "Security Posture Assessment",
+    subtitle: "Assets, criticality & gaps",
+    description:
+      "Asset inventory, criticality and data classification, gap analysis, and risk treatment for a board-ready posture assessment — the CIA triad, control categories/functions, threat intel validation, and writing for the board.",
+    tags: [
       "risk assessment",
       "asset inventory",
       "CIA triad",
       "gap analysis",
       "risk treatment",
       "NIST CSF",
-      "GRC"
+      "GRC",
     ],
-    "icon": "01",
-    "color": "teal",
-    "topicCount": 13,
-    "category": "defensive"
+    icon: "01",
+    color: "teal",
+    topicCount: 13,
+    category: "defensive",
   },
   {
-    "id": "threat-intelligence",
-    "title": "Threat Intelligence & Landscape",
-    "subtitle": "Actors, TTPs & ATT&CK",
-    "description": "Correlating external threats with internal posture gaps — the six threat-actor categories, motivations, ransomware/RaaS, insider and supply-chain risk, threat vectors, social engineering, attack-path tracing, MITRE ATT&CK, the Cyber Kill Chain, STRIDE, and writing a board-ready threat landscape report.",
-    "tags": [
+    id: "threat-intelligence",
+    title: "Threat Intelligence & Landscape",
+    subtitle: "Actors, TTPs & ATT&CK",
+    description:
+      "Correlating external threats with internal posture gaps — the six threat-actor categories, motivations, ransomware/RaaS, insider and supply-chain risk, threat vectors, social engineering, attack-path tracing, MITRE ATT&CK, the Cyber Kill Chain, STRIDE, and writing a board-ready threat landscape report.",
+    tags: [
       "threat actors",
       "MITRE ATT&CK",
       "kill chain",
       "STRIDE",
       "ransomware",
       "social engineering",
-      "threat intelligence"
+      "threat intelligence",
     ],
-    "icon": "02",
-    "color": "red",
-    "topicCount": 19,
-    "category": "defensive"
+    icon: "02",
+    color: "red",
+    topicCount: 19,
+    category: "defensive",
   },
   {
-    "id": "vulnerability-assessment",
-    "title": "Vulnerability Assessment",
-    "subtitle": "CVE, CVSS & triage",
-    "description": "Turning a vulnerability scan into threat-informed intelligence — the CVE/NVD/CVSS/CWE ecosystem, NVD research workflow, exploit research with searchsploit, CISA KEV as a prioritisation signal, the vulnerability taxonomy, the management lifecycle, triage, false positives, and response strategies.",
-    "tags": [
+    id: "vulnerability-assessment",
+    title: "Vulnerability Assessment",
+    subtitle: "CVE, CVSS & triage",
+    description:
+      "Turning a vulnerability scan into threat-informed intelligence — the CVE/NVD/CVSS/CWE ecosystem, NVD research workflow, exploit research with searchsploit, CISA KEV as a prioritisation signal, the vulnerability taxonomy, the management lifecycle, triage, false positives, and response strategies.",
+    tags: [
       "vulnerability",
       "CVE",
       "CVSS",
@@ -1172,19 +1113,20 @@ export const CHEATSHEETS: Cheatsheet[] = [
       "KEV",
       "Exploit-DB",
       "triage",
-      "Lynis"
+      "Lynis",
     ],
-    "icon": "03",
-    "color": "orange",
-    "topicCount": 19,
-    "category": "defensive"
+    icon: "03",
+    color: "orange",
+    topicCount: 19,
+    category: "defensive",
   },
   {
-    "id": "security-strategy",
-    "title": "Security Governance & Strategy",
-    "subtitle": "Frameworks, GRC & roadmap",
-    "description": "Building a business-aligned, cost-justified security strategy — governance and the policy hierarchy, NIST CSF 2.0, CIS Controls v8.1 and implementation groups, ISO 27001 and PDCA, data roles and RACI, SLE/ALE quantification, risk treatment, cost-benefit analysis, control selection, and a phased roadmap.",
-    "tags": [
+    id: "security-strategy",
+    title: "Security Governance & Strategy",
+    subtitle: "Frameworks, GRC & roadmap",
+    description:
+      "Building a business-aligned, cost-justified security strategy — governance and the policy hierarchy, NIST CSF 2.0, CIS Controls v8.1 and implementation groups, ISO 27001 and PDCA, data roles and RACI, SLE/ALE quantification, risk treatment, cost-benefit analysis, control selection, and a phased roadmap.",
+    tags: [
       "governance",
       "NIST CSF",
       "CIS Controls",
@@ -1192,19 +1134,20 @@ export const CHEATSHEETS: Cheatsheet[] = [
       "RACI",
       "ALE",
       "roadmap",
-      "risk register"
+      "risk register",
     ],
-    "icon": "04",
-    "color": "teal",
-    "topicCount": 19,
-    "category": "defensive"
+    icon: "04",
+    color: "teal",
+    topicCount: 19,
+    category: "defensive",
   },
   {
-    "id": "applied-cryptography",
-    "title": "Applied Cryptography",
-    "subtitle": "Encryption, hashing & PKI",
-    "description": "Applying cryptography across a real environment — symmetric vs asymmetric, modern algorithm choices, hashing and password storage (bcrypt/Argon2), Diffie-Hellman, digital signatures, X.509 certificates and the chain of trust, TLS configuration, OpenSSL recipes, LUKS, and TPM/HSM/KMS hardware.",
-    "tags": [
+    id: "applied-cryptography",
+    title: "Applied Cryptography",
+    subtitle: "Encryption, hashing & PKI",
+    description:
+      "Applying cryptography across a real environment — symmetric vs asymmetric, modern algorithm choices, hashing and password storage (bcrypt/Argon2), Diffie-Hellman, digital signatures, X.509 certificates and the chain of trust, TLS configuration, OpenSSL recipes, LUKS, and TPM/HSM/KMS hardware.",
+    tags: [
       "AES",
       "RSA",
       "TLS",
@@ -1212,38 +1155,40 @@ export const CHEATSHEETS: Cheatsheet[] = [
       "Argon2",
       "X.509",
       "OpenSSL",
-      "LUKS"
+      "LUKS",
     ],
-    "icon": "05",
-    "color": "pink",
-    "topicCount": 20,
-    "category": "defensive"
+    icon: "05",
+    color: "pink",
+    topicCount: 20,
+    category: "defensive",
   },
   {
-    "id": "risk-communication",
-    "title": "Executive Risk Communication",
-    "subtitle": "Reporting & incident response",
-    "description": "The capstone: turning technical findings into a decision a board can fund — the four levels of security thinking, translating an advisory into organisational risk, attack-chain and ATT&CK mapping, business impact categories, SLE/ALE quantification, risk treatment, the 72-hour response plan, the IR lifecycle, and briefing executives under pressure.",
-    "tags": [
+    id: "risk-communication",
+    title: "Executive Risk Communication",
+    subtitle: "Reporting & incident response",
+    description:
+      "The capstone: turning technical findings into a decision a board can fund — the four levels of security thinking, translating an advisory into organisational risk, attack-chain and ATT&CK mapping, business impact categories, SLE/ALE quantification, risk treatment, the 72-hour response plan, the IR lifecycle, and briefing executives under pressure.",
+    tags: [
       "board briefing",
       "risk",
       "business impact",
       "ALE",
       "MITRE ATT&CK",
       "incident response",
-      "executive comms"
+      "executive comms",
     ],
-    "icon": "06",
-    "color": "red",
-    "topicCount": 19,
-    "category": "defensive"
+    icon: "06",
+    color: "red",
+    topicCount: 19,
+    category: "defensive",
   },
   {
-    "id": "linux-hardening",
-    "title": "Linux System Hardening",
-    "subtitle": "CIS baselines & auditing",
-    "description": "Hardening Linux servers with CIS-inspired controls and automation — SSH and kernel (sysctl) hardening, filesystem and mount options, PAM password quality and lockout, AppArmor confinement, auditd, rsyslog, host firewalls, Lynis scoring, and idempotent hardening scripts with JSON output.",
-    "tags": [
+    id: "linux-hardening",
+    title: "Linux System Hardening",
+    subtitle: "CIS baselines & auditing",
+    description:
+      "Hardening Linux servers with CIS-inspired controls and automation — SSH and kernel (sysctl) hardening, filesystem and mount options, PAM password quality and lockout, AppArmor confinement, auditd, rsyslog, host firewalls, Lynis scoring, and idempotent hardening scripts with JSON output.",
+    tags: [
       "hardening",
       "CIS Benchmark",
       "SSH",
@@ -1251,19 +1196,20 @@ export const CHEATSHEETS: Cheatsheet[] = [
       "PAM",
       "AppArmor",
       "auditd",
-      "Lynis"
+      "Lynis",
     ],
-    "icon": "07",
-    "color": "yellow",
-    "topicCount": 19,
-    "category": "defensive"
+    icon: "07",
+    color: "yellow",
+    topicCount: 19,
+    category: "defensive",
   },
   {
-    "id": "windows-hardening",
-    "title": "Windows & Active Directory Hardening",
-    "subtitle": "GPO, Kerberos & Tier 0",
-    "description": "Securing Windows and Active Directory — AD and Group Policy, password and Kerberos hardening, advanced audit policy and critical event IDs, Sysmon, PowerShell controls, AppLocker/WDAC, Windows Firewall, SMB/RDP hardening, gMSA service accounts, Tier 0 domain-controller protection, and defending the AD attack chain.",
-    "tags": [
+    id: "windows-hardening",
+    title: "Windows & Active Directory Hardening",
+    subtitle: "GPO, Kerberos & Tier 0",
+    description:
+      "Securing Windows and Active Directory — AD and Group Policy, password and Kerberos hardening, advanced audit policy and critical event IDs, Sysmon, PowerShell controls, AppLocker/WDAC, Windows Firewall, SMB/RDP hardening, gMSA service accounts, Tier 0 domain-controller protection, and defending the AD attack chain.",
+    tags: [
       "Windows",
       "Active Directory",
       "Group Policy",
@@ -1271,152 +1217,159 @@ export const CHEATSHEETS: Cheatsheet[] = [
       "Sysmon",
       "AppLocker",
       "gMSA",
-      "Tier 0"
+      "Tier 0",
     ],
-    "icon": "08",
-    "color": "red",
-    "topicCount": 20,
-    "category": "defensive"
+    icon: "08",
+    color: "red",
+    topicCount: 20,
+    category: "defensive",
   },
   {
-    "id": "endpoint-detection",
-    "title": "Endpoint Detection & Telemetry",
-    "subtitle": "Detection engineering & ATT&CK coverage",
-    "description": "Validating endpoint telemetry on hardened systems: Sysmon event IDs mapped to attacker behavior, PowerShell Script Block Logging, auditd and auth.log, controlled attack simulation, ground-truth correlation, detection matrices, telemetry quality assessment, JSON export and normalization, and MITRE ATT&CK gap analysis.",
-    "tags": [
+    id: "endpoint-detection",
+    title: "Endpoint Detection & Telemetry",
+    subtitle: "Detection engineering & ATT&CK coverage",
+    description:
+      "Validating endpoint telemetry on hardened systems: Sysmon event IDs mapped to attacker behavior, PowerShell Script Block Logging, auditd and auth.log, controlled attack simulation, ground-truth correlation, detection matrices, telemetry quality assessment, JSON export and normalization, and MITRE ATT&CK gap analysis.",
+    tags: [
       "telemetry",
       "detection engineering",
       "Sysmon",
       "auditd",
       "MITRE ATT&CK",
       "SOC",
-      "blue team"
+      "blue team",
     ],
-    "icon": "09",
-    "color": "orange",
-    "topicCount": 20,
-    "category": "defensive"
+    icon: "09",
+    color: "orange",
+    topicCount: 20,
+    category: "defensive",
   },
   {
-    "id": "the-patch-equation",
-    "title": "The Patch Equation",
-    "subtitle": "Patch & Vulnerability Management",
-    "description": "Linux patch engineering as measurable work: CVE-to-package mapping, risk-based prioritization beyond CVSS, apt/dpkg repair, security-only patching, validation, rollback and pinning, and JSON evidence.",
-    "tags": [
+    id: "the-patch-equation",
+    title: "The Patch Equation",
+    subtitle: "Patch & Vulnerability Management",
+    description:
+      "Linux patch engineering as measurable work: CVE-to-package mapping, risk-based prioritization beyond CVSS, apt/dpkg repair, security-only patching, validation, rollback and pinning, and JSON evidence.",
+    tags: [
       "Patch Management",
       "APT",
       "dpkg",
       "CVE",
       "CISA KEV",
       "Rollback",
-      "unattended-upgrades"
+      "unattended-upgrades",
     ],
-    "icon": "10",
-    "color": "teal",
-    "topicCount": 21,
-    "category": "defensive"
+    icon: "10",
+    color: "teal",
+    topicCount: 21,
+    category: "defensive",
   },
   {
-    "id": "perimeter-network-defense",
-    "title": "Perimeter and Network Defense",
-    "subtitle": "Firewalls, IDS & PCAP",
-    "description": "Network defense end to end: zone design and segmentation, nftables default-deny policy, Windows Firewall alignment, secure-protocol audits, DNS filtering, scan detection, Suricata PCAP replay and custom rules, and tshark investigation.",
-    "tags": [
+    id: "perimeter-network-defense",
+    title: "Perimeter and Network Defense",
+    subtitle: "Firewalls, IDS & PCAP",
+    description:
+      "Network defense end to end: zone design and segmentation, nftables default-deny policy, Windows Firewall alignment, secure-protocol audits, DNS filtering, scan detection, Suricata PCAP replay and custom rules, and tshark investigation.",
+    tags: [
       "nftables",
       "Firewall",
       "Suricata",
       "IDS/IPS",
       "PCAP",
       "tshark",
-      "Segmentation"
+      "Segmentation",
     ],
-    "icon": "11",
-    "color": "pink",
-    "topicCount": 21,
-    "category": "defensive"
+    icon: "11",
+    color: "pink",
+    topicCount: 21,
+    category: "defensive",
   },
   {
-    "id": "the-defensible-endpoint-package",
-    "title": "The Defensible Endpoint Package",
-    "subtitle": "Engineering Handoff",
-    "description": "Composing hardening, telemetry, patching, and network defense into one delivered package: baseline intake, target state as data, idempotent orchestration, binary validation, machine-readable compliance reports, manifests with hashes, and verifiable handoff.",
-    "tags": [
+    id: "the-defensible-endpoint-package",
+    title: "The Defensible Endpoint Package",
+    subtitle: "Engineering Handoff",
+    description:
+      "Composing hardening, telemetry, patching, and network defense into one delivered package: baseline intake, target state as data, idempotent orchestration, binary validation, machine-readable compliance reports, manifests with hashes, and verifiable handoff.",
+    tags: [
       "Handoff",
       "Automation",
       "Idempotency",
       "Compliance",
       "SHA256",
       "Manifest",
-      "Capstone"
+      "Capstone",
     ],
-    "icon": "12",
-    "color": "yellow",
-    "topicCount": 23,
-    "category": "defensive"
+    icon: "12",
+    color: "yellow",
+    topicCount: 23,
+    category: "defensive",
   },
   {
-    "id": "evidence-pipeline",
-    "title": "Evidence Pipeline",
-    "subtitle": "Log Normalization & Handoff",
-    "description": "Security evidence engineering without a SIEM: parsing EVTX, syslog, Suricata EVE JSON, firewall CSV and generic JSON into one unified schema, timestamp normalization, deduplication, enrichment, quality validation, provenance, and analyst-ready handoff.",
-    "tags": [
+    id: "evidence-pipeline",
+    title: "Evidence Pipeline",
+    subtitle: "Log Normalization & Handoff",
+    description:
+      "Security evidence engineering without a SIEM: parsing EVTX, syslog, Suricata EVE JSON, firewall CSV and generic JSON into one unified schema, timestamp normalization, deduplication, enrichment, quality validation, provenance, and analyst-ready handoff.",
+    tags: [
       "Log Analysis",
       "EVTX",
       "Suricata",
       "Normalization",
       "Timeline",
       "SOC",
-      "Evidence"
+      "Evidence",
     ],
-    "icon": "13",
-    "color": "red",
-    "topicCount": 27,
-    "category": "defensive"
+    icon: "13",
+    color: "red",
+    topicCount: 27,
+    category: "defensive",
   },
   {
-    "id": "reading-the-noise",
-    "title": "Reading the Noise",
-    "subtitle": "Behavioral Baselines & Anomaly Detection",
-    "description": "Behavioral analysis of normalized security evidence: authentication, process, network, file, and temporal baselines, anomaly detection classes, deviation scoring, cross-source correlation, composite risk scoring, false-positive validation, and reusable baseline packaging.",
-    "tags": [
+    id: "reading-the-noise",
+    title: "Reading the Noise",
+    subtitle: "Behavioral Baselines & Anomaly Detection",
+    description:
+      "Behavioral analysis of normalized security evidence: authentication, process, network, file, and temporal baselines, anomaly detection classes, deviation scoring, cross-source correlation, composite risk scoring, false-positive validation, and reusable baseline packaging.",
+    tags: [
       "Baselining",
       "Anomaly Detection",
       "SOC",
       "Behavioral Analysis",
       "Correlation",
       "Risk Scoring",
-      "Threat Hunting"
+      "Threat Hunting",
     ],
-    "icon": "14",
-    "color": "orange",
-    "topicCount": 27,
-    "category": "defensive"
+    icon: "14",
+    color: "orange",
+    topicCount: 27,
+    category: "defensive",
   },
   {
-  "id": "the-alert-factory",
-  "title": "The Alert Factory",
-  "subtitle": "Detection Engineering",
-  "description": "Sigma detection engineering: rule structure, log sources, modifiers, boolean conditions, aggregation, correlation, MITRE ATT&CK mapping, sigma-cli, ground-truth testing, precision/recall metrics, tuning, and alert queue generation.",
-  "tags": [
-    "Sigma",
-    "Detection Engineering",
-    "MITRE ATT&CK",
-    "SIEM",
-    "sigma-cli",
-    "pySigma",
-    "Tuning",
-    "Correlation"
-  ],
-  icon: "15",
-  color: "teal",
-  topicCount: 24,
-  "category": "defensive"
-},
+    id: "the-alert-factory",
+    title: "The Alert Factory",
+    subtitle: "Detection Engineering",
+    description:
+      "Sigma detection engineering: rule structure, log sources, modifiers, boolean conditions, aggregation, correlation, MITRE ATT&CK mapping, sigma-cli, ground-truth testing, precision/recall metrics, tuning, and alert queue generation.",
+    tags: [
+      "Sigma",
+      "Detection Engineering",
+      "MITRE ATT&CK",
+      "SIEM",
+      "sigma-cli",
+      "pySigma",
+      "Tuning",
+      "Correlation",
+    ],
+    icon: "15",
+    color: "teal",
+    topicCount: 24,
+    category: "defensive",
+  },
 ];
 
 /** Cheatsheets sorted newest-first (highest icon number on top). */
 export const CHEATSHEETS_SORTED: Cheatsheet[] = [...CHEATSHEETS].sort(
-  (a, b) => Number(b.icon) - Number(a.icon)
+  (a, b) => Number(b.icon) - Number(a.icon),
 );
 
 export function getCheatsheet(id: string): Cheatsheet | undefined {
