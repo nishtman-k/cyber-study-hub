@@ -1080,24 +1080,45 @@ export const CHEATSHEETS: Cheatsheet[] = [
     category: "offensive",
   },
   {
-  id: "malware-analysis",
-  title: "Malware Analysis in Reverse Engineering",
-  subtitle: "Reverse Engineering",
-  description: "Analyzing malicious software safely: malware types and anatomy (droppers, keyloggers, kill switches), the isolated lab, integrity validation, static triage, the toolset (GDB, IDA, Wireshark, ProcMon, Cuckoo, Sysinternals), behavioral and C2/DGA analysis, ransomware mechanics, Android/APK analysis, detection methods vs evasion, and reporting.",
-  tags: [
-    "Malware Analysis",
-    "Reverse Engineering",
-    "Ransomware",
-    "Cuckoo Sandbox",
-    "YARA",
-    "Android",
-    "MITRE ATT&CK"
-  ],
-  icon: "31",
-  color: "teal",
-  topicCount: 22,
-  category: "offensive"
-},
+    id: "malware-analysis",
+    title: "Malware Analysis in Reverse Engineering",
+    subtitle: "Reverse Engineering",
+    description:
+      "Analyzing malicious software safely: malware types and anatomy (droppers, keyloggers, kill switches), the isolated lab, integrity validation, static triage, the toolset (GDB, IDA, Wireshark, ProcMon, Cuckoo, Sysinternals), behavioral and C2/DGA analysis, ransomware mechanics, Android/APK analysis, detection methods vs evasion, and reporting.",
+    tags: [
+      "Malware Analysis",
+      "Reverse Engineering",
+      "Ransomware",
+      "Cuckoo Sandbox",
+      "YARA",
+      "Android",
+      "MITRE ATT&CK",
+    ],
+    icon: "32",
+    color: "teal",
+    topicCount: 22,
+    category: "offensive",
+  },
+  {
+    id: "mobile-app-security",
+    title: "Mobile Application Security",
+    subtitle: "Mobile Security",
+    description:
+      "Android app internals and their attack surface: app types, the toolchain (Android Studio, ADB, Logcat), project structure and the manifest, build artifacts (APK/AAR/JAR/DEX), core components, the activity lifecycle, layouts, intents and permissions, then the security layer — threats, insecure storage, TLS, authentication, input validation, hardening, and APK review.",
+    tags: [
+      "Mobile Security",
+      "Android",
+      "APK",
+      "OWASP MASVS",
+      "Intents",
+      "Permissions",
+      "AndroidManifest",
+    ],
+    icon: "33",
+    color: "pink",
+    topicCount: 25,
+    category: "offensive",
+  },
   //  DEFENSIVE SECTION START
   {
     id: "security-assessment",
