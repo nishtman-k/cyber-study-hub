@@ -1080,25 +1080,24 @@ export const CHEATSHEETS: Cheatsheet[] = [
     category: "offensive",
   },
   {
-    id: "malware-analysis",
-    title: "Malware Analysis in Reverse Engineering",
-    subtitle: "Reverse Engineering",
-    description:
-      "Analyzing malicious software safely: the isolated lab, integrity validation, static triage, dynamic monitoring setup, the permitted toolset (GDB, Wireshark, ProcMon, Cuckoo, Sysinternals), behavioral and C2 analysis, Android/APK analysis, evasion recognition, and reporting.",
-    tags: [
-      "Malware Analysis",
-      "Reverse Engineering",
-      "Dynamic Analysis",
-      "Cuckoo Sandbox",
-      "Wireshark",
-      "YARA",
-      "Android",
-    ],
-    icon: "31",
-    color: "orange",
-    topicCount: 19,
-    category: "offensive",
-  },
+  id: "malware-analysis",
+  title: "Malware Analysis in Reverse Engineering",
+  subtitle: "Reverse Engineering",
+  description: "Analyzing malicious software safely: malware types and anatomy (droppers, keyloggers, kill switches), the isolated lab, integrity validation, static triage, the toolset (GDB, IDA, Wireshark, ProcMon, Cuckoo, Sysinternals), behavioral and C2/DGA analysis, ransomware mechanics, Android/APK analysis, detection methods vs evasion, and reporting.",
+  tags: [
+    "Malware Analysis",
+    "Reverse Engineering",
+    "Ransomware",
+    "Cuckoo Sandbox",
+    "YARA",
+    "Android",
+    "MITRE ATT&CK"
+  ],
+  icon: "31",
+  color: "teal",
+  topicCount: 22,
+  category: "offensive"
+},
   //  DEFENSIVE SECTION START
   {
     id: "security-assessment",
