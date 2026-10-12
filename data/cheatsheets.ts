@@ -1526,6 +1526,48 @@ export const CHEATSHEETS: Cheatsheet[] = [
     topicCount: 39,
     category: "defensive",
   },
+  {
+    id: "malware-awareness",
+    title: "Malware Awareness",
+    subtitle: "Malware Triage & Analysis",
+    description:
+      "Defensive malware analysis: sample preservation, Office macros, PE inspection, PowerShell deobfuscation, sandbox behavior, static and dynamic correlation, IOC extraction, ATT&CK mapping, YARA, detection proposals, and incident reporting.",
+    tags: [
+      "Malware Analysis",
+      "Static Analysis",
+      "Sandbox",
+      "Office Macros",
+      "PowerShell",
+      "YARA",
+      "MITRE ATT&CK",
+      "Blue Team",
+    ],
+    icon: "21",
+    color: "pink",
+    topicCount: 41,
+    category: "defensive",
+  },
+  {
+    id: "threat-hunting",
+    title: "Threat Hunting",
+    subtitle: "Hypotheses, Baselines & Correlation",
+    description:
+      "Hypothesis-driven threat hunting: telemetry validation, administrator and service-account baselines, off-hours analysis, PsExec, WMI and PowerShell Remoting, jq queries, lateral-movement correlation, ATT&CK mapping, detection proposals, and evidence-based reporting.",
+    tags: [
+      "Threat Hunting",
+      "Baselines",
+      "Living Off The Land",
+      "Lateral Movement",
+      "jq",
+      "PowerShell",
+      "MITRE ATT&CK",
+      "Blue Team",
+    ],
+    icon: "22",
+    color: "yellow",
+    topicCount: 40,
+    category: "defensive",
+  },
 ];
 
 /** Cheatsheets sorted newest-first (highest icon number on top). */
