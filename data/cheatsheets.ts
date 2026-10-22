@@ -1138,6 +1138,23 @@ export const CHEATSHEETS: Cheatsheet[] = [
     topicCount: 13,
     category: "offensive"
 },
+{
+  "id": "social-engineering-operations",
+  "title": "Social Engineering Operations",
+  "subtitle": "Human behavior, email authentication, and authorized phishing assessments",
+  "description": "A practical reference covering social engineering, SET lab workflows, PowerShell encoding, GoPhish metrics, evidence, reporting, and defensive controls.",
+  "tags": [
+    "Social Engineering",
+    "Phishing",
+    "SET",
+    "GoPhish",
+    "Email Security"
+  ],
+  "icon": "35",
+  "color": "yellow",
+  "topicCount": 20,
+  "category": "offensive"
+},
   //  DEFENSIVE SECTION START
   {
     id: "security-assessment",
