@@ -1,5 +1,7 @@
 # OSINT Profile Builder
 
+> **⚠️ AUTHORIZED USE ONLY.** For education and authorized analysis only. Reverse engineering software can carry licensing and legal restrictions, and malware samples are dangerous. Work only on binaries you are permitted to analyze, and run unknown samples only in an isolated lab. See the [Legal and Terms of Use](/legal) page.
+
 > `Data is everywhere, yet intelligence is knowing what to do with it.`
 
 > **Scope:** Collecting, validating, and reporting open-source intelligence. Covers the fundamentals, the legal and ethical boundaries, profiling methodology, search and technical collection, correlation and confidence, and how OSINT maps to both attack and defense.

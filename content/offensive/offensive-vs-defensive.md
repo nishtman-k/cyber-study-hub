@@ -1,5 +1,7 @@
 # Offensive vs Defensive Security
 
+> **⚠️ AUTHORIZED USE ONLY.** For education and authorized analysis only. Reverse engineering software can carry licensing and legal restrictions, and malware samples are dangerous. Work only on binaries you are permitted to analyze, and run unknown samples only in an isolated lab. See the [Legal and Terms of Use](/legal) page.
+
 > `To defeat the attacker, you must first think like one.`
 
 Cybersecurity is a constant battle between **attackers** and **defenders**. To protect systems well, you need to understand both how attacks are carried out and how they are detected and stopped.

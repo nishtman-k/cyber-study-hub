@@ -1119,6 +1119,25 @@ export const CHEATSHEETS: Cheatsheet[] = [
     topicCount: 25,
     category: "offensive",
   },
+  {
+  id: "physical-penetration-testing",
+    title: "Physical Penetration Testing",
+    subtitle: "Authorization, Access Controls & Field Tools",
+    description: "A practical physical-testing reference: written authorization and Rules of Engagement, reconnaissance, field safety, social engineering, USB and RFID tool selection, badge and door controls, evidence handling, remediation, and reporting.",
+    tags: [
+      "Physical Security",
+      "Rules of Engagement",
+      "Legal Scope",
+      "RFID/NFC",
+      "USB/HID",
+      "Social Engineering",
+      "Reporting"
+    ],
+    icon: "34",
+    color: "red",
+    topicCount: 13,
+    category: "offensive"
+},
   //  DEFENSIVE SECTION START
   {
     id: "security-assessment",

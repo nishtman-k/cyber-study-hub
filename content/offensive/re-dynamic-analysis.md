@@ -1,5 +1,7 @@
 # Dynamic Analysis in Reverse Engineering
 
+> **⚠️ AUTHORIZED USE ONLY.** For education and authorized analysis only. Reverse engineering software can carry licensing and legal restrictions, and malware samples are dangerous. Work only on binaries you are permitted to analyze, and run unknown samples only in an isolated lab. See the [Legal and Terms of Use](/legal) page.
+
 **Scope:** observe a running binary, explain its decisions, and connect its internal state to operating-system activity. This follows [Reverse Engineering Fundamentals](/cheatsheet/re-fundamentals/) and [Static Analysis in Reverse Engineering](/cheatsheet/re-static-analysis/).
 
 **Why it matters:** static analysis reconstructs possible behavior from stored code and data. Dynamic analysis reveals the instructions, values, and effects produced during a particular execution. Combining them helps explain unpacked code, constructed strings, input checks, crashes, and environment-dependent behavior.
