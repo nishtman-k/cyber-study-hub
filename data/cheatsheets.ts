@@ -1139,21 +1139,21 @@ export const CHEATSHEETS: Cheatsheet[] = [
     category: "offensive"
 },
 {
-  "id": "social-engineering-operations",
-  "title": "Social Engineering Operations",
-  "subtitle": "Human behavior, email authentication, and authorized phishing assessments",
-  "description": "A practical reference covering social engineering, SET lab workflows, PowerShell encoding, GoPhish metrics, evidence, reporting, and defensive controls.",
-  "tags": [
+  id: "social-engineering-operations",
+  title: "Social Engineering Operations",
+  subtitle: "SET and Spear Phishing",
+  description: "A practical NovaMedix project guide covering reconnaissance, email authentication, SET credential harvesting, payloads and listeners, Mass Mailer, encoded PowerShell, GoPhish metrics, reporting, and defenses.",
+  tags: [
     "Social Engineering",
     "Phishing",
     "SET",
     "GoPhish",
     "Email Security"
   ],
-  "icon": "35",
-  "color": "yellow",
-  "topicCount": 20,
-  "category": "offensive"
+  icon: "35",
+  color: "yellow",
+  topicCount: 15,
+  category: "offensive"
 },
   //  DEFENSIVE SECTION START
   {
