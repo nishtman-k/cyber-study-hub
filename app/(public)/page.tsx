@@ -43,6 +43,7 @@ export default function HomePage() {
           <CardGrid cheatsheets={CHEATSHEETS} searchIndex={searchIndex} />
         </Suspense>
         <footer className="home-footer">
+          <div className="footer-credits">
           <span>
             By{' '}
             <a className="footer-link" href="https://github.com/nishtman-k" target="_blank" rel="noopener noreferrer">
@@ -63,6 +64,8 @@ export default function HomePage() {
               Source on GitHub
             </a>
           </span>
+          <span className="footer-contributor">Defensive Security contributor: <span className="contributor-name">Nargiz</span></span>
+          </div>
           <span>
             Press{' '}
             <code

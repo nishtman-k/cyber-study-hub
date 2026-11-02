@@ -313,6 +313,9 @@ a { color: inherit; text-decoration: none; }
   font-size: 13px; color: var(--text-muted); flex-wrap: wrap; gap: 16px;
 }
 .home-footer .heart { color: var(--orange); }
+.footer-credits { display: flex; flex-direction: column; gap: 8px; }
+.footer-contributor { font-size: inherit; color: var(--text-muted); }
+.contributor-name { color: var(--teal); }
 .footer-link { color: var(--teal); border-bottom: 1px dotted var(--teal); transition: all 0.15s; }
 .footer-link:hover { background: var(--teal-soft); border-bottom-style: solid; }
 
