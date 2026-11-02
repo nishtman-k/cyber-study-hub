@@ -1,7 +1,9 @@
+import { Suspense } from 'react';
 import Link from 'next/link';
 import { CHEATSHEETS } from '@/data/cheatsheets';
 import { getCheatsheetMarkdown } from '@/lib/markdown';
 import Hero from '@/components/Hero';
+import HubNav from '@/components/HubNav';
 import CardGrid from '@/components/CardGrid';
 
 /**
@@ -25,42 +27,59 @@ export default function HomePage() {
   }
 
   return (
-    <main className="home-view" id="homeView">
-      <Hero />
-      <CardGrid cheatsheets={CHEATSHEETS} searchIndex={searchIndex} />
-      <footer className="home-footer">
-        <span>
-          By Nishtman - Built for learning. <span className="heart">♥</span>
-          {'  ·  '}
-          <Link className="footer-link" href="/legal">
-            Legal &amp; Terms of Use
-          </Link>
-          {'  ·  '}
-          <a
-            className="footer-link"
-            href="https://github.com/nishtman-k/cyber-study-hub"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Source on GitHub
-          </a>
-        </span>
-        <span>
-          Press{' '}
-          <code
-            style={{
-              fontFamily: 'var(--font-mono)',
-              padding: '2px 6px',
-              borderRadius: '4px',
-              background: 'var(--bg-elev)',
-              border: '1px solid var(--border)',
-            }}
-          >
-            /
-          </code>{' '}
-          to focus search.
-        </span>
-      </footer>
-    </main>
+    <>
+      <Suspense fallback={
+        <header className="hub-header">
+          <nav className="hub-nav" aria-label="Main navigation">
+            <Link className="brand-mark" href="/">Cybersecurity Study Hub</Link>
+          </nav>
+        </header>
+      }>
+        <HubNav />
+      </Suspense>
+      <main className="home-view" id="homeView">
+        <Hero />
+        <Suspense fallback={<p>Loading cheatsheets…</p>}>
+          <CardGrid cheatsheets={CHEATSHEETS} searchIndex={searchIndex} />
+        </Suspense>
+        <footer className="home-footer">
+          <span>
+            By{' '}
+            <a className="footer-link" href="https://github.com/nishtman-k" target="_blank" rel="noopener noreferrer">
+              Nishtman
+            </a>{' '}
+            - Built for learning. <span className="heart">♥</span>
+            {'  ·  '}
+            <Link className="footer-link" href="/legal">
+              Legal &amp; Terms of Use
+            </Link>
+            {'  ·  '}
+            <a
+              className="footer-link"
+              href="https://github.com/nishtman-k/cyber-study-hub"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Source on GitHub
+            </a>
+          </span>
+          <span>
+            Press{' '}
+            <code
+              style={{
+                fontFamily: 'var(--font-mono)',
+                padding: '2px 6px',
+                borderRadius: '4px',
+                background: 'var(--bg-elev)',
+                border: '1px solid var(--border)',
+              }}
+            >
+              /
+            </code>{' '}
+            to focus search.
+          </span>
+        </footer>
+      </main>
+    </>
   );
 }

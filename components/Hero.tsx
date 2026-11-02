@@ -14,7 +14,6 @@ export default function Hero() {
   return (
     <section className="hero">
       <div className="hero-text">
-        <div className="brand-mark">Cybersecurity Study Hub</div>
         <h1>
           Learn Cyber
           <br />

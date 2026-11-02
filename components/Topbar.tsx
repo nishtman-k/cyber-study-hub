@@ -4,7 +4,7 @@ import ThemeToggle from './ThemeToggle';
 
 /**
  * Sticky header shown on a cheatsheet page: back-to-hub link, the sheet title,
- * and the theme toggle (the only place the toggle lives, as in the original).
+ * and the shared theme switch.
  *
  * The Hub link is category-aware — it returns to the tab the current sheet
  * belongs to (e.g. `/?tab=offensive`) rather than always the default tab.
