@@ -314,6 +314,7 @@ a { color: inherit; text-decoration: none; }
 }
 .home-footer .heart { color: var(--orange); }
 .footer-credits { display: flex; flex-direction: column; gap: 8px; }
+.footer-links { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-left: auto; }
 .footer-contributor { font-size: inherit; color: var(--text-muted); }
 .contributor-name { color: var(--teal); }
 .footer-link { color: var(--teal); border-bottom: 1px dotted var(--teal); transition: all 0.15s; }

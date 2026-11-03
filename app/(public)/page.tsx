@@ -44,17 +44,25 @@ export default function HomePage() {
         </Suspense>
         <footer className="home-footer">
           <div className="footer-credits">
-          <span>
-            By{' '}
-            <a className="footer-link" href="https://github.com/nishtman-k" target="_blank" rel="noopener noreferrer">
-              Nishtman
-            </a>{' '}
-            - Built for learning. <span className="heart">♥</span>
-            {'  ·  '}
+            <span>
+              By{' '}
+              <a className="footer-link" href="https://github.com/nishtman-k" target="_blank" rel="noopener noreferrer">
+                Nishtman
+              </a>{' '}
+              - Built for learning. <span className="heart">♥</span>
+            </span>
+            <span className="footer-contributor">
+              Defensive Security contributor:{' '}
+              <a className="footer-link contributor-name" href="https://github.com/nargiznaghi" target="_blank" rel="noopener noreferrer">
+                Nargiz
+              </a>
+            </span>
+          </div>
+          <nav className="footer-links" aria-label="Footer navigation">
             <Link className="footer-link" href="/legal">
               Legal &amp; Terms of Use
             </Link>
-            {'  ·  '}
+            <span aria-hidden="true">·</span>
             <a
               className="footer-link"
               href="https://github.com/nishtman-k/cyber-study-hub"
@@ -63,24 +71,7 @@ export default function HomePage() {
             >
               Source on GitHub
             </a>
-          </span>
-          <span className="footer-contributor">Defensive Security contributor: <span className="contributor-name">Nargiz</span></span>
-          </div>
-          <span>
-            Press{' '}
-            <code
-              style={{
-                fontFamily: 'var(--font-mono)',
-                padding: '2px 6px',
-                borderRadius: '4px',
-                background: 'var(--bg-elev)',
-                border: '1px solid var(--border)',
-              }}
-            >
-              /
-            </code>{' '}
-            to focus search.
-          </span>
+          </nav>
         </footer>
       </main>
     </>
